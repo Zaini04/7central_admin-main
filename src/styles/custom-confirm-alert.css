@@ -1,0 +1,120 @@
+.react-confirm-alert-body-element {
+  overflow: hidden;
+}
+
+/* Background blur (optional subtle effect) */
+.react-confirm-alert-blur {
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+
+/* Overlay background behind the popup */
+.react-confirm-alert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.25); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  animation: react-confirm-alert-fadeIn 0.4s 0.1s forwards;
+}
+
+/* Popup container */
+.react-confirm-alert-body {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 400px;
+  padding: 30px;
+  text-align: left;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 20px 75px rgba(0, 0, 0, 0.2);
+  color: #333;
+  opacity: 0;
+  transform: scale(0.9);
+  animation: react-confirm-alert-scaleIn 0.3s 0.2s forwards;
+}
+
+/* Optional decorative SVG (if used by default theme) */
+.react-confirm-alert-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Title and message */
+.react-confirm-alert-body > h1 {
+  margin-top: 0;
+  font-size: 20px;
+  font-weight: bold;
+   color: white;
+
+}
+
+.react-confirm-alert-body > h3 {
+  margin: 10px 0 0;
+  font-size: 15px;
+  color: #555;
+}
+
+/* Button group */
+.react-confirm-alert-button-group {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+  gap: 10px;
+}
+
+/* Buttons */
+.react-confirm-alert-button-group > button {
+  outline: none;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 45px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.react-confirm-alert-button-group > button:first-child {
+  background: #FF1F1F; 
+  color: #fff;
+}
+
+.react-confirm-alert-button-group > button:first-child:hover {
+  background: #012C32;
+}
+
+.react-confirm-alert-button-group > button:last-child {
+  background: #e5e7eb; 
+  color: #333;
+}
+
+.react-confirm-alert-button-group > button:last-child:hover {
+  background: #d1d5db;
+}
+
+/* === Animations === */
+@keyframes react-confirm-alert-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes react-confirm-alert-scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}  

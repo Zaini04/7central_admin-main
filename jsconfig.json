@@ -1,0 +1,6 @@
+{
+    "compilerOptions": {
+        "baseUrl": "src"
+    } ,
+    "include": ["src", "jsconfig.json", "src/assets/svgs/customersvg/InsatllementSvg.js", "src/components/paymentReceipt/inputPayment/SelectInstallment.js"]
+}

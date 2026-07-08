@@ -1,0 +1,29 @@
+Fix full-width clickable issue
+.react-datepicker-wrapper,
+.react-datepicker__input-container {
+  width: 100% !important;
+  display: block;
+}
+
+.react-datepicker__input-container input {
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Optional: increase z-index for the popover to appear above other elements */
+.react-datepicker-popper {
+  z-index: 9999 !important;
+}
+
+/* Optional: smooth transition for the floating label */
+.input-container label {
+  transition: all 0.3s ease;
+}
+
+/* Optional: style input disabled/read-only */
+input:disabled,
+input[readonly] {
+  cursor: not-allowed;
+  background-color: #f3f4f6;
+  color: #9ca3af;
+}

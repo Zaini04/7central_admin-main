@@ -1,0 +1,33 @@
+.form-row {
+    @apply flex flex-col gap-2 flex-1 w-full ;
+}
+.form-row label , .label {
+    @apply font-urbanist font-medium tracking-wide text-sm -top-[25px]   flex items-center gap-2 ;
+}
+
+.form-row .input-container{
+    @apply  border  ;
+}
+
+
+.form-row input , .form-row select , .form-row textarea , .input {
+    @apply bg-transparent py-1.5 px-3  rounded-xl outline-none w-full text-[13px] ;
+}
+.form-row input::placeholder , .form-row textarea::placeholder , .input::placeholder {
+    @apply text-lighter;
+}
+option {
+    @apply bg-dark1;
+}
+
+.form-row input:focus-within , .form-row select:focus-within , .form-row textarea:focus-within , .input:focus-within {
+    @apply border-primary;
+}
+
+.form-row .error-msg , .error-msg {
+    @apply text-red-500 text-sm ;
+}
+
+.border-red {
+    @apply border !border-red-500;
+}

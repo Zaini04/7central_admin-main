@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary: #1F2020;
+    --secondary: #93CDEF;      
+    --background: #F7F8F9;      
+    --dark1: #1A1C1E;
+    --dark2: #303030;
+    --gray1 : #3A35411A; 
+    --gray2: #3E3D3D;
+    --gray3: #1F2020;
+    --light: #E0E0E0;
+    --light2: #fff;
+    --lighter: #9A9A9A;
+    --hint:#A8A8A8;
+    --pure : #000;
+    --gunmetal:#1A1C1E;
+    --darkred:#CE2C60;
+}      
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;     
+    background-color: var(--background);  
+    color : var(--pure);         
+}
+  
+/* Urbanist font */
+.font-urbanist {
+    font-family: "Urbanist", sans-serif;
+}
+  
+/* Livvic font */
+.font-livvic {
+    font-family: "Livvic", sans-serif;
+}
+
+section {
+    scroll-margin-top: 100px; /* Adjust as needed */
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); 
+}
+
+::-webkit-scrollbar{
+    width: 5px;
+}
+::-webkit-scrollbar-track{
+    background-color: white;
+}
+::-webkit-scrollbar-thumb{
+    background-color: gray;
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color: var(--primary);
+}
+
+
+/* React Confirm Alert */
+.react-confirm-alert-overlay {
+    background : #000000bd !important;
+    z-index: 99999999 !important;
+    
+}
+.react-confirm-alert-body {
+    border-radius: 8px !important;
+    background : var(--dark2) !important;
+    color : rgb(218, 218, 218) !important;
+    padding: 20px !important;
+}
+.react-confirm-alert-body h1 {
+    @apply text-xl font-semibold mb-4 text-primary;
+}
+.react-confirm-alert-body button{
+    @apply mt-2;
+}
+.react-confirm-alert-body button:first-child{
+    @apply bg-primary hover:opacity-90;
+}
+
+.react-confirm-alert-body button:nth-child(2){
+    @apply bg-gray-500 hover:opacity-90;
+}
+
+
+/* React Tooltip */
+.react-tooltip {
+    @apply !text-[14px] !bg-secondary !font-medium;
+}

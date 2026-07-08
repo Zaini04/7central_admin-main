@@ -1,0 +1,35 @@
+.table-container {
+    @apply  rounded-lg py-4;
+}
+
+
+.maintable::-webkit-scrollbar {
+  height: 5px; 
+   border-radius: 50px;
+}
+table{
+   @apply w-[95%] rounded-xl  overflow-hidden border-gray-200 mx-auto bg-white
+}
+thead {
+    @apply  bg-transparent text-left  text-white rounded-t-xl  bg-[#1F2020] text-xs md:text-[15px];
+}
+
+th{
+    @apply   font-semibold text-sm    text-gray3 px-3 py-4 whitespace-nowrap text-white  ;
+}
+td{
+    @apply    text-xs     px-3 py-4 whitespace-nowrap font-medium text-dark1  ;
+}
+
+
+
+
+tbody tr {
+    @apply  bg-transparent   hover:bg-gray-100 cursor-pointer; 
+}
+
+
+
+
+
+
