@@ -8,7 +8,7 @@ import { ClipLoader } from 'react-spinners';
 import { logout } from 'redux/actions/authActions';
 import { setShowSidebar } from 'redux/slices/appSlice';
 import useClickOutside from 'utils/clickOutside';
-import logo from '../../../assets/images/7central 1.png';
+import logo from '../../../assets/images/7 Central.svg';
 import "./siderbar.css";
 
 
@@ -51,12 +51,13 @@ const Sidebar = () => {
             overflow-y-auto ease-in-out w-[220px]
             ${showSidebar ? 'left-0' : '-left-[150%]'}
         `}>
-            <div className='border-b-[1px]  border-[#E5E5E5] '>
-                <h1 className='flex font-medium text-[#000000] text-4xl items-center justify-center h-[4.5rem]'>
+            <div className=' flex justify-center items-center '>
+                {/* <h1 className='flex font-medium text-[#000000] text-4xl items-center justify-center h-[4.5rem]'>
                 
                          7 central
                     
-                </h1>
+                </h1> */}
+                <img alt='Logo' src={logo} className='h-28 w-32'/>
             </div>
             <ul className='pb-4  flex flex-col gap-1 '>
                <ul className='py-4 flex flex-col gap-1 '>
@@ -77,16 +78,16 @@ const Sidebar = () => {
       <li key={item.id}>
         <Link
           to={item.path}
-          className={`w-11/12 ] mx-auto flex  flex-row items-center py-1.5 rounded-xl px-2 gap-1 text-xs hover:text-[#FD0000] hover:fill-[#FD0000] group
+          className={`w-11/12 ] mx-auto flex  flex-row hover:bg-[#FFE8E8]  items-center py-1.5 rounded-xl px-2 gap-1 text-xs hover:text-[#FD0000] hover:fill-[#FD0000] group
             ${isActive ? 'text-[#FD0000] bg-[#FFE8E8] ' : 'text-dark1'}    
           `}
           onClick={closeSideBar}
         >
-                      <div className={`w-[25px] h-[25px] rounded-md ${isActive ? 'bg-[#FD0000]' : 'bg-[#F3F4F5]'} flex justify-center items-center`}>
+                      <div className={`w-[22px] h-[22px] group-hover:bg-[#FD0000] rounded-md ${isActive ? 'bg-[#FD0000]' : 'bg-[#F3F4F5]'} flex justify-center items-center`}>
 
           <item.icon
             className={`w-[14px] 
-              ${isActive ? 'text-white  group-hover:text-white' : ' group-hover:text-[#FD0000]'} 
+              ${isActive ? 'text-white  group-hover:text-white' : '   group-hover:text-white'} 
               
             `}
           />

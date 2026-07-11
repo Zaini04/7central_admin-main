@@ -40,72 +40,86 @@ const end = start + docs.length - 1;
   return (
     <div className="w-full table-container bg-white flex flex-col gap-2 pb-4">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:justify-between w-full px-3">
-        <p className="text-dark1 font-semibold">All Payment Receipt</p>
+      <div className="flex flex-col sm:flex-row sm:justify-between w-full ">
+        <p className="text-dark1 font-semibold px-4">All Payment Receipt</p>
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto maintable">
+      <div className="overflow-x-auto maintable mt-4 px-4">
         <table className="w-full bg-white">
           <thead className="text-left text-sm md:text-[15px]">
             <tr>
-              <th className="px-3 py-4 whitespace-nowrap">No</th>
-              <th className="px-3 py-4 whitespace-nowrap">Receipt No</th>
-              <th className="px-3 py-4 whitespace-nowrap">Customer Name</th>
-              <th className="px-3 py-4 whitespace-nowrap">Inventory No.</th>
-              <th className="px-3 py-4 whitespace-nowrap">Installment</th>
-              <th className="px-3 py-4 whitespace-nowrap">Receipt Amount</th>
-              <th className="px-3 py-4 whitespace-nowrap">Method</th>
-              <th className="px-3 py-4 whitespace-nowrap">Created By</th>
-              <th className="px-3 py-4 whitespace-nowrap">Verified By</th>
-              <th className="px-3 py-4 whitespace-nowrap">Status</th>
-              <th className="px-3 py-4 whitespace-nowrap">Paid Date</th>
-              <th className="px-3 py-4 whitespace-nowrap">Action</th>
+              <th className="   whitespace-nowrap text-white">
+              <input
+                      type="checkbox"
+                      // checked={allSelected}
+                      // onChange={toggleAll}
+                      className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer"
+                    />
+              </th>
+              <th className="  whitespace-nowrap">No</th>
+              <th className="  whitespace-nowrap">Receipt No</th>
+              <th className="  whitespace-nowrap">Customer Name</th>
+              <th className="  whitespace-nowrap">Inventory No.</th>
+              <th className="  whitespace-nowrap">Installment</th>
+              <th className="  whitespace-nowrap">Receipt Amount</th>
+              <th className="  whitespace-nowrap">Method</th>
+              <th className="  whitespace-nowrap">Created By</th>
+              <th className="  whitespace-nowrap">Verified By</th>
+              <th className="  whitespace-nowrap">Status</th>
+              <th className="  whitespace-nowrap">Paid Date</th>
+              <th className="  whitespace-nowrap">Action</th>
             </tr>
           </thead>
 
           <tbody>
             {docs?.map((row, index) => (
               <tr key={row?._id}>
-                <td className="px-3 py-4 whitespace-nowrap">{index + 1}</td>
-                <td className="px-3 py-4 whitespace-nowrap">{row?.receiptNo}</td>
+                 <td className="  whitespace-nowrap"> <input
+                          type="checkbox"
+                          // checked={isRowSelected}
+                          // onChange={() => toggleRow(row._id)}
+                          className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer"
+                        /></td>
+                <td className="  whitespace-nowrap">{index + 1}</td>
+                <td className="  whitespace-nowrap">{row?.receiptNo}</td>
 
-                <td className="px-3 py-4 whitespace-nowrap">
+                <td className="  whitespace-nowrap">
                                     {row?.sale?.buyers?.map(b => b?.name).join(', ')}
 
                 {/* {row?.sale?.buyers[0]?.name} */}
                 </td>
 
                 <td
-              className="px-3 py-4 whitespace-nowrap capitalize cursor-pointer text-blue-600 hover:text-blue-800 hover:underline"
+              className="  whitespace-nowrap capitalize cursor-pointer text-blue-600 hover:text-blue-800 hover:underline"
               onClick={() => navigate(`/app/inventory/${row?.inventory?._id}`)}
             >
               {row?.inventory?.fullNumber}
             </td>
-                <td className="px-3 py-4 whitespace-nowrap capitalize">
+                <td className="  whitespace-nowrap capitalize">
               {row?.installment?.type}
                 </td>
-                <td className="px-3 py-4 whitespace-nowrap  text-center">
+                <td className="  whitespace-nowrap  text-center">
                    {row?.totalAmount}
                 </td>
-               <td className="px-3 py-4 whitespace-nowrap">
+               <td className="  whitespace-nowrap">
   {row?.parts?.map(p => formatLabel(p.method)).join(', ')}
 </td>
-                 <td className="px-3 py-4 whitespace-nowrap">
+                 <td className="  whitespace-nowrap">
                   {row?.createdBy?.username ??""}              
                      </td>
-                 <td className="px-3 py-4 whitespace-nowrap">
+                 <td className="  whitespace-nowrap">
                   {row?.verifiedBy?.username ??""}              
                      </td>
-                <td className="px-3 py-4 whitespace-nowrap">
+                <td className="  whitespace-nowrap">
                 <Status  status={row?.status}/>
                 </td>
-                <td className="px-3 py-4 whitespace-nowrap">
+                <td className="  whitespace-nowrap">
                                       {row?.paidAt ? moment(row?.paidAt).format("DD-MMM-YYYY") : "-"}
 
                 </td>
 
-                <td className="px-3 py-4">
+                <td className=" ">
 
           
               <div className="flex flex-row gap-1.5 items-center">
@@ -115,7 +129,7 @@ const end = start + docs.length - 1;
       setVerify(true);
       dispatch(setPaymentId(row?._id));
     }}
-    className="flex items-center gap-2 w-fit px-2.5 py-2.5 rounded-lg bg-secondary text-white font-medium"
+                      className="w-[22px] h-[22px] flex items-center justify-center rounded-md bg-secondary cursor-pointer"
   >
     <IoShareSocial size={18} />
   </button>
@@ -123,13 +137,19 @@ const end = start + docs.length - 1;
 
 
 
+  <div
+    onClick={() => navigate(`/app/payment/${row?._id}`)}
+                      className="w-[22px] h-[22px] flex items-center justify-center rounded-md bg-primary cursor-pointer"
+  >
+    <EyetSVG />
+  </div>
 
 
 {row?.status === "approved" && (
   <div
       onClick={() => navigate(`/app/payment/${row?._id}/reserved`)}
 
-    className="w-fit px-2.5 py-2.5 rounded-lg text-xs whitespace-nowrap bg-primary text-white cursor-pointer"
+    className="w-fit px-2 py-1 rounded-md text-xs whitespace-nowrap bg-primary text-white cursor-pointer"
   >
     Payment Reserved
   </div>
@@ -140,18 +160,12 @@ const end = start + docs.length - 1;
 
   <div
     onClick={() => navigate(`/app/payment/${row?._id}/verify`)}
-    className="w-fit px-2.5 py-2.5 rounded-lg  text-xs  whitespace-nowrap  bg-primary text-white cursor-pointer"
+    className="w-fit px-2 py-1 rounded-md  text-xs  whitespace-nowrap  bg-primary text-white cursor-pointer"
   >
      Payment Verify
   </div>
  )
  }
-  <div
-    onClick={() => navigate(`/app/payment/${row?._id}`)}
-    className="w-fit px-2.5 py-2.5 rounded-lg   bg-primary text-white cursor-pointer"
-  >
-    <EyetSVG />
-  </div>
 </div>
 
                 </td>
@@ -162,7 +176,7 @@ const end = start + docs.length - 1;
       </div>
 
       {/* Pagination */}
-     <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center w-full px-3  flex-wrap-none">
+     <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center w-full   flex-wrap-none">
                <TealPagination 
       
            totalPages={pages}

@@ -19,6 +19,7 @@ import { useQueryClient } from 'react-query';
 import {setInventoryDocument} from 'redux/slices/inventorySlice';
 
 import toast from 'react-hot-toast';
+import NextButton from "components/global/form/NextButton";
 
 
 const InventoryUplaodDocumnet = ({
@@ -80,16 +81,16 @@ const end = start + docInventoryDocument.length - 1;
 
 
   return (
- <>
+ <div className="bg-white rounded-xl flex flex-col gap-5">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:justify-between w-full px-3 pt-3">
+      <div className="flex flex-col  sm:flex-row sm:justify-between w-full px-3 pt-3">
         <p className="form-title">All Inventory Documents</p>
          <button
               
               onClick={() => navigate(`/app/inventory/${docDetails._id}/newDocument`)}
-              className=" py-3 cursor-pointer px-2 bg-primary text-white rounded-lg hover:bg-primary/70 transition"
+              className=" "
            >
-               Add New Document
+            <NextButton label="Add New Document"/>
             </button>
       </div>
 
@@ -231,7 +232,7 @@ const end = start + docInventoryDocument.length - 1;
 
     
 
-</>
+</div>
   )
 }
 

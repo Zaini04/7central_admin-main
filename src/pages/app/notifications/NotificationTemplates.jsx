@@ -1,3 +1,4 @@
+import Titlebtn from "components/global/Titlebtn";
 import NotificationTemplateCard from "components/notifications/NotificationTemplateCard";
 import NotificationTemplateForm from "components/notifications/NotificationTemplateForm";
 import {  useNavigate } from "react-router-dom";
@@ -13,9 +14,10 @@ const NotificationTemplates = () => {
          
         </div>
          <button
-onClick={() => navigate('/app/notification-templates/add')}
-                     className="bg-primary border rounded-[10px] text-white px-6 h-[50px]">
-                         Add New Template
+// onClick={() => navigate('/app/notification-templates/add')}
+                    //  className="bg-primary border rounded-[10px] text-white px-6 h-[50px]"
+                     >
+<Titlebtn label="Add Notification Template" url="/app/notification-templates/add"/>
                     </button>
       </div>
 

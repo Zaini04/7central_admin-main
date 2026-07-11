@@ -12,6 +12,7 @@ import ItemNotFound from "components/global/ItemNotFound";
 import Axios from "config/api";
 import { useParams } from "react-router-dom";
 import PaymentReversed from "components/paymentReceipt/PaymentReversed";
+import BackButton from "components/global/form/BackButton";
 
 
 const PaymentReceiptVerify = () => {
@@ -43,10 +44,8 @@ const PaymentReceiptVerify = () => {
         <div className="flex items-center gap-2">
           <button
             onClick={() => navigate("/app/payment")}
-            className="w-fit px-4 h-[50px] flex items-center justify-center gap-2 bg-primary text-white rounded-[10px] hover:bg-primary/90 transition-all duration-200"
           >
-            <i className="uil uil-arrow-left text-lg"></i>
-            <span className="font-medium">Back</span>
+            <BackButton/>
           </button>
         </div>
       </div>

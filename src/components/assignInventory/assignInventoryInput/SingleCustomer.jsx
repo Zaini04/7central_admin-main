@@ -11,7 +11,7 @@ import TextError from "components/global/form/TextError";
 
 
 
-const SingleCustomer = ({ label, name, onChange, value = null, error }) => {
+const SingleCustomer = ({ label, name,placeholder, onChange, value = null, error }) => {
   const dispatch = useDispatch();
   const { docs: CustomerOptions } = useSelector((state) => state.customer);
   const [searchTerm, setSearchTerm] = useState("");
@@ -73,18 +73,19 @@ const { isLoading } = useQuery(
           name={name}
           type="text"
           value={selectedLabel}
+          placeholder={placeholder}
           readOnly
           onFocus={() => {
             setFocused(true);
             setShowMenu(true);
           }}
           onBlur={() => setFocused(false)}
-          className="w-full bg-transparent py-3 px-4 text-base text-primary rounded-lg outline-none cursor-pointer"
+          className="w-full bg-transparent py-2 px-4 text-sm h-[32px] text-primary rounded-lg outline-none cursor-pointer"
         />
 
         <label
           htmlFor={name}
-          className={`absolute left-4 bg-light2 px-1 transition-all duration-300 pointer-events-none ${
+          className={`absolute left-0  px-1 transition-all duration-300 pointer-events-none ${
             focused || selectedLabel
               ? `top-[-10px] text-[13px] font-light ${
                   error ? "text-red-500" : "text-primary"

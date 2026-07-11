@@ -19,6 +19,8 @@ import BlockSelect from "components/assignInventory/assignInventoryInput/BlockSe
 import SelectInventory from "components/installments/inputInstallment/SelectInventory";
 import { Form, Formik } from "formik";
 import formatAmount from "utils/formatAmount";
+import NextButton from "components/global/form/NextButton";
+import ClearButton from "components/global/form/ClearButton";
 
 const Reports = () => {
   const dispatch = useDispatch();
@@ -193,131 +195,240 @@ const Reports = () => {
   // -----------------------------
   // UI: Summary Cards (uses backend summary.title)
   // -----------------------------
-  const renderSummary = () => {
+const renderSummary = () => {
     if (!reportResult) return null;
 
     const title = reportResult?.summary?.title || "Report";
 
     if (reportType === "due_installments") {
       return (
-        <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
-          <div className="p-4 rounded-xl bg-white shadow-sm">
-            <p className="text-sm text-gray-500">{title}</p>
-            <p className="text-lg font-semibold">Summary</p>
-          </div>
-          <div className="p-4 rounded-xl bg-white shadow-sm">
-            <p className="text-sm text-gray-500">Total Due Installments</p>
-            <p className="text-xl font-semibold">{reportResult?.summary?.count || 0}</p>
-          </div>
-          <div className="p-4 rounded-xl bg-white shadow-sm">
-            <p className="text-sm text-gray-500">Total Due Amount</p>
-            <p className="text-xl font-semibold">{formatAmount(reportResult?.summary?.totalAmount || 0)}</p>
-          </div>
-          <div className="p-4 rounded-xl bg-white shadow-sm">
-            <p className="text-sm text-gray-500">Range</p>
-            <p className="text-sm">
-              {reportResult?.range?.from ? moment(reportResult?.range?.from).format("DD-MM-YYYY") : "—"} تا{" "}
-              {reportResult?.range?.to ? moment(reportResult?.range?.to).format("DD-MM-YYYY") : "—"}
-            </p>
-          </div>
-        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 w-full">
+
+  {/* Title/Summary */}
+  <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
+                  hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
+    <p className="text-[#1F2020] text-sm font-medium">{title}</p>
+    <div>
+      <h2 className="text-lg font-semibold">Summary</h2>
+    </div>
+  </div>
+
+  {/* Total Due Installments */}
+  <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
+                  hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
+    <p className="text-[#1F2020] text-sm font-medium">Total Due Installments</p>
+    <div>
+      <h2 className="text-lg font-semibold">{reportResult?.summary?.count || 0}</h2>
+    </div>
+  </div>
+
+  {/* Total Due Amount */}
+  <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
+                  hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
+    <p className="text-[#1F2020] text-sm font-medium">Total Due Amount</p>
+    <div>
+      <h2 className="text-lg font-semibold">{formatAmount(reportResult?.summary?.totalAmount || 0)}</h2>
+    </div>
+  </div>
+
+  {/* Range */}
+  <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
+                  hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
+    <p className="text-[#1F2020] text-sm font-medium">Range</p>
+    <div>
+      <p className="text-lg font-semibold">
+        {reportResult?.range?.from ? moment(reportResult?.range?.from).format("DD-MM-YYYY") : "—"} {"-- "}
+        {reportResult?.range?.to ? moment(reportResult?.range?.to).format("DD-MM-YYYY") : "—"}
+      </p>
+    </div>
+  </div>
+
+</div>
       );
     }
 
     if (reportType === "sold_inventories") {
       return (
-        <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
-          <div className="p-4 rounded-xl bg-white shadow-sm">
-            <p className="text-sm text-gray-500">{title}</p>
-            <p className="text-lg font-semibold">Summary</p>
-          </div>
-          <div className="p-4 rounded-xl bg-white shadow-sm">
-            <p className="text-sm text-gray-500">Total Sold Inventories</p>
-            <p className="text-xl font-semibold">{reportResult?.summary?.count || 0}</p>
-          </div>
-          <div className="p-4 rounded-xl bg-white shadow-sm">
-            <p className="text-sm text-gray-500">Total Selling Price</p>
-            <p className="text-xl font-semibold">{formatAmount(reportResult?.summary?.totalSellingPrice || 0)}</p>
-          </div>
-          <div className="p-4 rounded-xl bg-white shadow-sm">
-            <p className="text-sm text-gray-500">Filters</p>
-            <p className="text-sm truncate">
-              {project ? "Project ✓ " : ""}{sector ? "Sector ✓ " : ""}{inventory ? "Inventory ✓" : "—"}
-            </p>
-          </div>
-        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 w-full">
+
+  {/* Title/Summary */}
+  <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
+                  hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
+    <p className="text-[#1F2020] text-sm font-medium">{title}</p>
+    <div>
+      <h2 className="text-lg font-semibold">Summary</h2>
+    </div>
+  </div>
+
+  {/* Total Sold Inventories */}
+  <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
+                  hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
+    <p className="text-[#1F2020] text-sm font-medium">Total Sold Inventories</p>
+    <div>
+      <h2 className="text-lg font-semibold">{reportResult?.summary?.count || 0}</h2>
+    </div>
+  </div>
+
+  {/* Total Selling Price */}
+  <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
+                  hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
+    <p className="text-[#1F2020] text-sm font-medium">Total Selling Price</p>
+    <div>
+      <h2 className="text-lg font-semibold">{formatAmount(reportResult?.summary?.totalSellingPrice || 0)}</h2>
+    </div>
+  </div>
+
+  {/* Filters */}
+  <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
+                  hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
+    <p className="text-[#1F2020] text-sm font-medium">Filters</p>
+    <div>
+      <p className="text-lg font-semibold truncate">
+        {project ? "Project ✓ " : ""}{sector ? "Sector ✓ " : ""}{inventory ? "Inventory ✓" : "—"}
+      </p>
+    </div>
+  </div>
+
+</div>
       );
     }
 
     if (reportType === "payments_received") {
       return (
-        <div className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-5 gap-3">
-          <div className="p-4 rounded-xl bg-white shadow-sm">
-            <p className="text-sm text-gray-500">{title}</p>
-            <p className="text-lg font-semibold">Summary</p>
-          </div>
-          <div className="p-4 rounded-xl bg-white shadow-sm">
-            <p className="text-sm text-gray-500">Net Cash flow Received</p>
-            <p className="text-xl font-semibold">{formatAmount(reportResult?.summary?.netCashReceived || 0)}</p>
-          </div>
-          <div className="p-4 rounded-xl bg-white shadow-sm">
-            <p className="text-sm text-gray-500">Settlement Amount</p>
-            <p className="text-xl font-semibold">{formatAmount(reportResult?.summary?.otherAmount || 0)}</p>
-          </div>
-          <div className="p-4 rounded-xl bg-white shadow-sm">
-            <p className="text-sm text-gray-500">Methods</p>
-            <p className="text-xl font-semibold">{reportResult?.summary?.byMethod?.length || 0}</p>
-          </div>
-          <div className="p-4 rounded-xl bg-white shadow-sm">
-            <p className="text-sm text-gray-500">Range</p>
-            <p className="text-sm">
-              {reportResult?.range?.from ? moment(reportResult?.range?.from).format("DD-MM-YYYY") : "—"} تا{" "}
-              {reportResult?.range?.to ? moment(reportResult?.range?.to).format("DD-MM-YYYY") : "—"}
-            </p>
-          </div>
-        </div>
+       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 w-full">
+
+  {/* Title/Summary */}
+  <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
+                  hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
+    <p className="text-[#1F2020] text-sm font-medium">{title}</p>
+    <div>
+      <h2 className="text-lg font-semibold">Summary</h2>
+    </div>
+  </div>
+
+  {/* Net Cash flow Received */}
+  <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
+                  hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
+    <p className="text-[#1F2020] text-sm font-medium">Net Cash flow Received</p>
+    <div>
+      <h2 className="text-lg font-semibold">{formatAmount(reportResult?.summary?.netCashReceived || 0)}</h2>
+    </div>
+  </div>
+
+  {/* Settlement Amount */}
+  <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
+                  hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
+    <p className="text-[#1F2020] text-sm font-medium">Settlement Amount</p>
+    <div>
+      <h2 className="text-lg font-semibold">{formatAmount(reportResult?.summary?.otherAmount || 0)}</h2>
+    </div>
+  </div>
+
+  {/* Methods */}
+  <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
+                  hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
+    <p className="text-[#1F2020] text-sm font-medium">Methods</p>
+    <div>
+      <h2 className="text-lg font-semibold">{reportResult?.summary?.byMethod?.length || 0}</h2>
+    </div>
+  </div>
+
+  {/* Range */}
+  <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
+                  hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
+    <p className="text-[#1F2020] text-sm font-medium">Range</p>
+    <div>
+      <p className="text-lg font-semibold">
+        {reportResult?.range?.from ? moment(reportResult?.range?.from).format("DD-MM-YYYY") : "—"} {"-- "}
+        {reportResult?.range?.to ? moment(reportResult?.range?.to).format("DD-MM-YYYY") : "—"}
+      </p>
+    </div>
+  </div>
+
+</div>
       );
     }
 
     if (reportType === "future_cash_flow") {
       return (
-        <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
-          <div className="p-4 rounded-xl bg-white shadow-sm">
-            <p className="text-sm text-gray-500">{title}</p>
-            <p className="text-lg font-semibold">Summary</p>
-          </div>
-          <div className="p-4 rounded-xl bg-white shadow-sm">
-            <p className="text-sm text-gray-500">Pending Till Todate</p>
-            <p className="text-xl font-semibold">{formatAmount(reportResult?.summary?.totalPendingAmountTillToday || 0)}</p>
-          </div>
-          <div className="p-4 rounded-xl bg-white shadow-sm">
-            <p className="text-sm text-gray-500">Total Pending Installments</p>
-            <p className="text-xl font-semibold">{reportResult?.summary?.totalPendingInstallments || 0}</p>
-          </div>
-          <div className="p-4 rounded-xl bg-white shadow-sm">
-            <p className="text-sm text-gray-500">Total UpComing Amount</p>
-            <p className="text-xl font-semibold">{formatAmount(reportResult?.summary?.totalFutureAmount || 0)}</p>
-          </div>
-          <div className="p-4 rounded-xl bg-white shadow-sm">
-            <p className="text-sm text-gray-500">Total UpComing Installments</p>
-            <p className="text-xl font-semibold">{reportResult?.summary?.totalFutureInstallments || 0}</p>
-          </div>
-          <div className="p-4 rounded-xl bg-white shadow-sm">
-            <p className="text-sm text-gray-500">Total Coming Amount</p>
-            <p className="text-xl font-semibold">{formatAmount(reportResult?.summary?.totalComingAmount || 0)}</p>
-          </div>
-          <div className="p-4 rounded-xl bg-white shadow-sm">
-            <p className="text-sm text-gray-500">Total Coming Installments</p>
-            <p className="text-xl font-semibold">{reportResult?.summary?.totalInstallments || 0}</p>
-          </div>
-          <div className="p-4 rounded-xl bg-white shadow-sm">
-            <p className="text-sm text-gray-500">Range</p>
-            <p className="text-sm">
-              {reportResult?.range?.from ? moment(reportResult?.range?.from).format("DD-MM-YYYY") : "—"} تا{" "}
-              {reportResult?.range?.to ? moment(reportResult?.range?.to).format("DD-MM-YYYY") : "—"}
-            </p>
-          </div>
-        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
+
+  {/* Title/Summary */}
+  <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
+                  hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
+    <p className="text-[#1F2020] text-sm font-medium">{title}</p>
+    <div>
+      <h2 className="text-lg font-semibold">Summary</h2>
+    </div>
+  </div>
+
+  {/* Pending Till Todate */}
+  <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
+                  hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
+    <p className="text-[#1F2020] text-sm font-medium">Pending Till Todate</p>
+    <div>
+      <h2 className="text-lg font-semibold">{formatAmount(reportResult?.summary?.totalPendingAmountTillToday || 0)}</h2>
+    </div>
+  </div>
+
+  {/* Total Pending Installments */}
+  <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
+                  hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
+    <p className="text-[#1F2020] text-sm font-medium">Total Pending Installments</p>
+    <div>
+      <h2 className="text-lg font-semibold">{reportResult?.summary?.totalPendingInstallments || 0}</h2>
+    </div>
+  </div>
+
+  {/* Total UpComing Amount */}
+  <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
+                  hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
+    <p className="text-[#1F2020] text-sm font-medium">Total UpComing Amount</p>
+    <div>
+      <h2 className="text-lg font-semibold">{formatAmount(reportResult?.summary?.totalFutureAmount || 0)}</h2>
+    </div>
+  </div>
+
+  {/* Total UpComing Installments */}
+  <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
+                  hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
+    <p className="text-[#1F2020] text-sm font-medium">Total UpComing Installments</p>
+    <div>
+      <h2 className="text-lg font-semibold">{reportResult?.summary?.totalFutureInstallments || 0}</h2>
+    </div>
+  </div>
+
+  {/* Total Coming Amount */}
+  <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
+                  hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
+    <p className="text-[#1F2020] text-sm font-medium">Total Coming Amount</p>
+    <div>
+      <h2 className="text-lg font-semibold">{formatAmount(reportResult?.summary?.totalComingAmount || 0)}</h2>
+    </div>
+  </div>
+
+  {/* Total Coming Installments */}
+  <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
+                  hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
+    <p className="text-[#1F2020] text-sm font-medium">Total Coming Installments</p>
+    <div>
+      <h2 className="text-lg font-semibold">{reportResult?.summary?.totalInstallments || 0}</h2>
+    </div>
+  </div>
+
+  {/* Range */}
+  <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
+                  hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
+    <p className="text-[#1F2020] text-sm font-medium">Range</p>
+    <div>
+      <p className="text-lg font-semibold">
+        {reportResult?.range?.from ? moment(reportResult?.range?.from).format("DD-MM-YYYY") : "—"} {"-- "}
+        {reportResult?.range?.to ? moment(reportResult?.range?.to).format("DD-MM-YYYY") : "—"}
+      </p>
+    </div>
+  </div>
+
+</div>
       );
     }
 
@@ -338,8 +449,16 @@ const Reports = () => {
       return (
         <div className="bg-white rounded-xl shadow-sm overflow-x-auto">
           <table className="min-w-full text-sm">
-            <thead className="bg-gray-50">
+            <thead className="">
               <tr>
+                <th className="px-3  py-4 whitespace-nowrap text-white">
+              <input
+                      type="checkbox"
+                      // checked={allSelected}
+                      // onChange={toggleAll}
+                      className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer"
+                    />
+              </th>
                 <th className="px-4 py-3 text-left">#</th>
                 <th className="px-4 py-3 text-left">Inventory</th>
                 <th className="px-4 py-3 text-left">Buyer</th>
@@ -353,7 +472,14 @@ const Reports = () => {
             <tbody>
               {docs.map((x, idx) => (
                 <tr key={x?._id} className="border-t">
+                   <td className="px-3 py-4 whitespace-nowrap"> <input
+                          type="checkbox"
+                          // checked={isRowSelected}
+                          // onChange={() => toggleRow(row._id)}
+                          className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer"
+                        /></td>
                   <td className="px-4 py-3">{idx + 1}</td>
+                  
                   <td className="px-4 py-3">{x?.inventoryFullNumber || "-"}</td>
                   <td className="px-4 py-3">{x?.buyersDisplayName || "-"}</td>
                   <td className="px-4 py-3">{x?.seq ?? "-"}</td>
@@ -377,8 +503,16 @@ const Reports = () => {
       return (
         <div className="bg-white rounded-xl shadow-sm overflow-x-auto">
           <table className="min-w-full text-sm">
-            <thead className="bg-gray-50">
+            <thead className="">
               <tr>
+                <th className="px-3  py-4 whitespace-nowrap text-white">
+              <input
+                      type="checkbox"
+                      // checked={allSelected}
+                      // onChange={toggleAll}
+                      className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer"
+                    />
+              </th>
                 <th className="px-4 py-3 text-left">#</th>
                 <th className="px-4 py-3 text-left">Inventory</th>
                 <th className="px-4 py-3 text-left">Sector</th>
@@ -392,6 +526,12 @@ const Reports = () => {
             <tbody>
               {docs.map((x, idx) => (
                 <tr key={x?._id} className="border-t">
+                   <td className="px-3 py-4 whitespace-nowrap"> <input
+                          type="checkbox"
+                          // checked={isRowSelected}
+                          // onChange={() => toggleRow(row._id)}
+                          className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer"
+                        /></td>
                   <td className="px-4 py-3">{idx + 1}</td>
                   <td className="px-4 py-3">{x?.fullNumber || "-"}</td>
                   <td className="px-4 py-3">{x?.sectorTitle || "-"}</td>
@@ -416,8 +556,16 @@ const Reports = () => {
       return (
         <div className="bg-white rounded-xl shadow-sm overflow-x-auto">
           <table className="min-w-full text-sm">
-            <thead className="bg-gray-50">
+            <thead className="">
               <tr>
+                <th className="px-3  py-4 whitespace-nowrap text-white">
+              <input
+                      type="checkbox"
+                      // checked={allSelected}
+                      // onChange={toggleAll}
+                      className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer"
+                    />
+              </th>
                 <th className="px-4 py-3 text-left">#</th>
                 <th className="px-4 py-3 text-left">Method</th>
                 <th className="px-4 py-3 text-left">Total Amount</th>
@@ -427,6 +575,12 @@ const Reports = () => {
             <tbody>
               {rows.map((x, idx) => (
                 <tr key={`${x?.method}-${idx}`} className="border-t">
+                   <td className="px-3 py-4 whitespace-nowrap"> <input
+                          type="checkbox"
+                          // checked={isRowSelected}
+                          // onChange={() => toggleRow(row._id)}
+                          className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer"
+                        /></td>
                   <td className="px-4 py-3">{idx + 1}</td>
                   <td className="px-4 py-3">{x?.method || "-"}</td>
                   <td className="px-4 py-3">{formatAmount(x?.amountTotal ?? 0)}</td>
@@ -454,8 +608,16 @@ const Reports = () => {
               </div>
             ) : (
               <table className="min-w-full text-sm">
-                <thead className="bg-gray-50">
+                <thead className="">
                   <tr>
+                    <th className="px-3  py-4 whitespace-nowrap text-white">
+              <input
+                      type="checkbox"
+                      // checked={allSelected}
+                      // onChange={toggleAll}
+                      className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer"
+                    />
+              </th>
                     <th className="px-4 py-3 text-left">#</th>
                     <th className="px-4 py-3 text-left">Inventory</th>
                     <th className="px-4 py-3 text-left">Status</th>
@@ -469,6 +631,12 @@ const Reports = () => {
                 <tbody>
                   {byInv.map((x, idx) => (
                     <tr key={x?._id} className="border-t">
+                       <td className="px-3 py-4 whitespace-nowrap"> <input
+                          type="checkbox"
+                          // checked={isRowSelected}
+                          // onChange={() => toggleRow(row._id)}
+                          className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer"
+                        /></td>
                       <td className="px-4 py-3">{idx + 1}</td>
                       <td className="px-4 py-3">{x?.inventoryFullNumber || "-"}</td>
                       <td className="px-4 py-3">{x?.inventoryStatus || "-"}</td>
@@ -492,8 +660,16 @@ const Reports = () => {
               </div>
             ) : (
               <table className="min-w-full text-sm">
-                <thead className="bg-gray-50">
+                <thead className="">
                   <tr>
+                    <th className="px-3  py-4 whitespace-nowrap text-white">
+              <input
+                      type="checkbox"
+                      // checked={allSelected}
+                      // onChange={toggleAll}
+                      className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer"
+                    />
+              </th>
                     <th className="px-4 py-3 text-left">#</th>
                     <th className="px-4 py-3 text-left">Sector</th>
                     <th className="px-4 py-3 text-left">Pending Till Date</th>
@@ -506,6 +682,12 @@ const Reports = () => {
                 <tbody>
                   {bySec.map((x, idx) => (
                     <tr key={`${x?.sector}-${idx}`} className="border-t">
+                       <td className="px-3 py-4 whitespace-nowrap"> <input
+                          type="checkbox"
+                          // checked={isRowSelected}
+                          // onChange={() => toggleRow(row._id)}
+                          className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer"
+                        /></td>
                       <td className="px-4 py-3">{idx + 1}</td>
                       <td className="px-4 py-3">{x?.sectorTitle || "-"}</td>
                       <td className="px-4 py-3">{formatAmount(x?.totalPendingAmountTillToday ?? 0)}</td>
@@ -543,17 +725,16 @@ const Reports = () => {
             tableData={exportConfig.tableData}
             columns={exportConfig.columns}
             fileName={exportConfig.fileName}
-            bgcolor="bg-primary"
-            textColor="text-white"
+bgcolor={'bg-white'} colortext={'white'} textColor={'text-primary'}
           />
         </div>
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-xl shadow-sm p-4 flex flex-col gap-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+      <div className=" rounded-xl  py-4 flex flex-col gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
           <div className="flex flex-col gap-1">
-            <label className="text-sm text-gray-600">Report Type</label>
+            {/* <label className="text-sm text-gray-600">Report Type</label> */}
             <ReportTypeDropdown
             selected={reportType}
             setSelected={(val) => {
@@ -566,27 +747,29 @@ const Reports = () => {
         </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-sm text-gray-600">Start Date (optional)</label>
+            {/* <label className="text-sm text-gray-600">Start Date (optional)</label> */}
             <input
               type="date"
-              className="border rounded-lg px-3 py-2 outline-none"
+              placeholder="Start Date"
+              className=" bg-white rounded-xl px-3 py-2 font-normal text-sm outline-none"
               value={start}
               onChange={(e) => setStart(e.target.value)}
             />
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-sm text-gray-600">End Date (optional)</label>
+            {/* <label className="text-sm text-gray-600">End Date (optional)</label> */}
             <input
               type="date"
-              className="border rounded-lg px-3 py-2 outline-none"
+              placeholder="End Date"
+              className=" bg-white rounded-xl px-3 py-2 font-normal text-sm outline-none"
               value={end}
               onChange={(e) => setEnd(e.target.value)}
             />
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-sm text-gray-600">Payment Method</label>
+            {/* <label className="text-sm text-gray-600">Payment Method</label> */}
             <PaymentMethodDropdown
             selected={method}
             setSelected={setMethod}
@@ -595,12 +778,11 @@ const Reports = () => {
             placeholder="All Methods"
             />
         </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-           <BlockSelect
-          label="Select Block"
+        <BlockSelect
           name="sector"
+          // label="Select Block"
+          // className="border-none"
+          placeholder="Select Block"
           value={sector}
           onChange={(e) => setSector(e)}
         />
@@ -611,21 +793,25 @@ const Reports = () => {
          <SelectInventory
     onSelect={ setInventory}
  />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+           
       
        
         </div>
 
         <div className="flex flex-row gap-3">
           <button
-            className="px-4 py-2 rounded-lg bg-primary text-white"
             onClick={() => refetch()}
             disabled={isFetching}
           >
-            {isFetching ? "Generating..." : "Generate Report"}
+            <NextButton label={isFetching ? "Generating..." : "Generate Report"}  isIcon={false}
+/>
+            {/* {isFetching ? "Generating..." : "Generate Report"} */}
           </button>
 
           <button
-            className="px-4 py-2 rounded-lg border"
             onClick={() => {
               setStart("");
               setEnd("");
@@ -636,7 +822,7 @@ const Reports = () => {
             }}
             disabled={isFetching}
           >
-            Clear Filters
+            <ClearButton/>
           </button>
         </div>
       </div>

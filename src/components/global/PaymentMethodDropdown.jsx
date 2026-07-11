@@ -24,21 +24,21 @@ const PaymentMethodDropdown = ({
     options.find((o) => o.value === selected)?.label || placeholder;
 
   return (
-    <div className="relative  h-[50px]" ref={menuRef}>
+    <div className="relative  h-[40px]" ref={menuRef}>
       {/* Button */}
       <div
         onClick={() => {
           if (disabled) return;
           toggleShowMenu();
         }}
-        className={`w-full h-full rounded-[10px] border px-3 flex items-center justify-between select-none
+        className={`w-full bg-white h-full rounded-xl px-3 flex items-center justify-between select-none
           ${
             disabled
               ? "bg-light2/60 border-pure/20 text-gunmetal/50 cursor-not-allowed"
-              : "bg-light2 border-pure/35 text-gunmetal cursor-pointer"
+              : "bg-white  text-gunmetal cursor-pointer"
           }`}
       >
-        <span className="font-semibold truncate">{selectedLabel}</span>
+        <span className="font-normal text-sm truncate">{selectedLabel}</span>
         <div
           className={`transition-transform duration-300 ${
             showMenu ? "rotate-180" : ""
@@ -55,7 +55,7 @@ const PaymentMethodDropdown = ({
             <div
               key={option.value}
               onClick={() => handleSelect(option)}
-              className={`px-3 py-2 cursor-pointer hover:bg-pure/10 font-medium ${
+              className={`px-3 py-2 cursor-pointer hover:bg-pure/10 font-normal text-sm ${
                 selected === option.value ? "text-primary" : "text-gunmetal"
               }`}
             >

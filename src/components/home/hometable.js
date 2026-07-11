@@ -98,9 +98,9 @@ const handleDelete = async (ID) => {
   ) : (
     <div className="overflow-x-auto maintable">
       <table className="w-[95%] rounded-xl  overflow-hidden border-gray-200 mx-auto bg-white ">
-        <thead className="text-left text-white rounded-t-xl  bg-[#1F2020] text-xs md:text-[15px]">
+        <thead className="">
           <tr className="">
-            <th className="px-3  py-4 whitespace-nowrap text-white">
+            <th className="   whitespace-nowrap text-white">
                     <input
                       type="checkbox"
                       // checked={allSelected}
@@ -108,14 +108,14 @@ const handleDelete = async (ID) => {
                       className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer"
                     />
                   </th>
-            <th className="px-3 py-4 whitespace-nowrap text-white">No</th>
-            <th className="px-3 py-4 whitespace-nowrap text-white">ID Code</th>
-            <th className="px-3 py-4 whitespace-nowrap text-white">Customer Name</th>
-            <th className="px-3 py-4 whitespace-nowrap text-white">Phone Number</th>
-            <th className="px-3 py-4 whitespace-nowrap text-white">Created Date</th>
-            <th className="px-3 py-4 whitespace-nowrap text-white">Location</th>
-            {/* <th className="px-3 py-4 whitespace-nowrap">Status</th> */}
-            <th className="px-3 py-4 whitespace-nowrap text-white">Action</th>
+            <th className="  whitespace-nowrap text-white">No</th>
+            <th className="  whitespace-nowrap text-white">ID Code</th>
+            <th className="  whitespace-nowrap text-white">Customer Name</th>
+            <th className="  whitespace-nowrap text-white">Phone Number</th>
+            <th className="  whitespace-nowrap text-white">Created Date</th>
+            <th className="  whitespace-nowrap text-white">Location</th>
+            {/* <th className="  whitespace-nowrap">Status</th> */}
+            <th className="  whitespace-nowrap text-white">Action</th>
           </tr>
         </thead>
 
@@ -123,17 +123,17 @@ const handleDelete = async (ID) => {
           {docs.map((row) => (
             <tr className='border font-medium' key={row?._id}>
 
-              <td className="px-3 py-4 whitespace-nowrap"> <input
+              <td className="  whitespace-nowrap"> <input
                           type="checkbox"
                           // checked={isRowSelected}
                           // onChange={() => toggleRow(row._id)}
                           className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer"
                         /></td>
-              <td className="font-medium px-3 py-4 whitespace-nowrap text-[#1A1C1E] text-xs">{row?.autoIncrementId}</td>
+              <td className="font-medium   whitespace-nowrap text-[#1A1C1E] text-xs">{row?.autoIncrementId}</td>
 
-              <td className="font-medium px-3 py-4 whitespace-nowrap text-[#1A1C1E] text-xs">{row?.longAutoIncrementId}</td>
+              <td className="font-medium   whitespace-nowrap text-[#1A1C1E] text-xs">{row?.longAutoIncrementId}</td>
 
-              <td className="font-medium px-3 py-4 whitespace-nowrap">
+              <td className="font-medium   whitespace-nowrap">
                 <div className="flex items-center gap-2">
                   <div className="w-[32px] h-[32px] overflow-hidden rounded-full">
                     <img
@@ -146,13 +146,13 @@ const handleDelete = async (ID) => {
                 </div>
               </td>
 
-              <td className="font-medium px-3 py-4 whitespace-nowrap text-[#1A1C1E] text-xs">{row?.phoneNumber ?? ""}</td>
+              <td className="font-medium   whitespace-nowrap text-[#1A1C1E] text-xs">{row?.phoneNumber ?? ""}</td>
 
-              <td className="font-medium px-3 py-4 whitespace-nowrap text-[#1A1C1E] text-xs">
+              <td className="font-medium   whitespace-nowrap text-[#1A1C1E] text-xs">
                 {row?.createdAt ? moment(row?.createdAt).format("DD-MM-YYYY") : "-"}
               </td>
 
-              <td className="font-medium px-3 py-4 whitespace-nowrap text-[#1A1C1E] text-xs">
+              <td className="font-medium   whitespace-nowrap text-[#1A1C1E] text-xs">
                 {row?.countryName && (
                   <div className="w-fit px-3 rounded-md py-1 bg-[#EDF1F3]">
                     {row?.countryName}
@@ -160,7 +160,7 @@ const handleDelete = async (ID) => {
                 )}
               </td>
 
-              {/* <td className="px-3 py-4 whitespace-nowrap">
+              {/* <td className="  whitespace-nowrap">
                 <Status
                   status={
                     row?.status === "assigned"
@@ -174,7 +174,7 @@ const handleDelete = async (ID) => {
                 />
               </td> */}
 
-              <td className="px-3 py-4 whitespace-nowrap text-xs">
+              <td className="  whitespace-nowrap text-xs">
                 {row?.status === "deleted" ? (
                   <></>
                 ) : (
@@ -183,7 +183,7 @@ const handleDelete = async (ID) => {
                     {/* View */}
                     <div
                       onClick={() => navigate(`/app/Customer-detail/${row._id}`)}
-                      className="w-fit px-2.5 py-2.5 rounded-lg bg-primary cursor-pointer"
+                      className="w-[22px] h-[22px] flex items-center justify-center rounded-md bg-primary cursor-pointer"
                     >
                       <EyetSVG />
                     </div>
@@ -191,7 +191,7 @@ const handleDelete = async (ID) => {
                     {user?.isSuperAdmin && (
                       <div
                         onClick={() => handleDelete(row?._id)}
-                        className="w-fit px-2.5 py-2.5 rounded-lg bg-darkred cursor-pointer"
+                      className="w-[22px] h-[22px] flex items-center justify-center rounded-md bg-darkred cursor-pointer"
                       >
                         <TrashSvg />
                       </div>

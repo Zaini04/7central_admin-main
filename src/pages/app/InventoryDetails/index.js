@@ -26,6 +26,9 @@ import BounceProvisnal from 'components/provisnalReceipt/BounceProvisnal';
 import InventoryCard from 'components/inventoryDetails/InventoryCard';
 import InventoryUplaodDocumnet   from 'components/inventoryDetails/InventoryUplaodDocumnet';
 import ViewDeatilPop   from 'components/inventoryDetails/viewDeatilPop';
+import NextButton from 'components/global/form/NextButton';
+import EditButton from 'components/global/form/EditButton';
+import BackButton from 'components/global/form/BackButton';
 
 const InventoryDetails = () => {
 
@@ -258,19 +261,30 @@ const totalDocs = InventoryDocumnetdata?.data?.data?.docsCount || 0;
           <h2 className="page-heading">Inventory: {docDetails?.fullNumber}</h2>
         </div>
 
+<div className='flex justify-center items-center gap-2'>
+          <div className="flex items-center gap-2">
+          <button
+            onClick={() => navigate("/app/inventory")}
+            className="w-fit"
+          >
+            <BackButton/>
+          </button>
+        </div>
+
 
         <div className="flex flex-wrap items-center gap-2">
           <button 
         onClick={() => navigate(`/app/inventory/${id}/update-purchase-plan`)}
         type="button"
-        className="btn-primary py-2 px-4 w-fit"
+        className=" w-fit"
       >
-        Edit Purchase Plan
+        <EditButton label='Edit Purchase Plan'/>
       </button>
+        </div>
         </div>
       </div>
 
-      <div className="w-full bg-white flex flex-col gap-2 pb-4 rounded-xl shadow-sm">
+      <div className="w-ful flex flex-col  gap-5  pb-4 rounded-xl ">
 {isLoadingInventory ? (
   <Loader />
 
@@ -352,15 +366,15 @@ const totalDocs = InventoryDocumnetdata?.data?.data?.docsCount || 0;
             setLimitInventory={setLimitInventory}
            />
         ) : (
-          <div>
-<div className="flex flex-col sm:flex-row sm:justify-between w-full px-3 pt-3">
-        <p className="form-title">All Inventory Documents</p>
+          <div className='bg-white rounded-xl' >
+<div className="flex bg-white rounded-xl flex-col sm:flex-row sm:justify-between w-full px-3 pt-3">
+        <p className=" ">All Inventory Documents</p>
          <button
               
               onClick={() => navigate(`/app/inventory/${docDetails._id}/newDocument`)}
-              className=" py-3 cursor-pointer px-2 bg-primary text-white rounded-lg hover:bg-primary/70 transition"
+              className=" w-fit"
             >
-               Add New Document
+              <NextButton label='Add New Document'/>
             </button>
       </div>
 <ItemNotFound message="No Inventory Document Found" />

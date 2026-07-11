@@ -53,7 +53,7 @@ const SelectCustomer = ({ label = " Customer", onSelect }) => {
   return (
     <div className="relative form-row " ref={dropdownRef}>
       <div
-        className={`relative w-full rounded-lg border  h-[56px] transition-all duration-300 ${
+        className={`relative w-full bg-white rounded-xl  h-[40px] transition-all duration-300 ${
           focused ? "border-primary" : "border-lighter"
         }`}
       >
@@ -65,6 +65,7 @@ const SelectCustomer = ({ label = " Customer", onSelect }) => {
     setShowMenu(true);
   }}
   onBlur={() => setFocused(false)}
+  placeholder="Select Customer"
   onChange={(e) => {
     const value = e.target.value; 
 
@@ -80,7 +81,7 @@ const SelectCustomer = ({ label = " Customer", onSelect }) => {
   className="w-full text-gunmetal bg-transparent py-3 px-4 h-full text-base rounded-lg outline-none cursor-text"
 />
 
-        <label
+        {/* <label
           className={`absolute left-4 px-1 transition-all duration-300 bg-light2 pointer-events-none ${
             focused || selectedLabel !== ""
               ? "top-[-10px] text-[13px] text-primary"
@@ -88,7 +89,7 @@ const SelectCustomer = ({ label = " Customer", onSelect }) => {
           }`}
         >
           {label}
-        </label>
+        </label> */}
 
         <div
           className={`absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer transition-transform duration-300 ${

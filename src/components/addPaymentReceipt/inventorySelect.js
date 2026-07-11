@@ -90,10 +90,9 @@ const InventoryInput = ({ name, formik, label = "Select Inventory" }) => {
         />
 
         <label
-          htmlFor={name}
-          className={`absolute left-4 px-1 transition-all duration-300 bg-light2 pointer-events-none ${
+          className={`absolute  left-0 px-1 transition-all duration-300  pointer-events-none ${
             isActive
-              ? `top-[-10px] text-[13px] ${
+              ? `top-[-10px] text-[12px] ${
                   isError
                     ? "text-red-500"
                     : focused

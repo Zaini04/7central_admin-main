@@ -101,7 +101,7 @@ const start = (currentInstallmentPage - 1) * limitInstallment + 1;
 const end = start + customerInstallments.length - 1;
 
   return (
-      <>
+ <div className="bg-white rounded-xl flex flex-col gap-5 my-4">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:justify-between w-full px-3 pt-3">
         <p className="form-title">Installments </p>
@@ -265,7 +265,7 @@ bgcolor={'bg-white'} colortext={'white'} textColor={'text-primary'}
                                 
                                 </div>
 
-</>
+</div>
 
 
   );

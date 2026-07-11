@@ -95,7 +95,7 @@ const end = start + docs.length - 1;
       
 <div className=' flex flex-col   sm:flex-row sm:justify-between  w-[95%] mx-auto '>
   <div className=' w-full sm:w-[267px]'>
-  <p className="text-dark1 font-semibold">All Inventories</p> 
+  <p className="text-dark1 font-semibold ">All Inventories</p> 
 
   </div>
   
@@ -103,10 +103,10 @@ const end = start + docs.length - 1;
 
       {/* Table */}
       <div className="  overflow-x-auto maintable mt-4 px-4">
-      <table className="w-[95%] rounded-xl  overflow-hidden border border-gray-200 mx-auto bg-white ">
+      <table className="w-[95%] rounded-xl  overflow-hidden mx-auto bg-white ">
         <thead className="text-left text-white rounded-t-xl  bg-[#1F2020] text-xs md:text-[15px]">
             <tr>
-        <th className="px-3  py-4 whitespace-nowrap text-white">
+        <th className="   whitespace-nowrap text-white">
               <input
                       type="checkbox"
                       // checked={allSelected}
@@ -114,20 +114,20 @@ const end = start + docs.length - 1;
                       className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer"
                     />
               </th>
-        <th className="px-3  py-4 whitespace-nowrap text-white">
+        <th className="   whitespace-nowrap text-white">
                 No</th>
-        <th className="px-3  py-4 whitespace-nowrap text-white">
+        <th className="   whitespace-nowrap text-white">
                 ID Code</th>
-              <th className="px-3 py-4  whitespace-nowrap text-white">
+              <th className="   whitespace-nowrap text-white">
                 Customer Name</th>
-              <th className="px-3 py-4  whitespace-nowrap text-white ">Project</th>
-              <th className="px-3 py-4  whitespace-nowrap text-white ">Sector</th>
-              <th className="px-3 py-4  whitespace-nowrap text-white ">Type</th>
-              <th className="px-3 py-4  whitespace-nowrap text-white  ">Plot No.</th>
-              <th className="px-3 py-4  whitespace-nowrap text-white ">Number</th>
-              <th className="px-3 py-4  whitespace-nowrap text-white ">Full Number</th>
-              <th className="px-3 py-4  whitespace-nowrap text-white ">Status</th>
-              <th className="px-3 py-4  whitespace-nowrap text-white ">Action</th>
+              <th className="   whitespace-nowrap text-white ">Project</th>
+              <th className="   whitespace-nowrap text-white ">Sector</th>
+              <th className="   whitespace-nowrap text-white ">Type</th>
+              <th className="   whitespace-nowrap text-white  ">Plot No.</th>
+              <th className="   whitespace-nowrap text-white ">Number</th>
+              <th className="   whitespace-nowrap text-white ">Full Number</th>
+              <th className="   whitespace-nowrap text-white ">Status</th>
+              <th className="   whitespace-nowrap text-white ">Action</th>
             </tr>
           </thead>
 
@@ -141,16 +141,16 @@ const end = start + docs.length - 1;
                 }`}
               >
                 {/* Checkbox */}
-                  <td className="px-3 py-4 whitespace-nowrap"> <input
+                  <td className="  whitespace-nowrap"> <input
                           type="checkbox"
                           // checked={isRowSelected}
                           // onChange={() => toggleRow(row._id)}
                           className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer"
                         /></td>
 
-                <td className="px-3 py-4  whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row?.autoIncrementId}</td>
-                <td className="px-3 py-4  whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row?.fullNumber}</td>
-                <td className="px-3 py-4  whitespace-nowrap font-medium text-[#1A1C1E] text-xs">
+                <td className="   whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row?.autoIncrementId}</td>
+                <td className="   whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row?.fullNumber}</td>
+                <td className="   whitespace-nowrap font-medium text-[#1A1C1E] text-xs">
                 {row?.currentSale?.buyers?.map(b => b?.name).join(', ')}
                   {/* <div className="flex items-center gap-2">
                     <div className="w-[32px] h-[32px] border overflow-hidden rounded-full">
@@ -163,16 +163,16 @@ const end = start + docs.length - 1;
                     {}
                   </div> */}
                 </td>
-                <td className="px-3 py-4  whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row?.project?.title}</td>
-                <td className="px-3 py-4  whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row?.sector?.title}</td>
-                <td className="px-3 py-4  whitespace-nowrap font-medium text-[#1A1C1E] text-xs  capitalize">{row.type}</td>
-                <td className="px-3 py-4  whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row.plotNumber}</td>
-                <td className="px-3 py-4  whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row.number}</td>
-                <td className="px-3 py-4  whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row.fullNumber}</td>
-                <td className="px-3 py-4  whitespace-nowrap font-medium text-[#1A1C1E] self-center text-xs">
+                <td className="   whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row?.project?.title}</td>
+                <td className="   whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row?.sector?.title}</td>
+                <td className="   whitespace-nowrap font-medium text-[#1A1C1E] text-xs  capitalize">{row.type}</td>
+                <td className="   whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row.plotNumber}</td>
+                <td className="   whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row.number}</td>
+                <td className="   whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row.fullNumber}</td>
+                <td className="   whitespace-nowrap font-medium text-[#1A1C1E] self-center text-xs">
                   <Status status={formatLabel(row.status)} />
                 </td>
-                <td className="px-3 py-4  whitespace-nowrap font-medium text-[#1A1C1E] text-xs">
+                <td className="   whitespace-nowrap font-medium text-[#1A1C1E] text-xs">
                   <div className="flex flex-row gap-1.5 items-center">
   {row.status === "deleted" ? (
     <></>
@@ -182,7 +182,7 @@ const end = start + docs.length - 1;
       {  row.status === "not_assigned"?(<></>): row.status === "draft" ||(!row?.currentSale?.plan)? (
         <button
           onClick={() => navigate(`/app/inventory/${row?._id}/purchase-plan`)}
-          className="w-fit px-4 py-2 rounded-lg bg-primary text-white text-xs font-medium hover:bg-primary/90 transition"
+          className="w-fit px-4 py-1 rounded-md bg-primary text-white text-xs font-medium hover:bg-primary/90 transition"
         >
          Set Installment Plan
         </button>
@@ -193,7 +193,7 @@ const end = start + docs.length - 1;
               navigate(`/app/inventory/${row?._id}/pay-inventory`);
               dispatch(setDocinventoryExtraDetails(row));
             }}
-            className="w-fit px-4 py-2 rounded-lg bg-primary text-white text-xs font-medium hover:bg-primary/90 transition"
+            className="w-fit px-4 p-1 rounded-md bg-primary text-white text-xs font-medium hover:bg-primary/90 transition"
           >
             Pay
           </button>
@@ -202,7 +202,7 @@ const end = start + docs.length - 1;
 
       <div
         onClick={() => navigate(`/app/inventory/${row?._id}`)}
-        className="px-2.5 py-2.5 rounded-lg bg-primary cursor-pointer"
+                      className="w-[22px] h-[22px] flex items-center justify-center rounded-md bg-primary cursor-pointer"
       >
         <EyetSVG />
       </div>
@@ -211,7 +211,7 @@ const end = start + docs.length - 1;
  {user?.isSuperAdmin && (
                       <div
                         onClick={() => handleDeleteInventory(row?._id)}
-                        className="w-fit px-2.5 py-2.5 rounded-lg bg-darkred cursor-pointer"
+                      className="w-[22px] h-[22px] flex items-center justify-center rounded-md bg-darkred cursor-pointer"
                       >
                         <TrashSvg />
                       </div>
@@ -229,7 +229,7 @@ const end = start + docs.length - 1;
       </div>
 
       {/* Footer (Pagination + Limit) */}
-      <div className="flex flex-col sm:flex-row justify-between items-center w-full px-3 mt-4 gap-3">
+      <div className="flex flex-col sm:flex-row justify-between items-center w-full  mt-4 gap-3">
               <TealPagination 
      
           totalPages={pages}

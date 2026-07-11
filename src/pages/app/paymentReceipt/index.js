@@ -124,8 +124,8 @@ const { isLoading, isError, error } = useQuery(
     "Paid_Date"
   ]}
   fileName="Payment Receipt"
-  bgcolor="bg-primary"
-  textColor="text-white"
+ bgcolor={'bg-white'} colortext={'white'} textColor={'text-primary'}
+
 />
 
 

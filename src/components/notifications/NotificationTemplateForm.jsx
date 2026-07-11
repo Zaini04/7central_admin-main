@@ -7,6 +7,7 @@ import PlaceholderToolbar from "./PlaceholderToolbar";
 import MultiSelect from "components/global/form/MultiSelect";
 import FormControl from "components/global/form/FormControl";
 import { useNavigate } from "react-router-dom";
+import NextButton from "components/global/form/NextButton";
 
 const templateValidationSchema = Yup.object().shape({
 //   key: Yup.string().required("Key is required"),
@@ -80,8 +81,8 @@ const NotificationTemplateForm = () => {
   };
 
   return (
-    <div className="p-4 border-b">
-      <h3 className="text-lg font-semibold mb-4">Create Notification Template</h3>
+    <div className="p-4 rounded-xl"> 
+      <h3 className="text-dark1 font-semibold mb-4">Create Notification Template</h3>
 
       <Formik
         initialValues={initialValues}
@@ -89,8 +90,8 @@ const NotificationTemplateForm = () => {
         onSubmit={submitHandler}
       >
         {(formik) => (
-          <Form className="flex flex-col gap-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <Form className="flex flex-col gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-3">
               {/* <div>
                 <label className="font-medium">Template Key</label>
                 <Field
@@ -100,21 +101,22 @@ const NotificationTemplateForm = () => {
                 />
               </div> */}
 
-              <div>
-                <label className="font-medium">Template Name</label>
+              <div className="space-y-0.5">
+                <label className="font-medium text-xs ">Template Name</label>
                 <Field
                   name="name"
-                  className="w-full border rounded-lg p-3 mt-1"
+          className="w-full border border-lighter focus:border-dark1 transition-all bg-transparent py-1.5 px-4 text-sm   text-primary rounded-lg outline-none cursor-pointer"
                   placeholder="Payment Confirmation"
                 />
               </div>
 
-            <div>
-              <label className="font-medium">Category</label>
+            <div className="space-y-0.5">
+              <label className="font-medium text-xs">Category</label>
               <FormControl
                 control="multiple-option"   // ✅ IMPORTANT (not multiple-option)
                 // label="Category"
                 name="category"
+                placeholder="Select Category"
                             formik={formik}
                             options={[
                                 "",
@@ -140,20 +142,21 @@ const NotificationTemplateForm = () => {
               title="Click to insert variables into subject/body fields"
             />
 
-            <div>
-              <label className="font-medium">Email Subject</label>
+            <div className="space-y-0.5">
+              <label className="font-medium text-xs">Email Subject</label>
               <input
                 ref={(el) => (inputRefs.current.emailSubject = el)}
                 name="emailSubject"
                 value={formik.values.emailSubject}
                 onChange={formik.handleChange}
-                className="w-full border rounded-lg p-3 mt-1"
+          className="w-full border border-lighter focus:border-dark1 transition-all bg-transparent py-1.5 px-4 text-sm   text-primary rounded-lg outline-none cursor-pointer"
                 placeholder="Payment Confirmation – [Project]"
               />
             </div>
 
-            <div>
-              <label className="font-medium">Email Body</label>
+            <div className="space-y-3">
+
+              <label className="font-semibold text-sm">Email Body</label>
               <PlaceholderToolbar
                 onInsert={(token) =>
                   insertTextAtCursor("emailBody", token, formik, inputRefs)
@@ -166,13 +169,13 @@ const NotificationTemplateForm = () => {
                 rows={7}
                 value={formik.values.emailBody}
                 onChange={formik.handleChange}
-                className="w-full border rounded-lg p-3 mt-2"
+          className="w-full border border-lighter focus:border-dark1 transition-all bg-transparent py-1.5 px-4 text-sm   text-primary rounded-lg outline-none cursor-pointer"
                 placeholder="Dear [Client Name], ..."
               />
             </div>
 
-            <div>
-              <label className="font-medium">SMS Body</label>
+            <div className="space-y-3">
+              <label className="font-semibold text-sm">SMS Body</label>
               <PlaceholderToolbar
                 onInsert={(token) =>
                   insertTextAtCursor("smsBody", token, formik, inputRefs)
@@ -185,13 +188,13 @@ const NotificationTemplateForm = () => {
                 rows={5}
                 value={formik.values.smsBody}
                 onChange={formik.handleChange}
-                className="w-full border rounded-lg p-3 mt-2"
+          className="w-full border border-lighter focus:border-dark1 transition-all bg-transparent py-1.5 px-4 text-sm   text-primary rounded-lg outline-none cursor-pointer"
                 placeholder="[Project] confirms that Rs. [Amount] ..."
               />
             </div>
 
-            <div>
-              <label className="font-medium">WhatsApp Body</label>
+            <div className="space-y-3">
+              <label className="font-semibold text-sm">WhatsApp Body</label>
               <PlaceholderToolbar
                 onInsert={(token) =>
                   insertTextAtCursor("whatsappBody", token, formik, inputRefs)
@@ -204,14 +207,14 @@ const NotificationTemplateForm = () => {
                 rows={5}
                 value={formik.values.whatsappBody}
                 onChange={formik.handleChange}
-                className="w-full border rounded-lg p-3 mt-2"
+          className="w-full border border-lighter focus:border-dark1 transition-all bg-transparent py-1.5 px-4 text-sm   text-primary rounded-lg outline-none cursor-pointer"
                 placeholder="[Project] confirms that Rs. [Amount] ..."
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-x-5 gap-5">
               <div className="border rounded-xl p-4 flex items-center justify-between">
-                <span className="font-medium">Email Enabled</span>
+                <span className="font-medium text-sm">Email Enabled</span>
                 <ToggleSwitch
                   enabled={formik.values.emailEnabled}
                   onChange={() =>
@@ -221,7 +224,7 @@ const NotificationTemplateForm = () => {
               </div>
 
               <div className="border rounded-xl p-4 flex items-center justify-between">
-                <span className="font-medium">SMS Enabled</span>
+                <span className="font-medium text-sm">SMS Enabled</span>
                 <ToggleSwitch
                   enabled={formik.values.smsEnabled}
                   onChange={() =>
@@ -231,7 +234,7 @@ const NotificationTemplateForm = () => {
               </div>
 
               <div className="border rounded-xl p-4 flex items-center justify-between">
-                <span className="font-medium">WhatsApp Enabled</span>
+                <span className="font-medium text-sm text-gray3">WhatsApp Enabled</span>
                 <ToggleSwitch
                   enabled={formik.values.whatsappEnabled}
                   onChange={() =>
@@ -248,9 +251,9 @@ const NotificationTemplateForm = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="bg-primary text-white px-6 py-3 rounded-xl"
+                className=""
               >
-                {loading ? "Saving..." : "Save Template"}
+                <NextButton label={loading ? "Saving..." : "Save Template"} isIcon={false} />
               </button>
             </div>
           </Form>

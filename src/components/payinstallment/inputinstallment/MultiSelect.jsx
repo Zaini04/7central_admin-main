@@ -3,7 +3,7 @@ import ArrowSVG from "assets/svgs/ArrowSVG";
 import useClickOutside from "utils/clickOutside";
 import TextError from "components/global/form/TextError";
 
-const MultiSelect = ({ label, name, options = [], formik, onSelect, onRemove }) => {
+const MultiSelect = ({ label, name,placeholder, options = [], formik, onSelect, onRemove }) => {
   const [showMenu, setShowMenu] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -52,7 +52,7 @@ const MultiSelect = ({ label, name, options = [], formik, onSelect, onRemove }) 
 
   return (
     <div className="relative form-row w-full" ref={dropdownRef}>
-      <div className="relative w-full transition-all duration-300 py-1 rounded-lg border border-lighter">
+      <div className="relative h-[32px] w-full transition-all duration-300 py-1 rounded-lg border border-lighter">
         {/* Selected items display */}
         <div
           className="flex flex-wrap gap-2 py-2 px-3 cursor-pointer min-h-[48px]"
@@ -62,7 +62,7 @@ const MultiSelect = ({ label, name, options = [], formik, onSelect, onRemove }) 
             selectedValues.map((value) => (
               <span
                 key={value}
-                className="bg-primary text-white text-xs rounded-full px-2 py-0.5 mt-1.5 font-semibold flex items-center gap-1"
+                className="bg-primary text-white text-[10px] rounded-full px-2 py-0.5 mt-1.5 font-semibold flex items-center gap-1"
               >
                 {getLabel(value)}
                 <button
@@ -79,7 +79,7 @@ const MultiSelect = ({ label, name, options = [], formik, onSelect, onRemove }) 
 
           {/* Floating label */}
           <label
-            className={`absolute left-3 bg-light2 px-1 transition-all duration-300 pointer-events-none ${
+            className={`absolute left-0  px-1 transition-all duration-300 pointer-events-none ${
               isActive ? "top-[-10px] text-[13px] text-gray3" : "top-3 text-gray3"
             }`}
           >

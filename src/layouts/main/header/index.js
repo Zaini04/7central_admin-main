@@ -43,11 +43,11 @@ const isSuperAdmin = profileData?.isSuperAdmin;
 const role = isSuperAdmin ? 'Super Admin' : 'Admin';
 
   return (
-    <div className='bg-light2 p-4 flex flex-wrap xs:flex-nowrap items-center justify-between h-auto md:h-[4.5rem] '>
+    <div className='bg-light2 px-4 py-4 flex flex-wrap xs:flex-nowrap items-center justify-between h-auto md:h-[4rem] '>
       
       {/* Left section */}
       <div className='flex items-center min-w-0'>
-        <span className='inline-block ml-2   text-[12px] xs:text-base text-sm text-[#1A1C1E] font-semibold truncate'>
+        <span className='inline-block ml-2   text-[12px] xs:text-sm  text-[#1A1C1E] font-semibold truncate'>
           Welcome Back, {formatLabel(profileData?.username)}
         </span>
       </div>

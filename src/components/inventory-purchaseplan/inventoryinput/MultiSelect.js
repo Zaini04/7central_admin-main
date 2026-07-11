@@ -8,6 +8,7 @@ const MultiSelect = ({
   name,
   value,
   onChange,
+  placeholder,
   onBlur,
   error,
   options = [],
@@ -43,6 +44,7 @@ const MultiSelect = ({
         <input
           id={name}
           name={name}
+          placeholder={placeholder}
           type="text"
           value={selectedLabel}
           readOnly
@@ -54,15 +56,15 @@ const MultiSelect = ({
             setFocused(false);
             onBlur && onBlur(name);
           }}
-          className="w-full bg-transparent py-3 px-4 text-base text-primary rounded-lg outline-none cursor-pointer"
+          className="w-full bg-transparent py-3 px-4 text-sm h-[32px] text-primary rounded-lg outline-none cursor-pointer"
         />
 
         {/* Floating Label */}
         <label
           htmlFor={name}
-          className={`absolute left-4 bg-light2 px-1 transition-all duration-300 pointer-events-none ${
+          className={`absolute left-0 px-1 transition-all duration-300 pointer-events-none ${
             isActive
-              ? `top-[-10px] text-[13px] font-light ${
+              ? `top-[-10px] text-[12px] font-light ${
                   error ? "text-red-500" : focused ? "text-primary" : "text-gray3"
                 }`
               : "top-3 text-gray3"

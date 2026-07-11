@@ -17,7 +17,7 @@
     @apply text-lighter;
 }
 option {
-    @apply bg-dark1;
+    @apply bg-white cursor-pointer;
 }
 
 .form-row input:focus-within , .form-row select:focus-within , .form-row textarea:focus-within , .input:focus-within {

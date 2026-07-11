@@ -36,7 +36,7 @@ const ItemNotFound = ({
     const iconSize = width > 600 ? 80 : 60; 
 
     return (
-        <div className="w-full h-auto py-10 bg-white rounded-md flex items-center flex-col gap-4 justify-center text-center">
+        <div className="w-full h-auto py-10 bg-white rounded-xl flex items-center flex-col gap-4 justify-center text-center">
             
          
             <InfoIcon size={iconSize} /> 

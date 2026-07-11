@@ -290,7 +290,7 @@ useEffect(() => {
   {reciptDetail &&   <CustomerReciptDetail   setReciptDetail={setReciptDetail}/> }
  
 
-        <div className="w-full bg-white flex flex-col gap-2 pb-4 rounded-xl shadow-sm">
+        <div className="w-full  flex flex-col gap-5 pb-4 rounded-xl">
 
 
                          {installmentsLoading ? (
@@ -398,7 +398,7 @@ limitDocument={limitDocument}
               totalInventoriesDocs={totalInventoriesDocs}
                  />
         ):(
-          <ItemNotFound message="No documents found" />
+          <ItemNotFound message="No Customer's Investor documents found" />
         )}
                 
               </div>

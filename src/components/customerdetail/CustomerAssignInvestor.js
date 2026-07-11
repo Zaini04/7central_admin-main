@@ -33,7 +33,7 @@ const end = start + customerInventories.length - 1;
 
 
   return (
-    <>
+ <div className="bg-white rounded-xl flex flex-col gap-5">
 
 
           {/* Header */}
@@ -182,7 +182,7 @@ const end = start + customerInventories.length - 1;
                     
                               
                               </div>
-    </>
+    </div>
   )
 }
 

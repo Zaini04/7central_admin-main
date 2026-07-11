@@ -68,16 +68,16 @@ const ProjectSelect = ({ label, name, value, onChange, error, ...rest }) => {
             setFocused(true);
             setShowMenu(true);
           }}
-          className="w-full bg-transparent py-3 px-4 text-base text-primary rounded-lg outline-none cursor-pointer"
+          className="w-full bg-transparent py-2 h-[32px] px-4 text-sm text-primary rounded-lg outline-none cursor-pointer"
           {...rest}
         />
 
         {/* Floating Label */}
         <label
           htmlFor={name}
-        className={`absolute left-4 bg-light2 px-1 transition-all duration-300 pointer-events-none ${
+        className={`absolute left-0 px-1 transition-all duration-300 pointer-events-none ${
     isActive
-      ? `top-[-10px] text-[13px] ${error ? "text-red-500" : "text-gray3"}`
+      ? `top-[-10px] text-[12px] ${error ? "text-red-500" : "text-gray3"}`
       : "top-3 text-gray3"
   }`}
 >

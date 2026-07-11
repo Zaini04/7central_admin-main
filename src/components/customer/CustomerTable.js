@@ -104,11 +104,12 @@ const end = start + docs.length - 1;
 
      
 
-<div className="overflow-x-auto mt-4    maintable ">
-      <table className="w-[95%] rounded-xl  overflow-hidden border-gray-200 mx-auto bg-white ">
+
+      <div className="  overflow-x-auto maintable mt-4 px-4">
+      <table className="w-[100%] rounded-xl  overflow-hidden  mx-auto bg-white ">
         <thead className="text-left text-white rounded-t-xl  bg-[#1F2020] text-xs md:text-[15px]">
       <tr>
-        <th className="px-3  py-4 whitespace-nowrap text-white">
+        <th className="   whitespace-nowrap text-white">
                     <input
                       type="checkbox"
                       // checked={allSelected}
@@ -117,30 +118,30 @@ const end = start + docs.length - 1;
                     />
                   </th>
    
-        <th className="px-3  py-4 whitespace-nowrap text-white">
+        <th className="   whitespace-nowrap text-white">
           <div className="flex flex-row items-center text-white gap-1">No</div>
         </th>
-        <th className="px-3 py-4 whitespace-nowrap">
+        <th className="  whitespace-nowrap">
           <div className="flex flex-row items-center text-white gap-1">ID Code</div>
         </th>
-        <th className="px-3 py-4  whitespace-nowrap text-white">
+        <th className="   whitespace-nowrap text-white">
            Customer Name
       
         </th>
-        <th className="px-3 py-4  whitespace-nowrap text-white">
+        <th className="   whitespace-nowrap text-white">
                  Phone Number
         
     
         </th>
-        <th className="px-3 py-4  whitespace-nowrap text-white">
+        <th className="   whitespace-nowrap text-white">
     Created BY
         
         </th>
-        <th className="px-3 py-4  whitespace-nowrap text-white">
+        <th className="   whitespace-nowrap text-white">
         Location
           
         </th>
-        <th className="px-3 py-4  whitespace-nowrap text-white">Action</th>
+        <th className="   whitespace-nowrap text-white">Action</th>
       </tr>
     </thead>
 
@@ -148,15 +149,15 @@ const end = start + docs.length - 1;
         {docs.map((row, index) => (
               <tr key={row._id}>
 
-                 <td className="px-3 py-4 whitespace-nowrap"> <input
+                 <td className="  whitespace-nowrap"> <input
                           type="checkbox"
                           // checked={isRowSelected}
                           // onChange={() => toggleRow(row._id)}
                           className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer"
                         /></td>
-                <td className=" px-3 py-4 whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row.autoIncrementId}</td>
-                <td className="px-3 py-4 whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row.longAutoIncrementId}</td>
-                <td className="px-3 py-4 whitespace-nowrap font-medium text-[#1A1C1E] text-xs">
+                <td className="   whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row.autoIncrementId}</td>
+                <td className="  whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row.longAutoIncrementId}</td>
+                <td className="  whitespace-nowrap font-medium text-[#1A1C1E] text-xs">
           <div className="flex items-center gap-2">
   <div className="w-[32px] h-[32px] border overflow-hidden rounded-full">
     <img
@@ -170,20 +171,20 @@ const end = start + docs.length - 1;
 
              
                 </td>
-                <td className="px-3 py-4 whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row?.phoneNumber??""}</td>
-                <td className="px-3 py-4 whitespace-nowrap font-medium text-[#1A1C1E] text-xs">
+                <td className="  whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row?.phoneNumber??""}</td>
+                <td className="  whitespace-nowrap font-medium text-[#1A1C1E] text-xs">
                    {row?.createdBy?.username ??""}
                 </td>
-                <td className="px-3 py-4 whitespace-nowrap font-medium text-[#1A1C1E] text-xs">
+                <td className="  whitespace-nowrap font-medium text-[#1A1C1E] text-xs">
                       {
                   row?.countryName  && (
-                <div className='  w-fit px-3 rounded-md py-1  bg-[#EDF1F3]'>
+                <div className='  w-fit px-3  rounded-md py-1  bg-[#EDF1F3]'>
                   {row?.countryName??""}
                 </div>)}
               
                 </td>
                
-    <div className="flex flex-row gap-1.5 px-3 py-4  items-center ">
+    <div className="flex flex-row gap-1.5  justify-center  py-4  items-center ">
 
 
   {row?.status === "deleted" ? (
@@ -192,10 +193,10 @@ const end = start + docs.length - 1;
       
     ></> // empty if deleted
   ) : (
-    <div className="flex flex-row gap-1.5 justify-start ">
+    <div className="flex flex-row gap-1.5 justify-center items-center ">
       <div
         onClick={() => navigate(`/app/Customer-detail/${row._id}`)}
-        className="w-fit px-2.5 py-2.5 rounded-lg bg-primary"
+                      className="w-[22px] h-[22px] flex items-center justify-center rounded-md bg-primary cursor-pointer"
       >
         <EyetSVG />
       </div>
@@ -203,7 +204,7 @@ const end = start + docs.length - 1;
         {user?.isSuperAdmin && (
                       <div
                         onClick={() => handleDelete(row?._id)}
-                        className="w-fit px-2.5 py-2.5 rounded-lg bg-darkred cursor-pointer"
+                      className="w-[22px] h-[22px] flex items-center justify-center rounded-md bg-darkred cursor-pointer"
                       >
                         <TrashSvg />
                       </div>
@@ -225,7 +226,7 @@ const end = start + docs.length - 1;
 </div>
 
 
-         <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center w-full px-3  flex-wrap-none">
+         <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center w-full   flex-wrap-none">
          <TealPagination 
 
      totalPages={pages}

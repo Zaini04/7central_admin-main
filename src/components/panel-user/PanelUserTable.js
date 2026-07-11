@@ -58,34 +58,42 @@ const end = start + docs.length - 1;
   return (
     <div className="w-full bg-white flex flex-col gap-2 pb-4 rounded-xl shadow-sm">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:justify-between w-full px-3 pt-3">
-        <p className="text-dark1 font-semibold text-lg">All Users</p>
+      <div className="flex flex-col sm:flex-row sm:justify-between w-full  pt-3">
+        <p className="text-dark1 font-semibold text-lg px-6">All Users</p>
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto maintable">
-        <table className="w-full text-sm md:text-[15px] bg-white">
+      <div className="overflow-x-auto maintable  ">
+        <table className=" ">
           <thead className="text-left border-b  ">
             <tr>
+               <th className="   whitespace-nowrap text-white">
+              <input
+                      type="checkbox"
+                      // checked={allSelected}
+                      // onChange={toggleAll}
+                      className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer"
+                    />
+              </th>
             
-              <th className="px-3 py-4 whitespace-nowrap">No</th>
-              <th className="px-3 py-4 whitespace-nowrap">
+              <th className="  whitespace-nowrap">No</th>
+              <th className="  whitespace-nowrap">
                    User Name
              
               </th>
-              <th className="px-3 py-4 whitespace-nowrap">
+              <th className="  whitespace-nowrap">
               Email
               </th>
          
-              <th className="px-3 py-4 whitespace-nowrap">
+              <th className="  whitespace-nowrap">
               Created Date
               </th>
           
-              <th className="px-3 py-4 whitespace-nowrap">
+              <th className="  whitespace-nowrap">
               Status
            
               </th>
-                <th className="px-3 py-4 whitespace-nowrap">
+                <th className="  whitespace-nowrap">
              Action
            
               </th>
@@ -101,13 +109,19 @@ const end = start + docs.length - 1;
         docs.includes(row?._id) ? "bg-[#F0FAFF]" : ""
       }`}
     >
+      <td className="  whitespace-nowrap"> <input
+                          type="checkbox"
+                          // checked={isRowSelected}
+                          // onChange={() => toggleRow(row._id)}
+                          className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer"
+                        /></td>
     
-      <td className="px-3 py-4 text-gray-700">
+      <td className="  text-gray-700">
   {index+1}
       </td>
 
       {/* Name & Avatar */}
-      <td className="px-3 py-4 whitespace-nowrap">
+      <td className="  whitespace-nowrap">
         <div className="flex items-center gap-2">
           <div className="w-[32px] h-[32px] border overflow-hidden rounded-full">
             <img
@@ -120,21 +134,21 @@ const end = start + docs.length - 1;
         </div>
       </td>
 
-      <td className="px-3 py-4 whitespace-nowrap">{row?.email}</td>
+      <td className="  whitespace-nowrap">{row?.email}</td>
 
-      <td className="px-3 py-4 whitespace-nowrap">
+      <td className="  whitespace-nowrap">
                     {row?.createdAt ? moment(row?.dueDate).format("DD-MM-YYYY") : "-"}
       </td>
 
-      <td className="px-3 py-4 whitespace-nowrap">
+      <td className="  whitespace-nowrap">
     <Status  status={row?.status}/>
 
       </td>
 
-         <td className="px-3 py-4 whitespace-nowrap">
+         <td className="  whitespace-nowrap">
           <div
         onClick={() => handleDelete(row?._id)}
-        className="w-fit px-2.5 py-2.5 rounded-lg bg-darkred"
+                      className="w-[22px] h-[22px] flex items-center justify-center rounded-md bg-darkred cursor-pointer"
       >
     <TrashSvg/>
     </div>
@@ -156,7 +170,7 @@ const end = start + docs.length - 1;
       </div>
 
       {/* Footer (Pagination + Limit) */}
-      <div className="flex flex-col sm:flex-row justify-between items-center w-full px-3 mt-4 gap-3">
+      <div className="flex flex-col sm:flex-row justify-between items-center w-full  mt-4 gap-3">
         <TealPagination 
              totalPages={pages}
              currentPage={currentPage}

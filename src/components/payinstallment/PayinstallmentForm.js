@@ -196,11 +196,15 @@ const formatNumber = (value) => {
         {(formik) => (
           <Form className="flex flex-col gap-6">
             <div className="flex flex-col gap-5 px-3 w-full">
-              <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-5  pt-8">
+                            <p className="form-title pt-4">Pay Installment </p>
+              <hr className="w-[100%] h-[1.5px]  mx-auto bg-[#9A9A9A]" />
+
+              <div className=" mb-6 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10  pt-8">
                 <FormControl
                   control="input"
                   type="text"
                   label="Installment Payment"
+                  PulseLoader="Enter Installment Payment"
                   name="mainAmount"
                   formik={formik}
                   value={formatNumber(formik.values.mainAmount)}
@@ -212,10 +216,11 @@ const formatNumber = (value) => {
                                     onChange={(e) => handleMainAmountChange(e, formik)}
 
                 />
-                <FormControl control="input" type="text" label="Receipt No" name="receiptNo" formik={formik} autoComplete="off" autoCapitalize="off" spellCheck={false} />
+                <FormControl control="input" type="text" placeholder="Enter Receipt No" label="Receipt No" name="receiptNo" formik={formik} autoComplete="off" autoCapitalize="off" spellCheck={false} />
 
                 <MultiSelect
                   label="Payment Method"
+                  placeholder="Select Payment Method"
                   name="parts"
                   formik={formik}
                   options={paymentOptions}
@@ -223,10 +228,11 @@ const formatNumber = (value) => {
                   onRemove={(removedMethod) => handleMethodRemove(removedMethod, formik)}
                 />
               </div>
+              <hr className="w-[100%] h-[1.5px]  mx-auto bg-[#9A9A9A]" />
 
 
               {formik.values.parts?.map((part, index) => (
-                <div key={index} className="w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mt-4">
+                <div key={index} className="  w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-8">
                   <FormControl
                     control="input"
                     type="text"
@@ -241,6 +247,7 @@ const formatNumber = (value) => {
                     control="input"
                     type="text"
                     label="Reference #"
+                    placeholder="Enter Reference #"
                     name={`parts[${index}].reference`}
                     formik={formik}
                     value={getIn(formik.values, `parts[${index}].reference`)}
@@ -251,6 +258,7 @@ const formatNumber = (value) => {
                       type="text" 
                       inputMode="decimal"
                       label="Paid Amount"
+                      placeholder="Enter Paid Amount"
                       name={`parts[${index}].amount`}
                       formik={formik}
                       value={formatNumber(getIn(formik.values, `parts[${index}].amount`))}
@@ -275,6 +283,7 @@ const formatNumber = (value) => {
                   /> */}
                   <InputDate
                     label="Paid Date"
+                    placeholder="Select Paid Date"
                     name={`parts[${index}].paidAt`}
                     formik={formik}
                     // value={getIn(formik.values, `parts[${index}].paidAt`)}

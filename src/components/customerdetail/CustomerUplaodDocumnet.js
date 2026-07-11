@@ -79,7 +79,7 @@ const end = start + docCustomerDocumnet.length - 1;
 
 
   return (
- <>
+ <div className="bg-white rounded-xl flex flex-col gap-5">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:justify-between w-full px-3 pt-3">
         <p className="form-title">All Uploaded Documents</p>
@@ -222,7 +222,7 @@ const end = start + docCustomerDocumnet.length - 1;
 
     
 
-</>
+</div>
   )
 }
 

@@ -18,13 +18,13 @@ const ReportTypeDropdown = ({ selected, setSelected, options = [] }) => {
     options.find((o) => o.value === selected)?.label || "Select";
 
   return (
-    <div className="relative  h-[50px]" ref={menuRef}>
+    <div className="relative  h-[40px]" ref={menuRef}>
       {/* Button */}
       <div
         onClick={() => toggleShowMenu()}
-        className="w-full h-full bg-light2 rounded-[10px] border border-pure/35 px-3 flex items-center justify-between text-gunmetal cursor-pointer select-none"
+        className="w-full h-full bg-white rounded-xl px-3 flex items-center justify-between text-gunmetal cursor-pointer select-none"
       >
-        <span className="font-semibold truncate">{selectedLabel}</span>
+        <span className="font-normal text-sm truncate">{selectedLabel}</span>
         <div
           className={`transition-transform duration-300 ${
             showMenu ? "rotate-180" : ""
@@ -41,7 +41,7 @@ const ReportTypeDropdown = ({ selected, setSelected, options = [] }) => {
             <div
               key={option.value}
               onClick={() => handleSelect(option)}
-              className={`px-3 py-2 cursor-pointer hover:bg-pure/10 font-medium ${
+              className={`px-3 py-2 cursor-pointer hover:bg-pure/10 font-normal text-sm ${
                 selected === option.value ? "text-primary" : "text-gunmetal"
               }`}
             >

@@ -13,6 +13,8 @@ import PaymentMultiSelect from "components/addPaymentReceipt/PaymentMultiSelect"
 import InventoryInput from "components/addPaymentReceipt/inventorySelect";
 import SelectInventory from "components/paymentReceipt/inputPayment/SelectInventory";
 import toast from "react-hot-toast";
+import ClearButton from "components/global/form/ClearButton";
+import NextButton from "components/global/form/NextButton";
 // ^ use the same one you already have working (recommended)
 
 const initValues = {
@@ -108,16 +110,18 @@ const AddMergePaymentReceipt = () => {
           <Form className="flex flex-col gap-6">
             <p className="form-title">Merge Payment Receipts</p>
 
-            <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-10">
               {/*  Controlled inventory exactly like your TransferInventoryForm */}
                <SelectInventory
                     onSelect={setSelectedInventory}
+                    label="Select Inventory"
+                    formik={formik}
                     
                     />
             
 
               {/* ✅ Multi select payments */}
-              <div className="sm:col-span-2">
+              <div>
                 <PaymentMultiSelect
                   name="paymentIds"
                   label="Approved Payment Receipts"
@@ -145,7 +149,8 @@ const AddMergePaymentReceipt = () => {
                     </button>
                   </div>
                 ) : null}
-              </div>
+
+                </div>
 
               {/* Notes */}
               <div className="sm:col-span-2">
@@ -159,30 +164,25 @@ const AddMergePaymentReceipt = () => {
               </div>
             </div>
 
-            <div className="px-3 w-full flex justify-center">
+            <div className="px-3 w-full flex justify-end">
               <div className="flex items-center gap-2">
                 <button
                   type="button"
-                  className="btn-secondary w-fit md:w-[148px]"
+                  className=""
                   onClick={() => {
                     formik.resetForm();
                     setSelectedInventory("");
                   }}
                   disabled={formik.isSubmitting}
                 >
-                  Clear
+              <ClearButton/>
                 </button>
 
                 <button
                   type="submit"
-                  className="btn-primary py-2 xl:px-6 px-6 w-fit"
                   disabled={formik.isSubmitting || createLoading}
                 >
-                  {formik.isSubmitting || createLoading ? (
-                    <PulseLoader size={12} color="white" />
-                  ) : (
-                    "Merge & Create Receipt"
-                  )}
+                 <NextButton label="Merge & Create Receipt" createLoading={createLoading} isIcon={false}/>
                 </button>
               </div>
             </div>

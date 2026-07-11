@@ -36,7 +36,7 @@ export default function Usermenu({ username, profileImage, role }) {
       onClick={toggleShowMenu}
       ref={menuRef}
     >
-      <div className="w-[32px] h-[32px] border  overflow-hidden rounded-full">
+      <div className="w-[25px] h-[25px] border  overflow-hidden rounded-full">
         <img
           src={profileImage}
           alt="user avatar"
@@ -44,7 +44,7 @@ export default function Usermenu({ username, profileImage, role }) {
         />
       </div>
 
-      <p className="text-[#1A1C1E] font-semibold  hidden md:block">{username}</p>
+      <p className="text-[#1A1C1E] font-semibold text-sm hidden md:block">{username}</p>
       <div className='hidden md:block'>
   <ArrowDownSvg rotated={showMenu}    />
       </div>
@@ -62,11 +62,11 @@ export default function Usermenu({ username, profileImage, role }) {
             <img
               src={profileImage}
               alt="User"
-              className="w-10 h-10 rounded-full object-cover"
+              className="w-7 h-7 rounded-full object-cover"
             />
             <div>
               <h3 className="text-sm font-semibold text-gray-900">{username}</h3>
-              <p className="text-xs text-green-600 font-medium capitalize">
+              <p className="text-[10px] text-green-600 font-medium capitalize">
                 {role}
               </p>
             </div>
@@ -76,19 +76,19 @@ export default function Usermenu({ username, profileImage, role }) {
         {/* Static dropdown content */}
         <div className="mt-2 border-t border-gray-200">
   <Link to="/app">
-  <div className="px-4 py-2 text-sm text-dark1 hover:bg-gray-100 cursor-pointer">
+  <div className="px-4 py-2 text-xs text-dark1 hover:bg-gray-100 cursor-pointer">
     Dashboard
   </div>
 </Link>
 
 <Link to="/app/settings">
-  <div className="px-4 py-2 text-sm text-dark1 hover:bg-gray-100 cursor-pointer">
+  <div className="px-4 py-2 text-xs text-dark1 hover:bg-gray-100 cursor-pointer">
     Settings
   </div>
 </Link>
           <div
                onClick={handleLogout}
-           className="px-4 py-2 text-sm text-red-600 hover:bg-gray-100 cursor-pointer">
+           className="px-4 py-2 text-xs text-red-600 hover:bg-gray-100 cursor-pointer">
                     {loading ? <PulseLoader size={10} color="#2D3748" /> : "Logout"}
           </div>
         </div>

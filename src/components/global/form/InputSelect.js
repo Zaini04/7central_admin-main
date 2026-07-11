@@ -66,7 +66,7 @@ const InputSelect = (props) => {
           htmlFor={name}
           className={`absolute -top-8 left-0  px-1 transition-all duration-300 pointer-events-none ${
             isActive
-              ? `top-[-10px] text-[13px] font-light ${
+              ? `top-[-10px] text-[12px] font-light ${
                   isError
                     ? "text-red-500"
                     : focused

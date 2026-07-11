@@ -9,7 +9,7 @@ import { BeatLoader } from "react-spinners";
 import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "react-query";
 
-const SelectInventory = ({ label = " Inventory", onSelect }) => {
+const SelectInventory = ({ label , onSelect }) => {
   const [keyword, setKeyword] = useState("");
   const [showMenu, setShowMenu] = useState(false);
   const [focused, setFocused] = useState(false);
@@ -52,15 +52,16 @@ const SelectInventory = ({ label = " Inventory", onSelect }) => {
   );
 
   return (
-    <div className="relative form-row " ref={dropdownRef}>
+    <div className="relative form-row  " ref={dropdownRef}>
       <div
-        className={`relative w-full rounded-lg border  h-[56px] transition-all duration-300 ${
+        className={`relative w-full rounded-lg  bg-white  h-[40px] transition-all duration-300 ${
           focused ? "border-primary" : "border-lighter"
         }`}
       >
         <input
   type="text"
   value={selectedLabel}
+  placeholder="Select Inventory"
   onFocus={() => {
     setFocused(true);
     setShowMenu(true);
@@ -78,12 +79,12 @@ const SelectInventory = ({ label = " Inventory", onSelect }) => {
       if (onSelect) onSelect("");
     }
   }}
-  className="w-full text-gunmetal bg-transparent py-3 px-4 h-full text-base rounded-lg outline-none cursor-text"
+  className="w-full text-gunmetal bg-transparent py-2  px-4 h-full text-base rounded-lg outline-none cursor-text"
 />
 
 
         <label
-          className={`absolute left-4 px-1 transition-all duration-300 bg-light2 pointer-events-none ${
+          className={`absolute left-0 px-1 transition-all duration-300  pointer-events-none ${
             focused || selectedLabel !== ""
               ? "top-[-10px] text-[13px] text-primary"
               : "top-4 text-gray3"

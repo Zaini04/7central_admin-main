@@ -281,7 +281,7 @@ const PayInventoryForm = () => {
               <p className="form-title">Pay Inventory </p>
               <hr className="w-[100%] h-[1.5px]  mx-auto bg-[#9A9A9A]" />
 
-              <div className="mt-4 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10">
+              <div className="mt-4 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-x-5 gap-y-10">
                 {isBulkInventory && (
                   <>
                     <ProjectSelect
@@ -362,7 +362,7 @@ const PayInventoryForm = () => {
               {formik.values.parts?.map((part, index) => (
                 <div
                   key={index}
-                  className=" mt-10 mb-4 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10 "
+                  className=" mt-10 mb-4 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-10 "
                 >
                   <FormControl
                     control="input"

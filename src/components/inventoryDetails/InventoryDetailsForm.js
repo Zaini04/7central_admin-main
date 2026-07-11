@@ -73,7 +73,7 @@ const handleSubmit = async (values, { resetForm }) => {
 
 
   return (
-    <div className="w-full  flex flex-col gap-6 px-3 pb-4">
+    <div className="w-full rounded-xl  flex flex-col gap-6 px-3 pb-4 bg-white">
       {/* Header */}
 
       <Formik
@@ -88,8 +88,8 @@ const handleSubmit = async (values, { resetForm }) => {
           <Form className="flex flex-col gap-6">
 
           <div className="flex flex-col gap-5 pt-4 px-3 w-full">
-      <p className="form-title ">Inventory Details</p>
-               <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-5 border-b pb-4">
+      <p className="form-title py-4 ">Inventory Details</p>
+               <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10 pb-4">
            
           
               <FormControl
@@ -201,12 +201,15 @@ const handleSubmit = async (values, { resetForm }) => {
               />
 
             </div>
+
+                            <hr className="w-[100%] h-[1.5px]  mx-auto bg-[#9A9A9A]"/>
+
           
 
           </div>
                   <div className="flex flex-col gap-5 pt-4 px-3 w-full">
-                <p className="form-title ">Installment Details</p>
-               <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-5 ">        
+                <p className="form-title py-4 ">Installment Details</p>
+               <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-x-5 gap-y-10 pb-4 ">        
               <FormControl
                 control="input"
                 type="text"
@@ -289,13 +292,14 @@ const handleSubmit = async (values, { resetForm }) => {
 
 
             </div>
-          
+                          <hr className="w-[100%] h-[1.5px]  mx-auto bg-[#9A9A9A]"/>
+
 
           </div>
       
              <div className="flex flex-col gap-5 pt-4 px-3 w-full">
-      <p className="form-title ">Current Ownership</p>
-               <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-5 ">
+      <p className="form-title  py-4">Current Ownership</p>
+               <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10 ">
            
           
               <FormControl

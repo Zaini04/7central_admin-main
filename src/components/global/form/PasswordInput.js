@@ -35,16 +35,16 @@ function PasswordInput(props) {
                     onFocus={() => setFocused(true)}
                     onBlur={() => setFocused(false)}
                     autoComplete="off"
-                    className="w-full bg-transparent py-3 px-4 text-base text-pure rounded-lg outline-none pr-10"
+                    className="w-full bg-transparent py-2 px-4 text-base text-pure rounded-lg outline-none pr-10"
                     {...rest}
                 />
 
                 {/* Floating Label */}
            <label
   htmlFor={name}
-  className={`absolute left-4 transition-all duration-300 pointer-events-none bg-light2 px-1 ${
+  className={`absolute left-0 transition-all duration-300 pointer-events-none  px-1 ${
     isActive
-      ? `top-[-12px]  text-[13px] font-light ${
+      ? `top-[-12px]  text-[12px] font-light ${
           isError
             ? 'text-red-500'
             : focused

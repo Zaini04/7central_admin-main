@@ -44,7 +44,7 @@ function Input(props) {
           readOnly={readOnly}
           onFocus={!readOnly ? () => setFocused(true) : undefined}
           onBlur={!readOnly ? () => setFocused(false) : undefined}
-          className={`w-full py-2 px-4   rounded-xl transition-all duration-200
+          className={`w-full py-2 px-4   rounded-lg transition-all duration-200
             ${
               readOnly
                 ? 'text-gray-500 bg-transparent select-none'
@@ -61,7 +61,7 @@ function Input(props) {
         {/* Floating Label */}
         <label
           htmlFor={name}
-          className={`absolute -top-[25px]  left-0 transition-all duration-300 pointer-events-none  px-1
+          className={`absolute -top-[25px] text-xs  left-0 transition-all duration-300 pointer-events-none  px-1
             ${
               isActive
                 ? `top-[-12px] ${

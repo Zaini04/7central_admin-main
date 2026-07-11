@@ -57,10 +57,11 @@ const formatNumber = (value) => {
         className="bg-white w-[90%] md:w-[60%] rounded-lg py-3 relative overflow-y-auto max-h-[90vh] flex flex-col gap-2 popup"
       >
         {/* Header */}
-        <div className="flex justify-between items-center w-full py-3 border-b border-black/10 px-5">
+        <div className="flex  justify-between items-center w-full py-1  px-5">
           <h2 className="text-md md:text-lg xl:text-xl font-semibold">
            Provisional Receipt  Detail
           </h2>
+
           <button
             onClick={() => {
               setProvisionalDetail(false);
@@ -71,15 +72,17 @@ const formatNumber = (value) => {
             <RxCross1 size={16} />
           </button>
         </div>
+                                  <hr className="w-[98%] h-[1.5px]  mx-auto bg-[#9A9A9A]"/>
+
 
         {/* Form */}
-        <div className="w-full flex flex-col gap-3 px-5 mt-2 pb-3">
+        <div className="w-full flex flex-col gap-3 px-5 mt-8 pb-3">
           <Formik
           initialValues={initValues}
           >
             {(formik) => (
               <Form className="flex flex-col gap-6">
-                <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-10">
 
   <FormControl
     control="input"

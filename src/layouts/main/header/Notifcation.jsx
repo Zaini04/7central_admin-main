@@ -25,7 +25,7 @@ export default function Notifcation() {
       onClick={toggleShowMenu}
       ref={menuRef}
     >
-             <div className="w-[33px] h-[33px] rounded-full bg-[#C7EAE7] flex justify-center items-center">
+             <div className="w-[25px] h-[25px] p-1 rounded-full bg-[#C7EAE7] flex justify-center items-center">
 
       <NotificationSvg />
 </div>

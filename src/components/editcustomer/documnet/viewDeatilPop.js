@@ -82,7 +82,7 @@ useClickOutside(mainRef, () => {
   {/* Document Details */}
   <h3 className="text-lg font-semibold  px-2">Document Details</h3>
 
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-10">
 
     
     <FormControl

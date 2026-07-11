@@ -35,7 +35,7 @@ const CustomerDetail = () => {
             
              </div>
 
-              <div className="w-full bg-white flex flex-col gap-2 pb-4 rounded-xl shadow-sm">
+              <div className="w-full flex flex-col gap-5 pb-4 rounded-xl ">
               <CustomerDetailForm  readOnly={readOnly}/>
               {/* <Nextkinfrom readOnly={readOnly}/>
               <Notificationfrom readOnly={readOnly}/>

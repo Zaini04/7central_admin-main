@@ -9,7 +9,7 @@ import Axios from "config/api";
 import TextError from "components/global/form/TextError";
 import { BeatLoader } from "react-spinners";
 
-const MultiCustomerSelect = ({ label, name, selectedCustomers = [], error, onChange }) => {
+const MultiCustomerSelect = ({ label, name,placeholder, selectedCustomers = [], error, onChange }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [focused, setFocused] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -70,7 +70,7 @@ const MultiCustomerSelect = ({ label, name, selectedCustomers = [], error, onCha
 
   return (
     <div className="relative form-row" ref={dropdownRef}>
-      <div className="relative w-full transition-all duration-300 py-1 rounded-lg border border-lighter">
+      <div placeholder={placeholder} className="relative w-full h-[32px] transition-all duration-300 py-1 rounded-lg border border-lighter">
         {/* Selected items */}
         <div
           className="flex flex-wrap gap-2 py-2 px-3 cursor-pointer min-h-[48px]"
@@ -97,7 +97,7 @@ const MultiCustomerSelect = ({ label, name, selectedCustomers = [], error, onCha
 
           {/* Floating label */}
           <label
-            className={`absolute left-3 bg-light2 px-1 transition-all duration-300 pointer-events-none ${
+            className={`absolute left-0 px-1 transition-all duration-300 pointer-events-none ${
               isActive ? "top-[-10px] text-[13px] text-gray3" : "top-3 text-gray3"
             }`}
           >

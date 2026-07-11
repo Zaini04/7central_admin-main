@@ -61,7 +61,7 @@ function Input(props) {
             if (onBlur) onBlur(e);
           }}
           onChange={onChange}
-          className={`w-full py-3 px-4 rounded-lg outline-none transition-all duration-200
+          className={`w-full py-2 h-[32px] px-4 rounded-lg outline-none transition-all duration-200
             ${
               readOnly
                 ? 'text-gray-500 bg-transparent select-none'
@@ -69,7 +69,7 @@ function Input(props) {
                 ? 'text-primary bg-transparent'
                 : isError
                 ? 'text-red-600 bg-transparent'
-                : 'text-gray-500 bg-transparent'
+                : 'text-gray3 bg-transparent'
             }
           `}
           {...rest}
@@ -78,7 +78,7 @@ function Input(props) {
         {/* Floating Label */}
         <label
           htmlFor={name}
-          className={`absolute left-4 transition-all duration-300 pointer-events-none bg-light2 px-1
+          className={`absolute left-0 transition-all duration-300 pointer-events-none  px-1
             ${
               isActive
                 ? `top-[-12px] text-[13px] ${
@@ -86,9 +86,9 @@ function Input(props) {
                       ? 'text-red-500'
                       : focused
                       ? 'text-primary'
-                      : 'text-gray-600'
+                      : 'text-gray3'
                   }`
-                : 'top-[-12px] text-gray-400'
+                : 'top-[-12px] text-gray3'
             }
           `}
         >

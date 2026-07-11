@@ -75,7 +75,7 @@ const SingleCustomer = ({ label, name, onChange, value = null, error }) => {
   return (
     <div className="relative form-row" ref={dropdownRef}>
       <div
-        className={`relative w-full transition-all duration-300 rounded-xl border ${
+        className={`relative w-full transition-all duration-300 rounded-lg border ${
           error ? "border-red-500" : "border-lighter"
         }`}
       >

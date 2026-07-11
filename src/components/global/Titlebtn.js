@@ -7,7 +7,7 @@ const Titlebtn = ({ label = "Add", url = "/" , isIcon = true}) => {
   return (
     <button
       onClick={() => navigate(url)}
-      className=" w-fit  pl-1.5 pr-4 h-[32px] flex items-center justify-start gap-2 bg-[#1F2020] text-white rounded-full hover:bg-[#1F2020]/90 transition-all duration-200"
+      className={` w-fit ${isIcon ? "pl-1.5 pr-4": "px-4"}  h-[32px] flex items-center justify-start gap-2 bg-[#1F2020] text-white rounded-full hover:bg-[#1F2020]/90 transition-all duration-200`}
     >
      {isIcon && 
             <div className="w-[22px] h-[22px] rounded-full bg-white flex justify-center items-center">

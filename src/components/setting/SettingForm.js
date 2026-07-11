@@ -8,6 +8,8 @@ import FormControl from "components/global/form/FormControl";
 import passwordValidations from "validations/passwordValidations";
 import { PulseLoader } from "react-spinners";
 import {updateUserPassword} from  'redux/actions/authActions'
+import ClearButton from "components/global/form/ClearButton";
+import NextButton from "components/global/form/NextButton";
 
 const initValues = {
 oldPassword:'',
@@ -48,29 +50,37 @@ const handleSubmit = async (values, { resetForm }) => {
 
 
   return (
-    <div className="w-full bg-white flex flex-col gap-6 px-3 py-6 rounded-xl shadow-sm">
+    <div className="w-full bg-white flex flex-col md:flex-row justify-between gap-6 px-3 py-6 rounded-xl shadow-sm">
 
 
+<div className="w-full md:w-5/12 flex  flex-col justify-start items-start   text-start">
+      <h2 className="text-dark1 font-semibold text-start">Update Password</h2>
+      <p className="text-gray-400 font-normal  text-xs text-start w-full">Change your current Password</p>
+
+      </div>
     <Formik
         initialValues={initValues}
         validationSchema={passwordValidations}
         onSubmit={handleSubmit}
+        className="w-full md:w-7/12"
    
       >
         {(formik) => (
    <>
+    
+
    
-          <Form className="flex flex-col gap-6">
-            <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-5 border-b pb-4">
-                                   <div className="sm:col-span-2">
+          <Form className="flex flex-col gap-6 w-full">
+            <div className="w-full mt-4 grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-10  pb-4">
                                      <FormControl
                                                 control='password'
                                                 name='oldPassword'
                                                 formik={formik}
                                                     label=' Old Password'
+                                                    placeholder='Enter Old Password'
                                                           autoComplete="off"
                                             /> 
-                                   </div>
+                                  
                                       
 
           
@@ -79,6 +89,7 @@ const handleSubmit = async (values, { resetForm }) => {
                                                 name='newPassword'
                                                 formik={formik}
                                                     label='New Password'
+                                                    placeholder='Enter New Password'
                                                           autoComplete="off"
                                             />   
                                             
@@ -88,6 +99,7 @@ const handleSubmit = async (values, { resetForm }) => {
                                                 name='confrimPassword'
                                                 formik={formik}
                                                     label='Confirm Password'
+                                                    placeholder='Enter Confirm Password'
                                                           autoComplete="off"
                                             />
           
@@ -95,28 +107,27 @@ const handleSubmit = async (values, { resetForm }) => {
            
             </div>
 
-            <div className="px-3 w-full flex justify-center">
+            <div className="px-3 w-full flex justify-end">
               <div className="flex items-center gap-2">
                 {/* Clear Button */}
                 <button
                   type="button"
-                  className="btn-secondary text-sm xs:text-base w-fit md:w-[148px]"
                   onClick={() => formik.resetForm()}
                 >
-                  Clear
+                  <ClearButton/>
                 </button>
 
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="btn-primary py-2  px-6 text-sm xs:text-base w-fit"
                   disabled={updatePassword}
                 >
-                  {updatePassword ? <PulseLoader size={12} /> : "Change Password"}
+                  <NextButton label="Change Password" createLoading={updatePassword} isIcon={false}/>
                 </button>
               </div>
             </div>
           </Form>
+
           </>
         )}
         

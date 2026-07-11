@@ -72,7 +72,7 @@ const CustomerDetailForm = ({ readOnly }) => {
   };
 
   return (
-    <div className="w-full flex flex-col gap-6 px-3 pb-4">
+    <div className="w-full flex flex-col gap-6 px-3 pb-4 bg-white">
       <Formik
         initialValues={initValues}
         validationSchema={InventoriesDetailValidations}

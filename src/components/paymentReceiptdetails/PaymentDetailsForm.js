@@ -87,7 +87,7 @@ const formatNumber = (value) => {
             <div className="flex flex-col gap-5 pt-4 px-3 w-full">
               <p className="  text-gunmetal font-semibold text-[17px] md:text-xl">Buyer Details</p>
 
-              <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-5 border-b pb-4">
+              <div className=" mt-4 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-x-5 gap-y-10 pb-4">
                 <FormControl control="input" type="text" label="Buyer Name" name="customerName" formik={formik} readOnly={readOnly} />
                 <FormControl control="input" type="text" label="Phone Number" name="phoneNumber" formik={formik} readOnly={readOnly} />
                 <FormControl control="input" type="text" label="Cnic" name="Cnic" formik={formik} readOnly={readOnly} />
@@ -105,7 +105,7 @@ const formatNumber = (value) => {
             <div className="flex flex-col gap-5 pt-4 px-3 w-full">
               <p className="  text-gunmetal font-semibold text-[17px] md:text-xl">Inventory Details</p>
 
-              <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-5 border-b pb-4">
+              <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-x-5 gap-y-10  pb-4 mt-4">
                 <FormControl control="input" type="text" label="Project" name="project" formik={formik} readOnly={readOnly} />
                 <FormControl control="input" type="text" label="Sector" name="sector" formik={formik} readOnly={readOnly} />
                 <FormControl control="input" type="text" label="Plot Number" name="plotNumber" formik={formik} readOnly={readOnly} />
@@ -121,7 +121,7 @@ const formatNumber = (value) => {
             <div className="flex flex-col gap-5 pt-4 px-3 w-full">
               <p className="  text-gunmetal font-semibold text-[17px] md:text-xl">Installment Details</p>
 
-              <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div className=" mt-4 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-x-5 gap-y-10 ">
                 <FormControl control="input" type="text" label="Sequence" name="installmentSeq" formik={formik} readOnly={readOnly} />
                 <FormControl control="input" type="text" label="Type" name="installmentType" formik={formik} readOnly={readOnly} />
                 <FormControl control="input" type="date" label="Due Date" name="installmentDueDate" formik={formik} readOnly={readOnly} />
@@ -132,7 +132,7 @@ const formatNumber = (value) => {
                  <div className="flex flex-col gap-5 pt-4 px-3 w-full">
               <p className="  text-gunmetal font-semibold text-[17px] md:text-xl">Payment Details</p>
 
-              <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-x-5 gap-y-10 mt-4 pb-4">
                 <FormControl control="input" label="Total Amount" name="totalAmount" formik={formik} readOnly={readOnly} />
                 <FormControl control="input" label="Receipt No" name="receiptNo" formik={formik} readOnly={readOnly} />
                 <FormControl control="input" label="Notes" name="notes" formik={formik} readOnly={readOnly} />                  
@@ -147,7 +147,7 @@ const formatNumber = (value) => {
                 </div>
 
               {doc?.parts?.map((part, index) => (
-      <div key={index} className="w-full grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div key={index} className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-x-5 gap-y-10 mt-4 pb-4">
      
 
         <FormControl

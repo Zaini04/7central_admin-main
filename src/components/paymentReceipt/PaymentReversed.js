@@ -11,6 +11,8 @@ import  {verify_Payment}  from  'redux/actions/paymentReceiptActions'
 import { PulseLoader } from "react-spinners";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import CancelButton from "components/global/form/CancelButton";
+import NextButton from "components/global/form/NextButton";
 
 
 const PaymentReversed = () => {
@@ -73,7 +75,7 @@ const handleSubmit = async (values, { resetForm }) => {
         className="bg-white   w-full rounded-xl py-3 relative  flex flex-col gap-2 "
       >
         {/* Header */}
-        <div className="flex justify-between items-center w-full py-3 border-b border-black/10 px-5">
+        <div className="flex justify-between items-center w-full py-3  border-black/10 px-5">
           <h2 className="text-md md:text-lg xl:text-xl font-semibold">
            Payment Reserved
           </h2>
@@ -81,7 +83,7 @@ const handleSubmit = async (values, { resetForm }) => {
         </div>
 
         {/* Form */}
-        <div className="w-full flex flex-col gap-3 px-5 mt-2 pb-3">
+        <div className="w-full flex flex-col gap-3 px-5 mt-4 pb-3">
           <Formik
             initialValues={initValues}
             // validationSchema={validationSchema}
@@ -124,15 +126,13 @@ const handleSubmit = async (values, { resetForm }) => {
                     <button
                   
                       type="button"
-                      className="btn-secondary text-sm xs:text-base w-fit md:w-[148px]"
                     >
-                      Cancel
+                      <CancelButton/>
                     </button>
 
-                        <button type="submit" className="btn-primary py-2 xl:px-12 px-6 text-sm xs:text-base w-fit" >
+                        <button type="submit" className=" w-fit" >
                          
-                                   {patchLoading ? <PulseLoader size={12} color='white' /> : "Submit"}
-
+                      <NextButton isIcon={false} createLoading={patchLoading} label="Submit"/>
                                     </button>
                      
                   </div>

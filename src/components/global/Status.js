@@ -16,7 +16,7 @@ const Status = ({ status }) => {
        status === 'Draft' ||
   status === 'draft'
   ) {
-    statusClass = ' bg-[#FBF4E4] text-[#DBAA00]';
+    statusClass = ' bg-[#FBF4E4] text-[#DBAA00] px-4';
   } else if (
     status === 'completed' ||
     status === 'approved' ||
@@ -38,7 +38,7 @@ const Status = ({ status }) => {
      
 
   ) {
-    statusClass = 'bg-green-500 bg-opacity-30 text-green-800';
+    statusClass = 'bg-green-500 bg-opacity-30 text-green-800 px-4 ';
   } else if (
     status === 'declined' ||
     status === 'cancelled' ||
@@ -58,19 +58,19 @@ const Status = ({ status }) => {
    status === 'Deleted'||
     status === 'deleted'
   ) {
-    statusClass = 'bg-[#FBF4E4]  text-[#DBAA00] px-4 py-1.5';
+    statusClass = 'bg-[#FBF4E4]  text-[#DBAA00] px-4 ';
   } else if (status === 'in progress' || status === 'In Progress' ) {
     statusClass = 'bg-blue-200 text-blue-800'; // light blue for in progress
   }else if (
   status === 'assigned' ||
   status === 'Assigned'  
 ) {
-  statusClass = 'bg-[#ECF8F0CC] bg-opacity-30 text-[#1C8C6E] px-4  py-1.5';
+  statusClass = 'bg-[#ECF8F0CC] bg-opacity-30 text-[#1C8C6E] px-4 ';
 }
 
   return (
     <div
-      className={`${statusClass} text-sm px-2 text-center rounded-full flex items-center justify-center gap-1 py-1 pb-1.5 font-medium w-fit capitalize`}
+      className={`${statusClass} text-xs px-2 py-1 text-center rounded-full flex items-center justify-center gap-1  font-medium w-fit capitalize`}
     >
       <span > {status==="bounced"?'Dishonored':status}</span>
     </div>

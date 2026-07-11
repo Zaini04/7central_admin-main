@@ -55,7 +55,7 @@ const { isLoading, isError, error } = useQuery(
        <div className="flex flex-col gap-5 w-full">
             <div className="flex flex-col xs:flex-row  gap-2  xs:items-center xs:justify-between  w-full">
                 <div className="flex flex-col gap-1.5">
-                    <h2 className="page-heading">Panel User</h2>
+                    <h2 className="page-heading">Panel Users</h2>
                 </div>
                <Titlebtn  label='Add New User'  url='/app/panel-user/add'/>  
          

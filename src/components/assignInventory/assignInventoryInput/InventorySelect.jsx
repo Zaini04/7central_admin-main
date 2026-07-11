@@ -87,7 +87,7 @@ const { isLoading } = useQuery(
   return (
     <div className="relative form-row" ref={dropdownRef}>
       {/* Input box */}
-      <div className={`relative w-full rounded-lg border h-[56px] transition-all duration-300 ${containerClasses}`}>
+      <div className={`relative w-full rounded-lg border h-[32px] transition-all duration-300 ${containerClasses}`}>
         <input
           type="text"
           disabled={disabled}
@@ -99,13 +99,13 @@ const { isLoading } = useQuery(
           }}
           onBlur={() => setFocused(false)}
           onChange={handleInputChange}
-          className="w-full py-3 px-4 h-full text-[15px] text-primary bg-transparent rounded-lg outline-none"
+          className="w-full py-2  px-4 h-full text-sm text-primary bg-transparent rounded-lg outline-none"
           placeholder=""
         />
 
         {/* Floating label */}
         <label
-          className={`absolute left-4 px-1 transition-all duration-300 pointer-events-none bg-light2 ${
+          className={`absolute left-0 px-1 transition-all duration-300 pointer-events-none  ${
             focused || inputValue
               ? `top-[-10px] text-[13px] ${error ? "text-red-500" : "text-gray3"}`
               : "top-3 text-gray3"

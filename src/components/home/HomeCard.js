@@ -23,14 +23,14 @@ const { statsDashboard } = useSelector(state => state.dashboard);
   <div className="h-[110px] bg-light2 px-4 py-3  flex flex-col justify-between shadow-md 
                   hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
     <div className="flex justify-start items-center gap-1.5">
-       <div className="w-[33px] h-[33px] rounded-full bg-[#246BFD] flex justify-center items-center">
+       <div className="w-[22px] h-[22px] rounded-full p-1 bg-[#246BFD] flex justify-center items-center">
       <Customers />
     </div>
-      <p className="text-[#1F2020] font-medium">Total Customers</p>
+      <p className="text-[#1F2020] text-sm font-medium">Total Customers</p>
     </div>
     <div>
 
-      <h2 className="text-[26px] font-bold">{statsDashboard?.headline?.totalCustomers}</h2>
+      <h2 className="text-xl font-bold">{statsDashboard?.headline?.totalCustomers}</h2>
     </div>
   </div>
 
@@ -38,7 +38,7 @@ const { statsDashboard } = useSelector(state => state.dashboard);
   <div className="h-[110px] bg-light2 px-4 py-3  flex flex-col justify-between shadow-md 
                   hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
     <div className="flex justify-start items-center gap-1.5">
-       <div className="w-[33px] h-[33px] rounded-full bg-[#08B839] flex justify-center items-center">
+       <div className="w-[22px] h-[22px] p-1 rounded-full bg-[#08B839] flex justify-center items-center">
       <InventorySvg />
     </div>
       <p className="text-[#1F2020]   text-sm font-medium">Total Active Inventory</p>
@@ -47,7 +47,7 @@ const { statsDashboard } = useSelector(state => state.dashboard);
       <StatusupSvg />
     </div> */}
     <div>
-            <h2 className="text-[26px] font-bold">{statsDashboard?.headline?.totalActiveInventory}</h2>
+            <h2 className="text-xl font-bold">{statsDashboard?.headline?.totalActiveInventory}</h2>
 
     </div>
   </div>
@@ -67,14 +67,14 @@ const { statsDashboard } = useSelector(state => state.dashboard);
   <div className="h-[110px] bg-light2 px-4 py-3 flex flex-col justify-between shadow-md 
                   hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
     <div className="flex justify-start items-center gap-1.5">
-      <div className="w-[33px] h-[33px] rounded-full bg-[#FD0000] flex justify-center items-center">
+      <div className="w-[22px] h-[22px] p-1 rounded-full bg-[#FD0000] flex justify-center items-center">
       <PaidReceiptSvg />
     </div>
-      <p className="text-[#1F2020] font-medium">Paid Receipts</p>
+      <p className="text-[#1F2020] text-sm font-medium">Paid Receipts</p>
     </div>
     <div>
 
-      <h2 className="text-[26px] font-bold">{statsDashboard?.headline?.paidInstallments}</h2>
+      <h2 className="text-xl font-bold">{statsDashboard?.headline?.paidInstallments}</h2>
     </div>
   </div>
 
@@ -93,13 +93,13 @@ const { statsDashboard } = useSelector(state => state.dashboard);
   <div className="h-[110px] bg-light2 px-4 py-3  flex flex-col justify-between shadow-md 
                   hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ease-in-out rounded-xl">
     <div className="flex  justify-start items-center gap-1.5">
-       <div className="w-[33px] h-[33px] rounded-full bg-[#8A3EFA] flex justify-center items-center">
+       <div className="w-[22px] h-[22px] p-1 rounded-full bg-[#8A3EFA] flex justify-center items-center">
       <PendingReceiptSvg />
     </div>
-      <p className="text-[#1F2020] font-medium">Pending Reciepts</p>
+      <p className="text-[#1F2020] text-sm font-medium">Pending Reciepts</p>
     </div>
    <div>
-      <h2 className="text-[26px] font-bold">{statsDashboard?.headline?.pendingPaymentsForApproval}</h2>
+      <h2 className="text-xl font-bold">{statsDashboard?.headline?.pendingPaymentsForApproval}</h2>
 
    </div>
   </div>

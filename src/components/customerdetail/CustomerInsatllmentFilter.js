@@ -1,7 +1,7 @@
 import SelectInput  from 'components/global/form/SelectInput';
 const CustomerInsatllmentFilter = () => {
   return (
-    <>
+ <div className="bg-white rounded-xl flex flex-col gap-5 my-4">
 
 <div className=' flex flex-col gap-3 py-3'>
        <div className=' flex flex-col  sm:flex-row sm:justify-between  w-full px-3'>
@@ -43,7 +43,7 @@ const CustomerInsatllmentFilter = () => {
 </div>
 </div>
  
-    </>
+    </div>
   )
 }
 

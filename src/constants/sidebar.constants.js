@@ -145,7 +145,7 @@ const menuItems = [
     {
         id : 17 , 
         name : 'Panel Users' ,
-        path : '/app/admin-users' , 
+        path : '/app/panel-user' , 
         icon : PannelUsersSvg ,
         exact : false ,
     } ,

@@ -1,3 +1,4 @@
+import BackButton from "components/global/form/BackButton";
 import NotificationTemplateCard from "components/notifications/NotificationTemplateCard";
 import NotificationTemplateForm from "components/notifications/NotificationTemplateForm";
 import { useNavigate } from "react-router-dom";
@@ -14,10 +15,8 @@ const AddNotificationTemplates = () => {
          <div className="flex items-center gap-2">
           <button
             onClick={() => navigate("/app/notification-templates")}
-            className="w-fit px-4 h-[50px] flex items-center justify-center gap-2 bg-primary text-white rounded-[10px] hover:bg-primary/90 transition-all duration-200"
           >
-            <i className="uil uil-arrow-left text-lg"></i>
-            <span className="font-medium">Back</span>
+            <BackButton/>
           </button>
         </div>
       </div>

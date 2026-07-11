@@ -59,14 +59,14 @@ const end = start + docs.length - 1;
   confirmBox({ title, message, onYesClick });
 };
 
-if (!inventoryId) {
-  return (
-    <Titlebtn 
-      label="Add Inventory Document"
-      onClick={() => toast.error("Inventory not found for this customer")}
-    />
-  );
-}
+// if (!inventoryId) {
+//   return (
+//     <Titlebtn 
+//       label="Add Inventory Document"
+//       onClick={() => toast.error("Inventory not found for this customer")}
+//     />
+//   );
+// }
 
 
   return (

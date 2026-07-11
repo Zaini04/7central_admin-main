@@ -14,6 +14,8 @@ import DatePicker from "./inventoryinput/DateInput";
 import { Installment_TYPES, Installment_Options, Installment_Durtion,Monthly_Durtion, Yearly_Durtion, Monthly_Balloon_Durtion } from 'constants/app.constants';
 import { PulseLoader } from "react-spinners";
 import {create_purchasePlan}   from 'redux/actions/inventoryActions';
+import CancelButton from "components/global/form/CancelButton";
+import NextButton from "components/global/form/NextButton";
 
 const InventoryPurchaseForm = () => {
   const [formData, setFormData] = useState({
@@ -688,11 +690,11 @@ const isFullPayment = formData.category === "full_payment";
 
 const isInstallment =  formData.category === "2_year_installment" ;
 
-const   isResidential=  formData.category === "3_year_installment" || formData.category === "new_3_year_installment" || formData.category === "monthly_balloon_3year_installment" ;
+const   isResidential=  formData.category === "3_year_installment" || formData.category === "new_3_year_installment" || formData.category === "monthly_balloon_3year_installment"  ;
 
-const isCommerical =  formData.category === "1_year_installment" ;
+const isCommerical =  formData.category === "1_year_installment"  ; 
 
-
+console.log("formDat",formData)
   if (isLoading) return <Loader />;
   if (isError) return <DisplayError message={error?.message || "Something went wrong"} />;
   if (!docDetails) return <ItemNotFound message="Inventory not found" />;
@@ -710,7 +712,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
         </div>
   
         {/* BASIC PRICING */}
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-5 px-3">
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10 px-3">
           <Input
             label="Actual Price"
             name="actualPrice"
@@ -733,6 +735,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
   
           <MultiSelect
             label="Category"
+            placeholder="Select Category"
             name="category"
             value={formData.category}
             onChange={(val) => handleChange("category", val)}
@@ -743,6 +746,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
   {isFullPayment && (
     <Input
       label="Full Payment"
+      placeholder="Enter Full Payment"
       name="fullPayment"
       type="text"
       value={formatNumber(formData.fullPayment)}
@@ -752,6 +756,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
   )}
     <DatePicker
                   label="Booking Date"
+                  placeholder="Select Booking Date"
                   name="bookingDate"
                   value={formData.bookingDate}
                   onChange={(val) => handleChange("bookingDate", val)}
@@ -763,6 +768,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
   
           <Input
             label="Down Payment"
+            placeholder="Enter Down Payment"
             name="downPayment"
             // type="number"
             // value={formData.downPayment}
@@ -774,6 +780,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
           />
           <Input
             label="Allocation"
+            placeholder="Enter Allocation"
             name="allocation"
             type="text"
             value={formData.allocation}
@@ -782,6 +789,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
           />
           <Input
             label="Confirmation"
+            placeholder="Enter Confirmation"
             name="confirmation"
             type="text"
             value={formData.confirmation}
@@ -790,18 +798,21 @@ const isCommerical =  formData.category === "1_year_installment" ;
           />
           <Input
             label="Possession"
+            placeholder="Enter Possession"
             name="possession"
             type="text"
             value={formData.possession}
             onChange={(e) => handleChange("possession", e.target.value)}
             error={errors.possession}
           />
+          
   </>)}
   
      {(isResidential) && (
             <>
               <Input
                 label="Down Payment (20%)"
+                placeholder="Enter Down Payment (20%)"
                 name="downPayment"
                 // type="number"
                 // value={formData.downPayment}
@@ -813,6 +824,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
               />
               <Input
                 label="Allocation"
+                placeholder="Enter Allocation"
                 name="allocation"
                 type="number"
                 value={formData.allocation}
@@ -821,6 +833,8 @@ const isCommerical =  formData.category === "1_year_installment" ;
               />
               <Input
                 label="Confirmation"
+                placeholder="Enter Confirmation"
+
                 name="confirmation"
                 type="number"
                 value={formData.confirmation}
@@ -829,6 +843,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
               />
               <Input
                 label="Possession"
+                placeholder="Enter Possession"
                 name="possession"
                 // type="number"
                 // value={formData.possession}
@@ -848,8 +863,9 @@ const isCommerical =  formData.category === "1_year_installment" ;
             {(isCommerical) && (
             <>
               <Input
-                label="Down Payment (25%)"
                 name="downPayment"
+                label="Down Payment (25%)"
+                placeholder="Enter Down Payment (25%)"
                 // type="number"
                 // value={formData.downPayment}
                 // onChange={(e) => handleChange("downPayment", e.target.value)}
@@ -860,6 +876,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
               />
               <Input
                 label="Allocation"
+                placeholder="Enter Allocation"
                 name="allocation"
                 type="number"
                 value={formData.allocation}
@@ -868,6 +885,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
               />
               <Input
                 label="Confirmation"
+                placeholder="Enter Confirmation"
                 name="confirmation"
                 type="number"
                 value={formData.confirmation}
@@ -876,6 +894,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
               />
               <Input
                 label="Possession"
+                placeholder="Enter Possession"
                 name="possession"
                 // type="number"
                 // value={formData.possession}
@@ -896,8 +915,8 @@ const isCommerical =  formData.category === "1_year_installment" ;
       {isCommerical && (
           <>
     
-              <h3 className="text-lg font-semibold mb-4 px-2">Quarterly Installments</h3>
-              <div className="w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 px-3 border-b pb-6">
+              <h3 className="text-lg font-semibold mb-4 px-3">Quarterly Installments</h3>
+              <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10 px-3 pb-6">
                 <Input
                   label="Quarterly Installment Count"
                   name="quarterlyInstallment"
@@ -927,6 +946,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
   
                 <DatePicker
                   label="Quarterly Start Date"
+                  placeholder="Select Quarterly Start Date"
                   name="quarterlyStartDate"
                   value={formData.quarterlyStartDate}
                   onChange={(val) => handleChange("quarterlyStartDate", val)}
@@ -945,8 +965,8 @@ const isCommerical =  formData.category === "1_year_installment" ;
       {isResidential && (
           <>
     
-              <h3 className="text-lg font-semibold mb-4 px-2">Monthly Installments</h3>
-              <div className="w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 px-3 border-b pb-6">
+              <h3 className="text-lg font-semibold mb-4 px-3">Monthly Installments</h3>
+              <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10 px-3 pb-6">
                 <Input
                   label="Monthly Installment Count"
                   name="monthlyInstallment"
@@ -976,6 +996,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
   
                 <DatePicker
                   label="Monthly Start Date"
+                  placeholder="Select Monthly Start Date"
                   name="monthlyStartDate"
                   value={formData.monthlyStartDate}
                   onChange={(val) => handleChange("monthlyStartDate", val)}
@@ -985,10 +1006,11 @@ const isCommerical =  formData.category === "1_year_installment" ;
        
   
        
-              <h3 className="text-lg font-semibold mb-4 px-2">Biannual Installments</h3>
-              <div className="w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 px-3">
+              <h3 className="text-lg font-semibold mb-4 px-3">Biannual Installments</h3>
+              <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10 px-3">
                 <Input
                   label="Biannual Installments Count"
+                  placeholder="Enter Biannual Installments Count"
                   name="yearlyInstallment"
                   value={formData.yearlyInstallment}
                   onChange={(e) => handleChange("yearlyInstallment", e.target.value)}
@@ -998,6 +1020,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
   
                 <MultiSelect
                   label="Biannual Duration"
+                  placeholder="Enter Biannual Duration"
                   name="yearlyInstallmentDuration"
                   value={formData.yearlyInstallmentDuration}
                   onChange={(val) => handleChange("yearlyInstallmentDuration", val)}
@@ -1007,6 +1030,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
   
                 <Input
                   label="Biannual Installment Amount"
+                  placeholder="Enter Biannual Installment Amount"
                   name="yearlyDurationAmount"
                   type="text"
                   value={formData.yearlyDurationAmount}
@@ -1016,6 +1040,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
   
                 <DatePicker
                   label="Biannual Start Date"
+                  placeholder="Select Biannual Start Date"
                   name="yearlyStartDate"
                   value={formData.yearlyStartDate}
                   onChange={(val) => handleChange("yearlyStartDate", val)}
@@ -1023,10 +1048,11 @@ const isCommerical =  formData.category === "1_year_installment" ;
                 />
               </div>
 
-              <h3 className="text-lg font-semibold mb-4 px-2">Monthly & Balloon Installments</h3>
-              <div className="w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 px-3">
+              <h3 className="text-lg font-semibold mb-4 px-3">Monthly & Balloon Installments</h3>
+              <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10 px-3">
                 <Input
                   label="Monthly & Balloon Installments Count"
+                  placeholder="Enter Monthly & Balloon Installments Count"
                   name="monthlyBalloonInstallment"
                   value={formData.monthlyBalloonInstallment}
                   onChange={(e) => handleChange("monthlyBalloonInstallment", e.target.value)}
@@ -1036,6 +1062,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
   
                 <MultiSelect
                   label="Monthly & Balloon Duration"
+                  placeholder="Enter Monthly & Balloon Duration"
                   name="monthlyBalloonInstallmentDuration"
                   value={formData.monthlyBalloonInstallmentDuration}
                   onChange={(val) => handleChange("monthlyBalloonInstallmentDuration", val)}
@@ -1045,6 +1072,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
   
                 <Input
                   label="Monthly & Balloon Installment Amount"
+                  placeholder="Enter Monthly & Balloon Installment Amount"
                   name="monthlyBalloonDurationAmount"
                   type="text"
                   value={formData.monthlyBalloonDurationAmount}
@@ -1054,6 +1082,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
   
                 <DatePicker
                   label="Monthly & Balloon Start Date"
+                  placeholder="Select Monthly & Balloon Start Date"
                   name="monthlyBalloonStartDate"
                   value={formData.monthlyBalloonStartDate}
                   onChange={(val) => handleChange("monthlyBalloonStartDate", val)}
@@ -1063,13 +1092,17 @@ const isCommerical =  formData.category === "1_year_installment" ;
   
           </>
         )}
+
+  
   
   {isInstallment && (
        <>
-        <div className="flex flex-col gap-3">
-          <div className="w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 px-3 ">
+                        <h3 className="text-lg font-semibold mb-4 px-3">Quarterly Installments</h3>
+
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10 px-3 ">
             <MultiSelect
               label="Quarterly Installment Type"
+              placeholder="Enter Quarterly Installment Type"
               name="quarterlyInstallment"
               value={formData.quarterlyInstallment}
               onChange={(val) => handleChange("quarterlyInstallment", val)}
@@ -1079,6 +1112,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
   
             <MultiSelect
               label="Quarterly Duration"
+              placeholder="Enter Quarterly Duration"
               name="quarterlyInstallmentsDuration"
               value={formData.quarterlyInstallmentsDuration}
               onChange={(val) => handleChange("quarterlyInstallmentsDuration", val)}
@@ -1088,6 +1122,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
   
             <Input
               label="Quarterly Duration Amount"
+              placeholder="Enter Quarterly Duration Amount"
               name="quarterlyDurationAmount"
               type="text"
               value={formData.quarterlyDurationAmount}
@@ -1096,23 +1131,25 @@ const isCommerical =  formData.category === "1_year_installment" ;
             />
   
             <DatePicker
-              label="Quarterly Start Date"
+              label="Quarterly Start Date" 
+              placeholder="Select Quarterly Start Date" 
               name="quarterlyStartDate"
               value={formData.quarterlyStartDate}
               onChange={(val) => handleChange("quarterlyStartDate", val)}
               error={errors.quarterlyStartDate}
             />
           </div>
-        </div>
         </>
   )}
   
      {isInstallment && (
       <>
-        <div className="flex flex-col gap-3">
-          <div className="w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 px-3 border-b ">
+                        <h3 className="text-lg font-semibold mb-4 px-3">Monthly Installments</h3>
+
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10 px-3 ">
             <MultiSelect
               label="Monthly Installments"
+              placeholder="Enter Monthly Installments"
               name="monthlyInstallment"
               value={formData.monthlyInstallment}
               onChange={(val) => handleChange("monthlyInstallment", val)}
@@ -1122,6 +1159,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
   
             <MultiSelect
               label="Monthly Duration"
+              placeholder="Enter Monthly Duration"
               name="monthlyInstallmentsDuration"
               value={formData.monthlyInstallmentsDuration}
               onChange={(val) => handleChange("monthlyInstallmentsDuration", val)}
@@ -1131,6 +1169,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
   
             <Input
               label="Monthly  Amount"
+              placeholder="Enter Monthly  Amount"
               name="monthlyDurationAmount"
               type="text"
               value={formData.monthlyDurationAmount}
@@ -1140,21 +1179,23 @@ const isCommerical =  formData.category === "1_year_installment" ;
   
             <DatePicker
               label="Monthly Start Date"
+              placeholder="Select Monthly Start Date"
               name="monthlyStartDate"
               value={formData.monthlyStartDate}
               onChange={(val) => handleChange("monthlyStartDate", val)}
               error={errors.monthlyStartDate}
             />
           </div>
-        </div>
         </>)}
   
       {isInstallment && (
         <>
-        <div className="flex flex-col gap-3">
-          <div className="w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 px-3 ">
+                        <h3 className="text-lg font-semibold mb-4 px-3 ">Biannual Installments</h3>
+
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10 px-3 ">
             <MultiSelect
               label="Biannual Installments"
+              placeholder="Select Biannual Installments"
               name="yearlyInstallment"
               value={formData.yearlyInstallment}
               onChange={(val) => handleChange("yearlyInstallment", val)}
@@ -1164,6 +1205,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
   
             <MultiSelect
               label="Biannual Duration"
+              placeholder="Select Biannual Duration"
               name="yearlyInstallmentDuration"
               value={formData.yearlyInstallmentDuration}
               onChange={(val) => handleChange("yearlyInstallmentDuration", val)}
@@ -1173,6 +1215,7 @@ const isCommerical =  formData.category === "1_year_installment" ;
   
             <Input
               label="Biannual Amount"
+              placeholder="Enter Biannual Amount"
               name="yearlyDurationAmount"
               type="text"
               value={formData.yearlyDurationAmount}
@@ -1182,13 +1225,13 @@ const isCommerical =  formData.category === "1_year_installment" ;
   
             <DatePicker
               label="Biannual Start Date"
+              placeholder="Select Biannual Start Date"
               name="yearlyStartDate"
               value={formData.yearlyStartDate}
               onChange={(val) => handleChange("yearlyStartDate", val)}
               error={errors.yearlyStartDate}
             />
           </div>
-        </div>
         </>)}
   
         {/* SUBMIT BUTTON */}
@@ -1197,25 +1240,25 @@ const isCommerical =  formData.category === "1_year_installment" ;
                         <div className="flex flex-wrap items-center gap-2">
                           <button
                             type="button"
-                            className="btn-secondary"
+                            className=""
   
                           >
-                            Cancel
+                            <CancelButton/>
                           </button>
   
                             <button
                             type="button"
-                            className="btn-secondary"
+                            className=""
                             onClick={() => navigate("/app/installments")}
                           >
-                            Perview
+                            <NextButton label="Preview" isIcon={false}/>
                           </button>
                           <button
               onClick={handleSubmit}
-                            className="btn-primary py-2 sm:px-12 px-6 w-fit"
+                            className="w-fit"
                             disabled={createLoading}
-                          >                                       
-                            {createLoading ? <PulseLoader size={12} color='white'  /> : "Purchase Plan"}
+                          >                                      
+                          <NextButton label="Purchase Plan" createLoading={createLoading} isIcon={false}/> 
                           </button>
                         </div>
                       </div>

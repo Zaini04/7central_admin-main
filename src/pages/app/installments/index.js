@@ -121,8 +121,7 @@ const typeMap = {
     "Due Date",
   ]}
   fileName="Installments"
-  bgcolor="bg-primary"
-  textColor="text-white"
+bgcolor={'bg-white'} colortext={'white'} textColor={'text-primary'}
 />
 
 

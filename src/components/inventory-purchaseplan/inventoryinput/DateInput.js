@@ -7,6 +7,7 @@ function DatePicker({
   label,
   name,
   value,
+  placeholder,
   onChange,
   error,
   touched,
@@ -26,13 +27,13 @@ function DatePicker({
   let containerClasses = '';
   if (readOnly) {
     containerClasses =
-      'backdrop-blur-sm bg-gray-100/50 cursor-not-allowed border-gray-200';
+      'backdrop-blur-sm bg-gray-100/50  cursor-not-allowed border-gray-200';
   } else if (isError) {
     containerClasses = 'border-red-500';
   } else if (focused) {
     containerClasses = 'border-primary shadow-md backdrop-blur-md bg-white/70';
   } else {
-    containerClasses = 'border-lighter bg-white/50';
+    containerClasses = 'border-lighter bg-white';
   }
 
   return (
@@ -41,6 +42,8 @@ function DatePicker({
         {/* DatePicker Input */}
         <DateView
           id={name}
+          placeholder={placeholder}
+          placeholderText={placeholder}
           selected={value ? new Date(value) : null}
           onChange={(val) => onChange(val)}
           onFocus={() => !readOnly && setFocused(true)}
@@ -49,7 +52,7 @@ function DatePicker({
           readOnly={readOnly}
           dateFormat="dd/MMM/yyyy"
           {...rest}
-          className={`w-full py-3 px-4 rounded-lg outline-none transition-all duration-200
+          className={`w-full py-2 px-4 h-[32px] text-sm rounded-lg  outline-none transition-all duration-200
             ${
               readOnly
                 ? 'text-gray-500 bg-transparent select-none'
@@ -65,7 +68,7 @@ function DatePicker({
         {/* Floating Label */}
         <label
           htmlFor={name}
-          className={`absolute left-4 transition-all duration-300 pointer-events-none bg-light2 px-1
+          className={`absolute left-0 transition-all duration-300 pointer-events-none bg-light2 px-1
             ${
               isActive
                 ? `top-[-12px] text-[13px] ${
@@ -75,7 +78,7 @@ function DatePicker({
                       ? 'text-primary'
                       : 'text-gray-600'
                   }`
-                : 'top-3 text-gray-400'
+                : 'top-3 text-gray3'
             }
           `}
         >

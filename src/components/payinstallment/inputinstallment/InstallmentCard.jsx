@@ -11,7 +11,7 @@ const InstallmentCard = ({ doc }) => {
   // const profileImage = buyer?.image ? `${baseURL}/${buyer.image}` : img;
 
   return (
-    <div className="w-full mx-auto bg-white rounded-xl p-5 border ">
+    <div className="w-full mx-auto bg-white rounded-xl p-5 border mb-4 ">
       {/* Header */}
       <div className="flex items-center gap-4">
  

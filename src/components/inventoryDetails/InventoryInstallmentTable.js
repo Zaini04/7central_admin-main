@@ -68,7 +68,7 @@ useEffect(() => {
   return (
       <>
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:justify-between w-full px-3 pt-3">
+      <div className="flex flex-col bg-white rounded-xl gap-5 sm:flex-row sm:justify-between w-full px-3 pt-3">
         <p className="form-title">Installments Plan</p>
        
 

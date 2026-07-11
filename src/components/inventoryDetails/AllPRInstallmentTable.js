@@ -51,7 +51,7 @@ function formatLabel(text = "") {
 
 
   return (
-    <div className="w-full table-container bg-white flex flex-col gap-2 pb-4">
+    <div className="w-full table-container rounded-xl bg-white flex flex-col gap-5 pb-4">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:justify-between w-full px-3">
         <p className="text-dark1 font-semibold">All Provisional Receipt</p>

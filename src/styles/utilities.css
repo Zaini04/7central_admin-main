@@ -14,7 +14,7 @@
 
 
     .page-heading{
-        @apply  text-gunmetal  font-semibold  text-xl md:text-[24px];
+        @apply  text-gunmetal  font-semibold  text-lg;
     }
     .page-subtitle{
 

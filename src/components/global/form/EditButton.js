@@ -1,7 +1,7 @@
-import NextSvg from "assets/svg/home/home/NextSvg";
+import EditSvg from "assets/svg/home/home/EditSvg";
 import { PulseLoader } from "react-spinners";
 
-const NextButton = ({ label = "Add" ,createLoading, isIcon = true,}) => {
+const EditButton = ({ label = "Add" ,createLoading, isIcon = true}) => {
 
   return (
     <div
@@ -15,7 +15,7 @@ const NextButton = ({ label = "Add" ,createLoading, isIcon = true,}) => {
             <div className="w-[22px] h-[22px] rounded-full bg-white flex justify-center items-center">
 
     
-        <NextSvg/>
+        <EditSvg/>
      {/* <i className="uil uil-plus text-lg"></i> */}
      </div>
      }
@@ -26,4 +26,4 @@ const NextButton = ({ label = "Add" ,createLoading, isIcon = true,}) => {
   );
 };
 
-export default NextButton;
+export default EditButton;

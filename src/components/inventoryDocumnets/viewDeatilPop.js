@@ -67,11 +67,11 @@ const ViewDeatilPop = ({ setVeiwDetail }) => {
           <Formik initialValues={initValues} enableReinitialize={true}>
             {(formik) => (
               <Form className="flex flex-col gap-3">
-                <h3 className="text-lg font-semibold px-2">
+                <h3 className="text-lg font-semibold ">
                   Document Details
                 </h3>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-10">
                   <FormControl
                     control="input"
                     type="text"
@@ -170,9 +170,9 @@ const ViewDeatilPop = ({ setVeiwDetail }) => {
 
         {/* Attachments */}
         <div className="p-3">
-          <h3 className="text-lg font-semibold px-2">Document Attachment</h3>
+          <h3 className="text-lg font-semibold ">Document Attachment</h3>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-1">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-4">
             {inventoryDocument?.attachments?.length > 0 ? (
               inventoryDocument.attachments.map((item) => (
                         <div className="  w-full  h-[200px] ">

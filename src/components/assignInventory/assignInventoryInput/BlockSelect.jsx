@@ -53,7 +53,7 @@ const BlockSelect = ({ label, name, value, onChange,   error,...rest }) => {
     <div className="relative form-row" ref={dropdownRef}>
       {/* Box */}
      <div
-  className={`relative w-full transition-all duration-300 rounded-lg border ${
+  className={`relative w-full transition-all duration-300 ${label ? ' rounded-lg border': "bg-white rounded-xl"}  ${
     error ? "border-red-500" : "border-lighter"
   }`}
   onClick={() => setShowMenu((prev) => !prev)}
@@ -66,14 +66,14 @@ const BlockSelect = ({ label, name, value, onChange,   error,...rest }) => {
           value={selectedLabel}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
-          className="w-full bg-transparent py-3 px-4 text-base text-primary rounded-lg outline-none cursor-pointer"
+          className={`w-full bg-transparent py-2 ${label ? ' h-[32px]': "h-[40px]"}  px-4 text-sm text-primary rounded-lg outline-none cursor-pointer`}
           {...rest}
         />
 
         {/* Label */}
      <label
   htmlFor={name}
-  className={`absolute left-4 bg-light2 px-1 transition-all duration-300 pointer-events-none ${
+  className={`absolute left-0  px-1 transition-all duration-300 pointer-events-none ${
     isActive
       ? `top-[-10px] text-[13px] ${error ? "text-red-500" : "text-gray3"}`
       : "top-3 text-gray3"

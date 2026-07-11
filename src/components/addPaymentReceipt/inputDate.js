@@ -87,10 +87,10 @@ const InputDate = (props) => {
         {/* Floating Label */}
         <label
           htmlFor={name}
-          className={`absolute left-4 transition-all duration-300 pointer-events-none bg-white px-1
+          className={`absolute left-0 transition-all duration-300 pointer-events-none px-1
             ${
               isActive
-                ? `top-[-12px] text-[13px] ${
+                ? `top-[-12px] text-[12px] ${
                     isError
                       ? 'text-red-500'
                       : focused
