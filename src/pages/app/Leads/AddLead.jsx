@@ -35,7 +35,12 @@ const AddNewLead = () => {
       {/* Page Title placed outside/above the main white content container */}
       <div className=" flex justify-between items-center">
       <h2 className="page-heading">Add New Lead</h2>
+      <button
+      onClick={()=>navigate('/app/leads')}
+      >
+
 <BackButton/>
+      </button>
       </div>
 
       <div className="w-full bg-white flex flex-col gap-6 px-6 pt-6 pb-6 rounded-xl shadow-sm border border-gray-100">

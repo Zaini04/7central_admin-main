@@ -94,14 +94,14 @@ const menuItems = [
     {
         id : 10, 
         name : 'Compains' ,
-          path: '/app/companins',
+          path: '/app/campaigns',
         icon : CompainsSvg ,
         exact : false ,
     } ,
     {
         id : 11, 
         name : 'Payments' ,
-          path: '/app/payments',
+          path: '/app/campaignpayments',
         icon : PaymentSvg ,
         exact : false ,
     } ,

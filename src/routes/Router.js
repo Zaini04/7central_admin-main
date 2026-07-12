@@ -81,6 +81,9 @@ import MergePendingPaymentReceipt from "pages/app/provisionalReceip/mergePending
 import InventoryUpdatePurchaseplan from "pages/app/inventory-update-purchaseplan";
 import Leads from "pages/app/Leads";
 import AddNewLead from "pages/app/Leads/AddLead";
+import Campaigns from "pages/app/compains";
+import AddNewCampaign from "pages/app/compains/AddNewCampaign";
+import Payments from "pages/app/payments";
 
 
 
@@ -192,6 +195,21 @@ const Router = [
   path:"/app/leads/add",
   exact:true,
   element:<ProtectedRoute element={<AddNewLead/>}/>
+},
+{
+  path:"/app/campaigns/add",
+  exact:true,
+  element:<ProtectedRoute element={<AddNewCampaign/>}/>
+},
+{
+  path:"/app/campaigns",
+  exact:true,
+  element:<ProtectedRoute element={<Campaigns/>}/>
+},
+{
+  path:"/app/campaignpayments",
+  exact:true,
+  element:<ProtectedRoute element={<Payments/>}/>
 },
 
   {
