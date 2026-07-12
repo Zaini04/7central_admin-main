@@ -82,7 +82,10 @@ const role = isSuperAdmin ? 'Super Admin' : 'Admin';
             className=' text-pure  rounded-lg w-[35px] h-[35px] flex items-center justify-center'
           >
             {showSidebar ? (
-              <i className='uil uil-times text-2xl'></i>
+              <i 
+                          onClick={() => dispatch(setShowSidebar(true))}
+
+              className='cursor-pointer uil uil-times text-2xl'></i>
             ) : (
               <i className='uil uil-bars text-2xl'></i>
             )}
