@@ -79,7 +79,7 @@ const SelectInventory = ({ label , onSelect }) => {
       if (onSelect) onSelect("");
     }
   }}
-  className="w-full text-gunmetal bg-transparent py-2  px-4 h-full text-base rounded-lg outline-none cursor-text"
+  className={`w-full text-gunmetal bg-transparent py-2  px-4 h-full text-base rounded-lg outline-none cursor-text ${label ? " border  border-lighter ": ""}`}
 />
 
 

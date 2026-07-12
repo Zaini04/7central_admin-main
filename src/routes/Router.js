@@ -79,6 +79,8 @@ import InventoryNewDocument from "pages/app/inventory-document/newDocument";
 import AddMergePaymentReceipt from "pages/app/provisionalReceip/addMergePaymentReceipt";
 import MergePendingPaymentReceipt from "pages/app/provisionalReceip/mergePendingPaymentReceipt";
 import InventoryUpdatePurchaseplan from "pages/app/inventory-update-purchaseplan";
+import Leads from "pages/app/Leads";
+import AddNewLead from "pages/app/Leads/AddLead";
 
 
 
@@ -181,7 +183,16 @@ const Router = [
 { path: '/app/payment/merge-pending', exact: true, element: <ProtectedRoute element={<MergePendingPaymentReceipt />} /> },
 
 { path: '/app/provisional-receipt', exact: true, element: <ProtectedRoute element={<ProvisionalReceipt />} /> },
-
+{
+  path:"/app/leads",
+  exact:true,
+  element:<ProtectedRoute element={<Leads/>}/>
+},
+{
+  path:"/app/leads/add",
+  exact:true,
+  element:<ProtectedRoute element={<AddNewLead/>}/>
+},
 
   {
     path: "/app/notification-templates",

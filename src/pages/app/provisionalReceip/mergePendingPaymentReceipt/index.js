@@ -114,6 +114,7 @@ const MergePendingPaymentReceipt = () => {
               {/*  Controlled inventory exactly like your TransferInventoryForm */}
                <SelectInventory
                     onSelect={setSelectedInventory}
+                    label="Select Inventory"
                     
                     />
             

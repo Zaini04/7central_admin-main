@@ -1,0 +1,120 @@
+import { useState } from 'react';
+import ExportButton from 'components/global/exportbutton/ExportButton'; // Kept global export components
+import Titlebtn from 'components/global/Titlebtn';
+import LeadsFilter from 'components/leads/LeadsFilter';
+import LeadsTable from 'components/leads/LeadsTable';
+
+// Exact dummy data mapped directly from your image
+const DUMMY_LEADS = [
+  { _id: "1", no: "01", name: "Isagi Yoichi", avatar: "", phone: "0301-2345678", source: "Facebook Campaign", campaign: "15% Down Payment", assigned: "Martin Lewis", date: "6-24-2026 2:00:03PM" },
+  { _id: "2", no: "02", name: "Laeonardo", avatar: "", phone: "0301-2345678", source: "Local Referral", campaign: "Imran Khan", assigned: "Smith Cooper", date: "6-24-2026 2:00:03PM" },
+  { _id: "3", no: "03", name: "Kaiser Brown", avatar: "", phone: "0301-2345678", source: "Google Ads", campaign: "14 August Offer", assigned: "Newell Egen", date: "6-24-2026 2:00:03PM" },
+  { _id: "4", no: "04", name: "Kaiser Brown", avatar: "", phone: "0301-2345678", source: "Walking Customer", campaign: "------", assigned: "Theresa Nelson", date: "6-24-2026 2:00:03PM" },
+  { _id: "5", no: "05", name: "Kaiser Brown", avatar: "", phone: "0301-2345678", source: "Facebook Campaign", campaign: "15% Down Payment", assigned: "Jami Carlile", date: "6-24-2026 2:00:03PM" },
+  { _id: "6", no: "06", name: "Kaiser Brown", avatar: "", phone: "0301-2345678", source: "Local Referral", campaign: "Imran Khan", assigned: "Daniel Byrne", date: "6-24-2026 2:00:03PM" },
+  { _id: "7", no: "07", name: "Kaiser Brown", avatar: "", phone: "0301-2345678", source: "Google Ads", campaign: "14 August Offer", assigned: "Jami Carlile", date: "6-24-2026 2:00:03PM" },
+  { _id: "8", no: "08", name: "Isagi Yoichi", avatar: "", phone: "0301-2345678", source: "Local Referral", campaign: "Imran Khan", assigned: "Craig Brown", date: "6-24-2026 2:00:03PM" },
+  { _id: "9", no: "09", name: "Isagi Yoichi", avatar: "", phone: "0301-2345678", source: "Walking Customer", campaign: "------", assigned: "Janet Carlson", date: "6-24-2026 2:00:03PM" },
+  { _id: "10", no: "10", name: "Isagi Yoichi", avatar: "", phone: "0301-2345678", source: "Local Referral", campaign: "Imran Khan", assigned: "Theresa Nelson", date: "6-24-2026 2:00:03PM" },
+];
+
+const Leads = () => {
+  const [keyword, setKeyword] = useState("");
+  const [dateFilter, setDateFilter] = useState("");
+  const [locationFilter, setLocationFilter] = useState("");
+  const [activeTab, setActiveTab] = useState("New Leads");
+  const [showInactive, setShowInactive] = useState(false);
+  
+  const [currentPage, setCurrentPage] = useState(1);
+  const [limit, setLimit] = useState(10);
+
+  const tabs = [
+    { name: "New Leads", count: 24 },
+    { name: "Not Contacted", count: null },
+    { name: "Follow Up", count: null },
+    { name: "Visit Plan", count: null },
+    { name: "Dead Leads", count: null },
+  ];
+
+  return (
+    <div className="flex flex-col gap-5 w-full ">
+      {/* Upper Top Bar */}
+      <div className="flex flex-col xs:flex-row gap-2 xs:items-center xs:justify-between w-full">
+        <div>
+          <h2 className="page-heading">Leads</h2>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <ExportButton
+            title="Export Data"
+            tableData={DUMMY_LEADS}
+            columns={["No", "Lead Name", "Phone Number", "Lead Source", "Campaign", "Assigned", "Create Date"]}
+            fileName="Leads_Report"
+            bgcolor="bg-white"
+            colortext="#2D3748"
+            textColor="text-primary"
+          />
+          <Titlebtn
+            label="Add New Lead"
+            url="/app/leads/add"
+          />
+        </div>
+      </div>
+
+      {/* Filter Options Row */}
+      <LeadsFilter
+        keyword={keyword}
+        setKeyword={setKeyword}
+        setDateFilter={setDateFilter}
+        setLocationFilter={setLocationFilter}
+        showInactive={showInactive}
+        setShowInactive={setShowInactive}
+      />
+
+      {/* Main Content Card container */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+        {/* Inner Header Row with Tabs and Sorting */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-gray3  mb-4 gap-4">
+          <div className="flex flex-wrap gap-6 text-sm font-medium">
+            {tabs.map((tab) => (
+              <button
+                key={tab.name}
+                onClick={() => setActiveTab(tab.name)}
+                className={`pb-3 relative transition-all whitespace-nowrap ${
+                  activeTab === tab.name ? "text-red-500 font-semibold" : "text-gray-400 hover:text-gray-600"
+                }`}
+              >
+                {tab.name}
+                {tab.count && <span className="ml-1 text-xs text-red-500 font-bold">{tab.count}</span>}
+                {activeTab === tab.name && (
+                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-red-500 rounded" />
+                )}
+              </button>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-2 text-sm text-gray-500 self-end md:self-auto">
+            <span>Sort By:</span>
+            <select className="border-none bg-transparent font-medium text-gray-700 cursor-pointer focus:ring-0">
+              <option>Last 7 Days</option>
+              <option>Newest</option>
+              <option>Oldest</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Table View */}
+        <LeadsTable
+          data={DUMMY_LEADS}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          limit={limit}
+          setLimit={setLimit}
+          totalCount={50} // Mock total records entry count
+        />
+      </div>
+    </div>
+  );
+};
+
+export default Leads;

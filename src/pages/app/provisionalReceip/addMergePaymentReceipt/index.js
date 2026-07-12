@@ -110,7 +110,7 @@ const AddMergePaymentReceipt = () => {
           <Form className="flex flex-col gap-6">
             <p className="form-title">Merge Payment Receipts</p>
 
-            <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-10">
+            <div className="mt-4 w-full grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-10">
               {/*  Controlled inventory exactly like your TransferInventoryForm */}
                <SelectInventory
                     onSelect={setSelectedInventory}

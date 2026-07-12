@@ -8,8 +8,8 @@ import { useNavigate } from "react-router-dom"
 import { PulseLoader } from "react-spinners";
 import { login } from "redux/actions/authActions"
 import loginValidations from "validations/loginValidation"
-import logo from '../../../assets/images/logo.png';
-import loginBanner from '../../../assets/images/Previews.png';
+import logo from '../../../assets/images/7 Central.svg';
+import loginBanner from '../../../assets/images/bgImage.png';
 
 const initValues = {
     identifier: '',
@@ -29,7 +29,7 @@ const Login = () => {
 
     return (
         <div className='w-full h-screen flex items-center justify-center px-4  relative '>
-   <div className=" absolute   left-0 top-0  w-full h-[60%] z-5">
+   <div className=" absolute   left-0 top-0  w-full h-screen z-5">
       <img  src={loginBanner}   className="  w-full   h-full"/>
    </div>
     
@@ -39,9 +39,9 @@ const Login = () => {
        
              <img className='h-[76px] w-[109px]' src={logo} alt="Logo" />
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 mb-4">
           <h2 className=" text-[32px] font-bold">Welcome  Back</h2>
-            <p className=" text-dark1">Let’s login into  your Wajid&CO account first</p>
+            <p className=" text-dark1 text-sm">Let’s login into  your 7Central account first</p>
 
           </div>
            
@@ -64,8 +64,8 @@ const Login = () => {
                                                             control='input'
                                                             type='text'
                                                             label='Email'
+                                                            placeholder='Enter Email'
                                                             name='identifier'
-                                                            placeholder='' 
                                                             formik={formik}
                                                             autoComplete="off"
                                                             />
@@ -74,6 +74,7 @@ const Login = () => {
                                                 name='password'
                                                 formik={formik}
                                                     label='Password'
+                                                    placeholder='Enter Password'
                                                           autoComplete="off"
                                             />
                                             <div >
