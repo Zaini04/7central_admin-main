@@ -10,6 +10,7 @@ import NextButton from "components/global/form/NextButton";
 
 // Dropdown input components mapped exactly as per system inputs standard
 import SelectInput from "components/global/form/SelectInput"; 
+import addNewCampaignValidations from "validations/addCampaignValidations";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Campaign Name is required"),
@@ -93,7 +94,7 @@ const AddNewCampaignForm = () => {
 
   return (
     <div className="w-full flex flex-col gap-6 px-3 pb-4">
-      <Formik initialValues={initValues} onSubmit={handleSubmit}>
+      <Formik initialValues={initValues} validationSchema={addNewCampaignValidations} onSubmit={handleSubmit}>
         {(formik) => (
           <Form className="flex flex-col gap-6">
             <div className="flex flex-col gap-5 px-3 w-full">
@@ -192,7 +193,7 @@ const AddNewCampaignForm = () => {
 
               {/* File Dropzone Uploader Control matching the project form layouts */}
               <div className="flex flex-col gap-2 w-full mt-2">
-                <p className="text-xs font-semibold text-[#1F2020]">Attachment</p>
+                <p className="text-[13px] px-1 pointer-events-none text-gray3">Attachment</p>
                 <FormControl
                   control="multi-file-base64"
                   label="Choose a file or drag & drop it here"

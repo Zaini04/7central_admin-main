@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import ArrowSVG from "assets/svgs/ArrowSVG";
 import useToggle from "hooks/useToggle";
 import useClickOutside from "utils/clickOutside";
+import ArrowDownSvg from "assets/svgs/ArrowDownSvg";
 
 const PaymentMethodDropdown = ({
   selected,
@@ -44,7 +45,7 @@ const PaymentMethodDropdown = ({
             showMenu ? "rotate-180" : ""
           }`}
         >
-          <ArrowSVG />
+          <ArrowDownSvg/>
         </div>
       </div>
 

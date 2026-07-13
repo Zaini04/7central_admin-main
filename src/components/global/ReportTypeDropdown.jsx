@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import ArrowSVG from "assets/svgs/ArrowSVG";
 import useToggle from "hooks/useToggle";
 import useClickOutside from "utils/clickOutside";
+import ArrowDownSvg from "assets/svgs/ArrowDownSvg";
 
 const ReportTypeDropdown = ({ selected, setSelected, options = [] }) => {
   const menuRef = useRef();
@@ -30,7 +31,7 @@ const ReportTypeDropdown = ({ selected, setSelected, options = [] }) => {
             showMenu ? "rotate-180" : ""
           }`}
         >
-          <ArrowSVG />
+          <ArrowDownSvg />
         </div>
       </div>
 

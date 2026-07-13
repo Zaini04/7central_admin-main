@@ -3,6 +3,9 @@ import ExportButton from 'components/global/exportbutton/ExportButton'; // Kept 
 import Titlebtn from 'components/global/Titlebtn';
 import LeadsFilter from 'components/leads/LeadsFilter';
 import LeadsTable from 'components/leads/LeadsTable';
+import CallStatusModal from 'components/leads/CallModal';
+import ScheduleModal from 'components/leads/ScheduleModal';
+import ScheduleVisitModal from 'components/leads/ScheduleModal';
 
 // Exact dummy data mapped directly from your image
 const DUMMY_LEADS = [
@@ -24,7 +27,11 @@ const Leads = () => {
   const [locationFilter, setLocationFilter] = useState("");
   const [activeTab, setActiveTab] = useState("New Leads");
   const [showInactive, setShowInactive] = useState(false);
-  
+    const [callModal,setCallModal] = useState(false)
+    const [callData,setCallData]= useState([])
+    const [scheduleModal,setScheduleModal] = useState(false)
+    const [scheduleData,setScheduleData]= useState([])
+
   const [currentPage, setCurrentPage] = useState(1);
   const [limit, setLimit] = useState(10);
 
@@ -37,6 +44,9 @@ const Leads = () => {
   ];
 
   return (
+    <>
+    {callModal && <CallStatusModal  setCallStatusModal={setCallModal} callData={callData} />}
+    {scheduleModal && <ScheduleVisitModal  setScheduleVisitModal={setScheduleModal} visitData={scheduleData} />}
     <div className="flex flex-col gap-5 w-full ">
       {/* Upper Top Bar */}
       <div className="flex flex-col xs:flex-row gap-2 xs:items-center xs:justify-between w-full">
@@ -80,12 +90,12 @@ const Leads = () => {
               <button
                 key={tab.name}
                 onClick={() => setActiveTab(tab.name)}
-                className={`pb-3 relative transition-all whitespace-nowrap ${
+                className={`pb-3 relative text-xs transition-all whitespace-nowrap ${
                   activeTab === tab.name ? "text-red-500 font-semibold" : "text-gray-400 hover:text-gray-600"
                 }`}
               >
                 {tab.name}
-                {tab.count && <span className="ml-1 text-xs text-red-500 font-bold">{tab.count}</span>}
+                {tab.count && <span className="ml-1 text-[10px] text-red-500 font-semibold">{tab.count}</span>}
                 {activeTab === tab.name && (
                   <span className="absolute bottom-0 left-0 w-full h-[2px] bg-red-500 rounded" />
                 )}
@@ -93,7 +103,7 @@ const Leads = () => {
             ))}
           </div>
 
-          <div className="flex items-center gap-2 text-sm text-gray-500 self-end md:self-auto">
+          <div className="flex items-center gap-2 text-xs text-gray-500 self-end md:self-auto">
             <span>Sort By:</span>
             <select className="border-none bg-transparent font-medium text-gray-700 cursor-pointer focus:ring-0">
               <option>Last 7 Days</option>
@@ -105,6 +115,10 @@ const Leads = () => {
 
         {/* Table View */}
         <LeadsTable
+        setCallData={setCallData}
+        setScheduleData={setScheduleData}
+        setScheduleModal={setScheduleModal}
+        setCallModal={setCallModal}
           data={DUMMY_LEADS}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
@@ -114,6 +128,7 @@ const Leads = () => {
         />
       </div>
     </div>
+    </>
   );
 };
 

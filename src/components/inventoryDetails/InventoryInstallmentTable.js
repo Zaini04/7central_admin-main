@@ -237,7 +237,7 @@ useEffect(() => {
   ):(
   <div className="flex flex-row gap-1.5 items-center">
     <button
-      className="w-fit px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90 transition"
+      className="w-fit px-4 py-1 rounded-md bg-primary text-white text-xs font-medium hover:bg-primary/90 transition"
     >
       Pay
     </button>

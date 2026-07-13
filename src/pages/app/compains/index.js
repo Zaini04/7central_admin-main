@@ -71,23 +71,23 @@ const Campaigns = () => {
 
       {/* Table Container Wrapper */}
       <div className="w-full table-container rounded-xl bg-white flex flex-col gap-2 pb-4 shadow-sm border border-gray-100">
-        <div className="flex flex-col sm:flex-row sm:justify-between w-[95%] mx-auto pt-4">
-          <p className="text-dark1 font-semibold text-[#1F2020]">All Campaigns</p>
+        <div className="flex flex-col gap-1.5">
+          <p className="page-heading px-4">All Campaigns</p>
         </div>
 
         {/* Inner Sub-navigation Tabs and Sorting */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-gray-100 mx-4 pb-1 mt-2 gap-2">
-          <div className="flex gap-6 text-sm font-medium">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-gray3 mx-4  mt-2 gap-2">
+          <div className="flex gap-6 text-xs font-medium">
             {tabs.map((tab) => (
               <button
                 key={tab.name}
                 onClick={() => setActiveTab(tab.name)}
-                className={`pb-2 relative whitespace-nowrap transition-all text-xs sm:text-sm ${
+                className={`pb-2  relative whitespace-nowrap transition-all text-xs ${
                   activeTab === tab.name ? "text-red-500 font-semibold" : "text-gray-400 hover:text-gray-600"
                 }`}
               >
                 {tab.name}
-                {tab.count && <span className="ml-1 text-xs text-red-500 font-bold">{tab.count}</span>}
+                {tab.count && <span className="ml-1 text-[10px] text-red-500 font-semibold">{tab.count}</span>}
                 {activeTab === tab.name && (
                   <span className="absolute bottom-0 left-0 w-full h-[2px] bg-red-500 rounded" />
                 )}

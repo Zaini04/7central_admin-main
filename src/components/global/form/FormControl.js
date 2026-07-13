@@ -23,6 +23,7 @@ import CaptureImage   from './CaptureImage';
 import UploadFile from './UploadFile';
 import BrowseImage  from './BrowseImage';
 import FrontBackFileInput  from './FrontBackFileInput';
+import DateTimePicker from './DateTimePicker'
 
 
 function FormControl (props) {
@@ -61,6 +62,8 @@ function FormControl (props) {
             return <CheckboxGroup {...rest} />
         case 'date':
             return <DatePicker {...rest} />
+        case 'date-time':
+            return <DateTimePicker {...rest} />
         case 'password':
             return <PasswordInput {...rest} />
         case 'file':

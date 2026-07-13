@@ -7,6 +7,7 @@ import SelectInput from "components/global/form/SelectInput"; // Using your glob
 import CancelButton from "components/global/form/CancelButton";
 import NextButton from "components/global/form/NextButton";
 import BackButton from "components/global/form/BackButton";
+import addNewLeadValidations from "validations/addNewLeadValidations";
 
 // Exact initial values matching the "Add New Lead" form layout
 const initValues = {
@@ -46,6 +47,7 @@ const AddNewLead = () => {
       <div className="w-full bg-white flex flex-col gap-6 px-6 pt-6 pb-6 rounded-xl shadow-sm border border-gray-100">
         <Formik
           initialValues={initValues}
+            validationSchema={addNewLeadValidations}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             try {
               // Replace with your endpoint logic when connecting backend APIs

@@ -170,7 +170,7 @@ const end = start + docs.length - 1;
                 <td className="   whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row.number}</td>
                 <td className="   whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row.fullNumber}</td>
                 <td className="   whitespace-nowrap font-medium text-[#1A1C1E] self-center text-xs">
-                  <Status status={formatLabel(row.status)} />
+                 <Status status={formatLabel(row.status)} />
                 </td>
                 <td className="   whitespace-nowrap font-medium text-[#1A1C1E] text-xs">
                   <div className="flex flex-row gap-1.5 items-center">

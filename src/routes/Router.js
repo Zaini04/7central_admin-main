@@ -84,6 +84,7 @@ import AddNewLead from "pages/app/Leads/AddLead";
 import Campaigns from "pages/app/compains";
 import AddNewCampaign from "pages/app/compains/AddNewCampaign";
 import Payments from "pages/app/payments";
+import LeadTimelinePage from "pages/app/Leads/LeadActivity";
 
 
 
@@ -195,6 +196,11 @@ const Router = [
   path:"/app/leads/add",
   exact:true,
   element:<ProtectedRoute element={<AddNewLead/>}/>
+},
+{
+  path:"/app/leads/timeline/:id",
+  exact:true,
+  element:<ProtectedRoute element={<LeadTimelinePage/>}/>
 },
 {
   path:"/app/campaigns/add",

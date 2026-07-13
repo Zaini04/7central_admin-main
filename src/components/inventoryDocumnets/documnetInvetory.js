@@ -10,6 +10,8 @@ import Axios from "config/api";
 import toast from "react-hot-toast";
 import {addDocumentInventory} from 'redux/actions/inventoryActions'
 import { useQuery,useQueryClient } from 'react-query';
+import CancelButton from "components/global/form/CancelButton";
+import NextButton from "components/global/form/NextButton";
 
 
 const initValues = {
@@ -95,11 +97,12 @@ const handleSubmit = async (values, { resetForm }) => {
   return (
     <div className="flex flex-col gap-2">
       <div className="flex flex-col gap-3">
-        <div className="flex flex-col gap-0.5 w-full py-3 border-b px-3">
+        <div className="flex flex-col gap-0.5 w-full py-3  px-3">
           <h3 className="text-lg font-semibold">Documents</h3>
-          <p className="text-sm text-gray-600">
+          <p className="text-xs text-gray-600">
             Upload and categorize your document details
           </p>
+                        <hr className="w-[100%] h-[1.5px]  mx-auto bg-[#9A9A9A]"/>
         </div>
 
         <Formik
@@ -110,11 +113,12 @@ const handleSubmit = async (values, { resetForm }) => {
         >
           {(formik) => (
             <Form className="flex flex-col gap-6">
-              <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-5 px-3 border-b pb-4">
+              <div className="mt-4 w-full grid grid-cols-1 sm:grid-cols-2 gap-5 px-3 border-b pb-4">
                 <FormControl
                   control="input"
                   type="text"
                   label="Document Name"
+                  placeholder="Enter Document Name"
                   name="name"
                   formik={formik}
                   autoComplete="off"
@@ -125,6 +129,7 @@ const handleSubmit = async (values, { resetForm }) => {
                 <FormControl
                   control="multiple-option"
                   label="Document Type"
+                  placeholder="Enter Document Type"
                   name="type"
                   formik={formik}
                   options={RECORD_TYPES}
@@ -169,20 +174,17 @@ const handleSubmit = async (values, { resetForm }) => {
                 <div className="flex items-center gap-2">
                   <button
                     type="button"
-                    className="btn-secondary"
                     onClick={() => formik.resetForm()}
                   >
-                    Cancel
+                    <CancelButton/>
                   </button>
                   <button
                     type="submit"
-                    className="btn-primary py-2 sm:px-12 px-6 w-fit"
                     disabled={documentInventoryLoading}
                   >
 
                   
-                                                         
-                    {documentInventoryLoading ? <PulseLoader size={12} color='white'  /> : "Submit"}
+                       <NextButton label="Submit" createLoading={documentInventoryLoading} isIcon={false}/>                                  
                   </button>
                 </div>
               </div>

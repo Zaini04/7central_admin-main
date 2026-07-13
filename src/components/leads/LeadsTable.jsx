@@ -3,10 +3,28 @@ import PageLimit from "components/global/PageLimit";
 import TrashSvg from "assets/svgs/TrashSvg";
 import EditSvg from "assets/svg/home/home/EditSvg";
 import EditTSvg from "assets/svgs/EditTSvg";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-const LeadsTable = ({ data, currentPage, setCurrentPage, limit, setLimit, totalCount }) => {
+const LeadsTable = ({ data, currentPage, setCurrentPage, limit, setLimit, totalCount,setCallModal,setCallData,setScheduleModal,setScheduleData }) => {
   const start = (currentPage - 1) * limit + 1;
   const end = Math.min(start + data.length - 1, totalCount);
+
+  const navigate= useNavigate()
+
+  const handleCall = (row)=>{
+    setCallModal(true)
+    setCallData(row)
+    
+  }
+  const handleSchedule = (row)=>{
+    setScheduleModal(true)
+    setScheduleData(row)
+    
+  }
+
+
+
 
   return (
     <div className="w-full flex flex-col gap-4">
@@ -36,7 +54,9 @@ const LeadsTable = ({ data, currentPage, setCurrentPage, limit, setLimit, totalC
 
           <tbody className="divide-y divide-gray-100 bg-white">
             {data.map((row) => (
-              <tr key={row._id} className="hover:bg-gray-50 transition-colors">
+              <tr key={row._id} 
+                // onClick={() => navigate(`/app/leads/timeline/${row._id}`)}
+                               className="hover:bg-gray-50 transition-colors">
                  <td className="  whitespace-nowrap"> <input
                           type="checkbox"
                           // checked={isRowSelected}
@@ -75,7 +95,18 @@ const LeadsTable = ({ data, currentPage, setCurrentPage, limit, setLimit, totalC
                     >
                         <EditTSvg/>
                     </button>
-                    {/* Delete Icon Button */}
+                    <button  onClick={()=>handleCall(row)}
+    className="w-fit px-2 py-1 rounded-md text-xs whitespace-nowrap bg-green-700 text-white cursor-pointer"
+>                     Call
+                    </button>
+                    <button  onClick={()=>handleSchedule(row)}
+    className="w-fit px-2 py-1 rounded-md text-xs whitespace-nowrap bg-orange-700 text-white cursor-pointer"
+>                     Schedule
+                    </button>
+                    <button  onClick={()=>navigate(`/app/leads/timeline/${row._id}`)}
+    className="w-fit px-2 py-1 rounded-md text-xs whitespace-nowrap bg-blue-700 text-white cursor-pointer"
+>                     View
+                    </button>
                     <button 
                       className="w-[22px] h-[22px] flex items-center justify-center rounded-md bg-darkred cursor-pointer"
 >                     <TrashSvg/>

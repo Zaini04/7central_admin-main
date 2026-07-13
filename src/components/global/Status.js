@@ -12,6 +12,8 @@ const Status = ({ status }) => {
     status === 'blocked'  ||
      status === 'scheduled' ||
      status === 'pertially_paid' ||
+     status === 'paused'||
+     status === 'Paused'||
      status === 'un-paid' ||
        status === 'Draft' ||
   status === 'draft'
@@ -72,7 +74,9 @@ const Status = ({ status }) => {
     <div
       className={`${statusClass} text-xs px-2 py-1 text-center rounded-full flex items-center justify-center gap-1  font-medium w-fit capitalize`}
     >
-      <span > {status==="bounced"?'Dishonored':status}</span>
+     
+      •<span > {status==="bounced"?'Dishonored':status}</span>
+      
     </div>
   );
 };

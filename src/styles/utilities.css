@@ -16,6 +16,9 @@
     .page-heading{
         @apply  text-gunmetal  font-semibold  text-lg;
     }
+    .page-subheading{
+        @apply  text-gunmetal  font-semibold  text-sm;
+    }
     .page-subtitle{
 
         @apply text-dark1 text-xs;

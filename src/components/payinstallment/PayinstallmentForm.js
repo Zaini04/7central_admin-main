@@ -13,6 +13,8 @@ import * as Yup from "yup";
 import toast from "react-hot-toast";
 import InstallmentCard   from './inputinstallment/InstallmentCard';
 import Input from "./inputinstallment/Input";
+import ClearButton from "components/global/form/ClearButton";
+import NextButton from "components/global/form/NextButton";
 
 const validationSchema = Yup.object().shape({
   mainAmount: Yup.number()
@@ -315,21 +317,22 @@ const formatNumber = (value) => {
 
             
             {/* Buttons */}
-            <div className="px-3 w-full flex justify-center">
+            <div className="px-3 w-full flex justify-end">
               <div className="flex items-center gap-2">
-                <button type="button" className="btn-secondary text-sm xs:text-base w-fit md:w-[148px]" onClick={() => formik.resetForm()}>
-                  Clear
+                <button type="button" onClick={() => formik.resetForm()}>
+                  <ClearButton/>
                 </button>
                 <button 
   type="submit" 
-  className="btn-primary py-2 xl:px-12 px-6 text-sm xs:text-base w-fit" 
   disabled={createLoading}
 >
-  {createLoading ? (
+  {/* {createLoading ? (
     <PulseLoader size={12} color='white' />
   ) : (
     "Submit"
-  )}
+  )} */}
+
+  <NextButton label="Submit" createLoading={createLoading} isIcon={false}/>
 </button>
 
               

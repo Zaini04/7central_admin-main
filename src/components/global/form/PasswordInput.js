@@ -35,7 +35,7 @@ function PasswordInput(props) {
                     onFocus={() => setFocused(true)}
                     onBlur={() => setFocused(false)}
                     autoComplete="off"
-                    className="w-full bg-transparent py-2 px-4 text-base text-pure rounded-lg outline-none pr-10"
+                    className="w-full bg-transparent py-2 px-4  rounded-lg outline-none pr-10"
                     {...rest}
                 />
 

@@ -75,12 +75,12 @@ function Textarea(props) {
             className={`absolute left-0 transition-all duration-300 pointer-events-none bg-light2 px-1
               ${
                 isActive
-                  ? `top-[-12px] text-[13px] ${
+                  ? `top-[-12px] text-[12px] ${
                       isError || error
                         ? 'text-red-500'
                         : focused
                         ? 'text-primary'
-                        : 'text-gray-600'
+                        : 'text-gray3'
                     }`
                   : 'top-[-12px] text-gray3'
               }

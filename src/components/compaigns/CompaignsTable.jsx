@@ -2,6 +2,8 @@ import TealPagination from 'components/global/TealPagination';
 import PageLimit from 'components/global/PageLimit';
 import EyetSVG from 'assets/svgs/EyetSVG';
 import TrashSvg from 'assets/svgs/TrashSvg';
+import Status from 'components/global/Status';
+import formatLabel from 'utils/formatLabel';
 
 const CampaignsTable = ({ docs, currentPage, setCurrentPage, limit, setLimit, docsCount, pages }) => {
   const start = (currentPage - 1) * limit + 1;
@@ -42,25 +44,26 @@ const CampaignsTable = ({ docs, currentPage, setCurrentPage, limit, setLimit, do
                 <td className="p-3 text-center">
                   <input type="checkbox" className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer" />
                 </td>
-                <td className="p-3 font-medium text-[#1A1C1E] text-xs">{row.no}</td>
-                <td className="p-3 font-semibold text-[#1A1C1E] text-xs">{row.name}</td>
-                <td className="p-3 font-medium text-gray-500 text-xs">{row.type}</td>
+                <td className="  text-xs">{row.no}</td>
+                <td className="  text-xs">{row.name}</td>
+                <td className=" text-xs">{row.type}</td>
                 
                 {/* Visual Segmented Metrics Cell */}
-                <td className="p-3 text-xs text-gray-500">
+                <td className="p-3 text-xs ">
                   <div className="flex items-center justify-center gap-4 text-center">
-                    <div><span className="block font-bold text-gray-800">{row.metrics.opened}</span><span className="text-[10px] text-gray-400">Opened</span></div>
-                    <div><span className="block font-bold text-gray-800">{row.metrics.closed}</span><span className="text-[10px] text-gray-400">Closed</span></div>
-                    <div><span className="block font-bold text-gray-800">{row.metrics.unsubscribe}</span><span className="text-[10px] text-gray-400">Unsub</span></div>
-                    <div><span className="block font-bold text-gray-800">{row.metrics.delivered}</span><span className="text-[10px] text-gray-400">Delivered</span></div>
-                    <div><span className="block font-bold text-gray-800">{row.metrics.conversation}</span><span className="text-[10px] text-gray-400">Convers.</span></div>
+                    <div><span className="block  ">{row.metrics.opened}</span><span className="text-[10px] text-gray-400">Opened</span></div>
+                    <div><span className="block  ">{row.metrics.closed}</span><span className="text-[10px] text-gray-400">Closed</span></div>
+                    <div><span className="block  ">{row.metrics.unsubscribe}</span><span className="text-[10px] text-gray-400">Unsub</span></div>
+                    <div><span className="block  ">{row.metrics.delivered}</span><span className="text-[10px] text-gray-400">Delivered</span></div>
+                    <div><span className="block  ">{row.metrics.conversation}</span><span className="text-[10px] text-gray-400">Convers.</span></div>
                   </div>
                 </td>
 
                 <td className="p-3 text-center">
-                  <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-wide ${getStatusStyle(row.status)}`}>
-                    • {row.status}
-                  </span>
+                  {/* <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-wide ${getStatusStyle(row.status)}`}> */}
+                    {/* • {row.status} */}
+                  {/* </span> */}
+                  <Status status={formatLabel(row.status)}/>
                 </td>
 
                 <td className="p-3">

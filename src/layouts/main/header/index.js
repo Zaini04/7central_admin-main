@@ -83,7 +83,7 @@ const role = isSuperAdmin ? 'Super Admin' : 'Admin';
           >
             {showSidebar ? (
               <i 
-                          onClick={() => dispatch(setShowSidebar(true))}
+                          onClick={() => dispatch(setShowSidebar(false))}
 
               className='cursor-pointer uil uil-times text-2xl'></i>
             ) : (

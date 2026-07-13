@@ -12,6 +12,7 @@ import ItemNotFound from "components/global/ItemNotFound";
 import UploadedTable  from 'components/inventoryDocumnets/UploadedTable';
 
 import ViewDeatilPop  from 'components/inventoryDocumnets/viewDeatilPop';
+import BackButton from 'components/global/form/BackButton';
 
 
 const InventoryNewDocument = () => {
@@ -55,9 +56,8 @@ const totalDocs = data?.data?.data?.docsCount || 0;
                   <button 
         onClick={() => navigate(-1)}
         type="button"
-        className="btn-secondary w-fit"
       >
-        Back
+        <BackButton/>
       </button>
             </div>
 

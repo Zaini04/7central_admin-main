@@ -54,7 +54,7 @@ const Login = () => {
                             {
                                 (formik) => {
                                     return (
-                                        <Form className="flex flex-col  gap-6">
+                                        <Form className="flex flex-col  gap-x-5 gap-y-8">
                                             {
                                                 errors?.login && (
                                                     <Alert message={errors?.login} />

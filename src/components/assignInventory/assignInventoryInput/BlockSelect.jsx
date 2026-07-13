@@ -8,6 +8,7 @@ import useClickOutside from "utils/clickOutside";
 import Axios from "config/api";
 import { setStats } from "redux/slices/sectorSlice";
 import { BeatLoader } from "react-spinners";
+import ArrowDownSvg from "assets/svgs/ArrowDownSvg";
 
 const BlockSelect = ({ label, name, value, onChange,   error,...rest }) => {
   const [showMenu, setShowMenu] = useState(false);
@@ -88,7 +89,7 @@ const BlockSelect = ({ label, name, value, onChange,   error,...rest }) => {
             showMenu ? "rotate-180" : ""
           }`}
         >
-          <ArrowSVG />
+          <ArrowDownSvg />
         </div>
       </div>
 

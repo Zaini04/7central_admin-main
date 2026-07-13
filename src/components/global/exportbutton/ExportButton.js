@@ -201,10 +201,10 @@ const handlePDF = () => {
     <>
       <div
         onClick={handleOpen}
-        className={` h-[32px] ${bgcolor} rounded-full pl-1.5 pr-4 flex items-center justify-start gap-3 ${textColor} cursor-pointer select-none`}
+        className={` h-[32px] bg-white rounded-full pl-1.5 pr-4 flex items-center justify-start gap-3 text-primary cursor-pointer select-none`}
       >
        <div className="w-[22px] h-[22px]  rounded-full bg-black  flex justify-center items-center">
-        <ExportSVG colortext={colortext} />
+        <ExportSVG colortext="white" />
 
         </div>
        <span className='font-semibold text-xs text-[#1F2020]'>
