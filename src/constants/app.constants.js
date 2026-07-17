@@ -111,19 +111,51 @@ export const  RECORD_TYPES = [
   "Ownership Letter",
   "Other"
 ];
+export const  Invenotry_RECORD_TYPES = [
+  "Sale Agreement",
+  "Purchase Agreement",
+  "Allotment Letter",
+  "Intimation Letter",
+  "Transfer Letter",
+  "Noc",
+  "Ownership Letter",
+  "Other"
+];
 
 
 export const INVENTORY_TYPES = [
   "commercial",
-  "raesidential",
+  "residential",
+  "kiosk",
+  "pent_house",
+  "others"
 ];
+// export const INVENTORY_TYPES = [
+//   "commercial",
+//   "raesidential",
+// ];
 
+
+ 
 
 
 export const PAYMENT_TYPES = [
   { value: "full_payment", label: "Full Payment" },
   { value: "installment", label: "Installment" }
 ];
+
+export const Inventories =[
+  { value: 1, label: "Inventory 1" },
+  { value: 2, label: "Inventory 2" },
+  { value: 3, label: "Inventory 3" },
+  { value: 4, label: "Inventory 4" },
+  { value: 5, label: "Inventory 5" },
+  { value: 6, label: "Inventory 6" },
+  { value: 7, label: "Inventory 7" },
+  { value: 8, label: "Inventory 8" },
+  { value: 9, label: "Inventory 9" },
+  { value: 10, label: "Inventory 10" }
+]
 
 
   export const Installment_Options = [
@@ -225,6 +257,18 @@ export const  Applicant_TYPES = [
   { value: "joint", label: "Joint" }
 ];
 
+
+export const ProjectTypes =[
+  {value:"7Centeral", label:"7Centeral"}
+]
+export const BlockTypes =[
+  {value:"M", label:"M"}
+]
+export const FloorType =[
+  {value:"1st", label:"1st"},
+  {value:"2nd", label:"2nd"},
+  {value:"3rd", label:"3rd"},
+]
 
 
 

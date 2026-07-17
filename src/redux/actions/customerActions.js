@@ -6,14 +6,20 @@ import toastError from 'utils/toastError';
 const url = '/customer';
 const navigateUrl = '/app/Customer'
 
-export const customer_create = (data , navigate) => async (dispatch) => {
+export const customer_create = (data ,original_buyer, navigate) => async (dispatch) => {
     dispatch(setCreateLoading(true))
     try {
         const { data : { data : { doc , message } } } = await Axios.post(url , data);
         dispatch(addDoc(doc));
         const customerId = doc._id;
         toast.success(message);
-      navigate(`/app/Customer/${customerId}/next-of-kin`);
+        if(original_buyer){
+
+            navigate(`/app/Customer/${customerId}/next-of-kin`);
+        }else{
+            navigate(`/app/Customer/${customerId}/original-buyer`);
+
+        }
 
         
         dispatch(setCreateLoading(false));
@@ -31,7 +37,7 @@ export const customer_nextofkin = (data , navigate) => async (dispatch) => {
         const { data : { data : { doc , message } } } = await Axios.post('/customer/next-of-kin' , data);
             const customerId = doc?.customer;
         toast.success(message);
-      navigate(`/app/Customer/${customerId}/notifications`);
+      navigate(`/app/Customer/${customerId}/referal-program`);
 
         
         dispatch(setCreateCustomerNextOfKinLoading(false));

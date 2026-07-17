@@ -69,8 +69,8 @@ const MultiCustomerSelect = ({ label, name,placeholder, selectedCustomers = [], 
   };
 
   return (
-    <div className="relative form-row" ref={dropdownRef}>
-      <div placeholder={placeholder} className="relative w-full h-[32px] transition-all duration-300 py-1 rounded-lg border border-lighter">
+    <div className="relative  form-row" ref={dropdownRef}>
+      <div placeholder={placeholder} className="relative  w-full h-[40px] transition-all duration-300 py-1 rounded-lg border border-lighter">
         {/* Selected items */}
         <div
           className="flex flex-wrap gap-2 py-2 px-3 cursor-pointer min-h-[48px]"
@@ -80,7 +80,7 @@ const MultiCustomerSelect = ({ label, name,placeholder, selectedCustomers = [], 
             selectedItems.map((item) => (
               <span
                 key={item?._id}
-                className="bg-primary  text-white  text-xs md:text-sm rounded-full px-2 py-0.5 mt-1.5  font-semibold flex items-center gap-1"
+                className="bg-primary   text-white  text-[14px]  rounded-full px-4 py-0.5 mb-8  font-semibold flex items-center gap-1"
               >
                 {item?.name}
                 <button
@@ -88,7 +88,7 @@ const MultiCustomerSelect = ({ label, name,placeholder, selectedCustomers = [], 
                     e.stopPropagation();
                     handleRemove(item?._id);
                   }}
-                  className="text-xs text-white"
+                  className="text-sm text-white"
                 >
                   ×
                 </button>
@@ -97,8 +97,8 @@ const MultiCustomerSelect = ({ label, name,placeholder, selectedCustomers = [], 
 
           {/* Floating label */}
           <label
-            className={`absolute left-0 px-1 transition-all duration-300 pointer-events-none ${
-              isActive ? "top-[-10px] text-[13px] text-gray3" : "top-3 text-gray3"
+            className={`absolute left-0  px-1 transition-all duration-300 pointer-events-none ${
+              isActive ? "top-[-10px] text-[12px] text-gray3" : "top-3 text-gray3"
             }`}
           >
             {label}

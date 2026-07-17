@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { PAYMENT_TYPES, Applicant_TYPES } from "constants/app.constants.js";
+import { PAYMENT_TYPES, Applicant_TYPES, INVENTORY_TYPES, FloorType } from "constants/app.constants.js";
 import ProjectSelect from "./assignInventoryInput/ProjectSelect";
 import BlockSelect from "./assignInventoryInput/BlockSelect";
 import InventorySelect from "./assignInventoryInput/InventorySelect";
@@ -20,10 +20,15 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import NextButton from "components/global/form/NextButton";
 import CancelButton from "components/global/form/CancelButton";
+import AmountInput from "components/global/form/AmountInput";
+import Textarea from "components/addcustomer/assingInventory/assignInventoryInput/TextInput";
+import AttachmentCapture from "components/addcustomer/assingInventory/assignInventoryInput/AttachmentCapture";
+import ConfirmPricePopup from "components/addcustomer/assingInventory/assignInventoryInput/ConfirmPricePopup";
 
 const AssignInventoryForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [showConfirmPopup, setShowConfirmPopup] = useState(false);
 
   const { docExtraDetails, docMultipleDetails } = useSelector(
     (state) => state.customer,
@@ -38,6 +43,7 @@ const AssignInventoryForm = () => {
     applicantType: "",
     paymentType: "",
     sellingPrice: "",
+    attachments: null,
     actualPrice: "",
   });
 
@@ -106,10 +112,12 @@ const AssignInventoryForm = () => {
     } else if (Number(formData.sellingPrice) <= 0) {
       newErrors.sellingPrice = "Selling Price must be greater than 0";
     }
-
-    if (formData.actualPrice !== "" && Number(formData.actualPrice) <= 0) {
-      newErrors.actualPrice = "Actual Price must be greater than 0";
+if (!formData.attachments || formData.attachments.length === 0) {
+      newErrors.attachments = "Attachment is required";
     }
+    // if (formData.actualPrice !== "" && Number(formData.actualPrice) <= 0) {
+    //   newErrors.actualPrice = "Actual Price must be greater than 0";
+    // }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -120,7 +128,11 @@ const AssignInventoryForm = () => {
     dispatch(resetDocMultipleDetails());
   }, [dispatch]);
 
-  const handleSubmit = async () => {
+    const handleSubmit = () => {
+    if (!validateForm()) return;
+    setShowConfirmPopup(true);
+  };
+  const handleConfirmSubmit = async () => {
     if (!validateForm()) return;
 
     // Build buyers field
@@ -138,6 +150,9 @@ const AssignInventoryForm = () => {
       ...(formData.actualPrice && { actualPrice: formData.actualPrice }),
     };
     try {
+            console.log("this is a   payload", payload);
+      console.log("attachments (frontend only):", formData.attachments);
+
       await dispatch(assign_Inventory(payload, navigate));
       dispatch(setDocExtraDetails(null));
       dispatch(resetDocMultipleDetails());
@@ -152,6 +167,7 @@ const AssignInventoryForm = () => {
         paymentType: "",
         sellingPrice: "",
         actualPrice: "",
+        attachments:null
       });
       setErrors({});
     } catch (error) {
@@ -195,6 +211,31 @@ const AssignInventoryForm = () => {
           onChange={(val) => handleChange("sector", val)}
           error={errors.sector}
         />
+                        <div className="col-span-3 sm:col-span-2 lg:col-span-1">
+
+        <MultiSeclect
+          label="Floor"
+          placeholder="Select Floor"
+          name="floor"
+          value={formData.floor}
+          onChange={(val) => handleChange("floor", val)}
+          error={errors.floor}
+          options={FloorType}
+        />
+        </div>
+                        <div className="col-span-3 sm:col-span-2 lg:col-span-1">
+
+         <MultiSeclect
+          label="Inventory Type"
+          placeholder="Select type of Inventory"
+          name="inventoryType"
+          value={formData.inventoryType}
+          onChange={(val) => handleChange("inventoryType", val)}
+          error={errors.inventoryType}
+          options={INVENTORY_TYPES}
+        />
+        </div>
+                <div className="col-span-3 sm:col-span-2 lg:col-span-1">
 
         <InventorySelect
           label="Inventory"
@@ -207,6 +248,8 @@ const AssignInventoryForm = () => {
           error={errors.inventory}
           disabled={!formData.project || !formData.sector}
         />
+        </div>
+                <div className="col-span-3 sm:col-span-2 lg:col-span-1">
 
         <MultiSeclect
           label="Applicant Type"
@@ -217,9 +260,12 @@ const AssignInventoryForm = () => {
           error={errors.applicantType}
           options={Applicant_TYPES}
         />
-
+        </div>
+       
         {/* Customer Selection */}
         {formData.applicantType === "self" && (
+                          <div className="col-span-3 sm:col-span-2 lg:col-span-1">
+
           <SingleCustomer
             label="Customer"
             placeholder="Select Customer"
@@ -228,9 +274,12 @@ const AssignInventoryForm = () => {
             onChange={(field, val) => handleChange("customer", [val])}
             error={errors.customer}
           />
+          </div>
         )}
 
         {/* Payment Type */}
+                        <div className="col-span-3 sm:col-span-2 lg:col-span-1">
+
         <MultiSeclect
           label="Payment Type"
           placeholder="Select Payment Type"
@@ -240,9 +289,23 @@ const AssignInventoryForm = () => {
           error={errors.paymentType}
           options={PAYMENT_TYPES}
         />
+        </div>
+          {/* Selling & Actual Price */}
+                          <div className="col-span-3 sm:col-span-2 lg:col-span-1">
+
+        <AmountInput
+          label="Selling Price"
+          name="sellingPrice"
+          placeholder="Enter Selling Price"
+          value={formData.sellingPrice}
+          onChange={(name, val) => handleChange(name, val)}
+          error={errors.sellingPrice}
+        />
+        </div>
+
 
         {formData.applicantType === "joint" && (
-          <div className="sm:col-span-3">
+                <div className="col-span-3 sm:col-span-2 lg:col-span-3">
             <MultiCustomerSelect
               label="Customer"
               placeholder="Select Customer"
@@ -254,21 +317,31 @@ const AssignInventoryForm = () => {
           </div>
         )}
 
+                <div className="col-span-3 sm:col-span-2 lg:col-span-3">
+          <Textarea
+            label="Remarks"
+            // formik={formik}
+            name="remarks"
+            placeholder="Enter Remarks"
+            rows={4}
+            value={formData.remarks}
+            onChange={(e) => handleChange("remarks", e.target.value)}
+            error={errors.remarks}
+          />
+        </div>
+                <div className="col-span-3 sm:col-span-2 lg:col-span-3">
+          <AttachmentCapture
+            label="Inventory Price Attachment"
+            name="attachments"
+            value={formData.attachments}
+            onChange={(field, val) => handleChange(field, val)}
+            error={errors.attachments}
+          />
+        </div>
+
        
 
-        {/* Selling & Actual Price */}
-        <Input
-          label="Selling Price"
-          placeholder="Enter Selling Price"
-          name="sellingPrice"
-          type="text"
-          // value={formData.sellingPrice}
-          value={formatNumber(formData.sellingPrice)}
-          onChange={(e) =>
-            handleChange("sellingPrice", parseNumber(e.target.value))
-          }
-          error={errors.sellingPrice}
-        />
+       
         {/* <Input
           label="Selling Price"
           name="sellingPrice"
@@ -277,7 +350,7 @@ const AssignInventoryForm = () => {
           onChange={(e) => handleChange("sellingPrice", e.target.value)}
           error={errors.sellingPrice}
         /> */}
-        <Input
+        {/* <Input
           label="Actual Price"
           placeholder="Enter Actual Price"
           name="actualPrice"
@@ -288,7 +361,7 @@ const AssignInventoryForm = () => {
             handleChange("actualPrice", parseNumber(e.target.value))
           }
           error={errors.actualPrice}
-        />
+        /> */}
         {/* <Input
           label="Actual Price"
           name="actualPrice"
@@ -309,7 +382,17 @@ const AssignInventoryForm = () => {
             {docMultipleDetails.map((item, index) => (
               <CustomerCard key={index} data={item} />
             ))}
+
           </div>
+        )}
+
+                      {showConfirmPopup && (
+          <ConfirmPricePopup
+            sellingPrice={formData.sellingPrice}
+            onCancel={() => setShowConfirmPopup(false)}
+            onConfirm={handleConfirmSubmit}
+            loading={false /* agar loading state hai to yahan use karo */}
+          />
         )}
       </div>
 

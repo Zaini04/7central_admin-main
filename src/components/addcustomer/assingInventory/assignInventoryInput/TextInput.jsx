@@ -1,18 +1,16 @@
-
 import React, { useState } from 'react';
 import TextError from "components/global/form/TextError";
 
-
-function Input(props) {
+function Textarea(props) {
   const {
     label,
     name,
     value = '',
     onChange,
     onBlur,
-    type = 'text',
     readOnly = false,
     error = '',
+    rows = 4,
     ...rest
   } = props;
 
@@ -20,10 +18,6 @@ function Input(props) {
 
   const isError = Boolean(error);
   const isActive = focused || value;
-
-  // Date formatting
-  const formattedValue =
-    type === 'date' && value ? new Date(value).toISOString().split('T')[0] : value;
 
   // Container base
   const containerBase =
@@ -45,15 +39,14 @@ function Input(props) {
   return (
     <div className="relative form-row">
 
-      {/* Input Container */}
+      {/* Textarea Container */}
       <div className={`${containerBase} ${containerClasses}`}>
 
-        {/* Standard input */}
-        <input
+        <textarea
           id={name}
           name={name}
-          type={type}
-          value={formattedValue}
+          value={value}
+          rows={rows}
           readOnly={readOnly}
           onFocus={!readOnly ? () => setFocused(true) : undefined}
           onBlur={(e) => {
@@ -61,7 +54,7 @@ function Input(props) {
             if (onBlur) onBlur(e);
           }}
           onChange={onChange}
-          className={`w-full py-2 h-[32px] px-4 rounded-lg outline-none transition-all duration-200
+          className={`w-full py-2 text-sm px-4 rounded-lg outline-none transition-all duration-200 resize-none
             ${
               readOnly
                 ? 'text-gray-500 bg-transparent select-none'
@@ -69,7 +62,7 @@ function Input(props) {
                 ? 'text-primary bg-transparent'
                 : isError
                 ? 'text-red-600 bg-transparent'
-                : 'text-gray3 bg-transparent'
+                : 'text-gray-500 bg-transparent'
             }
           `}
           {...rest}
@@ -78,15 +71,15 @@ function Input(props) {
         {/* Floating Label */}
         <label
           htmlFor={name}
-          className={`absolute left-0 transition-all duration-300 pointer-events-none  px-1
+          className={`absolute -top-8 left-0 transition-all duration-300 pointer-events-none px-1
             ${
               isActive
-                ? `top-[-12px] text-[13px] ${
+                ? `top-[-12px] text-[12px] ${
                     isError
                       ? 'text-red-500'
                       : focused
                       ? 'text-primary'
-                      : 'text-gray3'
+                      : 'text-gray-600'
                   }`
                 : 'top-[-12px] text-gray3'
             }
@@ -102,4 +95,4 @@ function Input(props) {
   );
 }
 
-export default Input;
+export default Textarea;

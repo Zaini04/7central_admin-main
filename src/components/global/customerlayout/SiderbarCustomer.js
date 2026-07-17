@@ -10,7 +10,10 @@ import { FaCheck } from "react-icons/fa";
 
 const SiderbarCustomer = () => {
 
-      const { steps } = useSelector(state => state.customer);
+      const { steps, docDetails: doc  } = useSelector(state => state.customer);
+
+
+      console.log("steps",steps)
 
 
   
@@ -19,13 +22,20 @@ const SiderbarCustomer = () => {
     return matchPath({ path, end: exact }, location.pathname) !== null;
   };
 
+  const visibleMenuItems = menuItems.filter((item) => {
+    if (item.stepKey === "original_buyer") {
+      return doc?.customerType === "Referal"; // sirf Referral case mein dikhega
+    }
+    return true;
+  });
+
 
   return (
       <div className=" w-full  ">
           <ul className="py-4 pl-3 lg:pl-0 flex flex-wrap gap-3  lg:gap-2">
-            {menuItems.map((item) => {
+            {visibleMenuItems.map((item) => {
                                const isActive = checkIsActive(item.path, item.exact);
-          const stepValue = steps?.[item.stepKey];  
+          const stepValue = steps?.[item.stepKey] ;  
               return (
                 <li key={item.id}>
                   <div

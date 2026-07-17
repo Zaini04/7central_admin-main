@@ -104,7 +104,7 @@ useEffect(() => {
               <button
                 type="button"
                 onClick={triggerFileInput}
-                className=" border border-[#9A9A9A] text-[#1F202066] font-medium w-28 px-3 py-2 rounded-full text-sm cursor-pointer"
+                className=" border border-[#9A9A9A] text-[#1F202066] font-medium w-28 px-3 py-1.5 rounded-full text-sm cursor-pointer"
               >
                 Edit Photo
               </button>

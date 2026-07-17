@@ -71,7 +71,7 @@ const ViewDeatilPop = ({ setVeiwDetail }) => {
                   Document Details
                 </h3>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className= "mt-4 grid grid-cols-1 md:grid-cols-2  gap-x-5 gap-y-10">
                   <FormControl
                     control="input"
                     type="text"

@@ -98,9 +98,8 @@ const Customer = () => {
               "Location",
             ]}
             fileName="Recent Customer"
-            bgcolor={"bg-white"}
-            colortext={"#2D3748"}
-            textColor={"text-primary"}
+           bgcolor={'bg-white'} colortext={'white'} textColor={'text-primary'}
+
           />
 
           <Titlebtn label="Add Customer" url="/app/Customer/general" />

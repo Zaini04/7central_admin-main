@@ -11,6 +11,8 @@ const Status = ({ status }) => {
     status === 'inActive' ||
     status === 'blocked'  ||
      status === 'scheduled' ||
+     status === 'Over Due' ||
+
      status === 'pertially_paid' ||
      status === 'paused'||
      status === 'Paused'||
@@ -32,6 +34,8 @@ const Status = ({ status }) => {
      status === 'Cleared' ||
      status === 'paid' ||
      status === 'Paid' ||
+     status === 'Fully Paid' ||
+     status === 'fully paid' ||
      status=== "Transfer" ||
      status==='Transferred'||
      status==='Approved' ||
@@ -57,11 +61,13 @@ const Status = ({ status }) => {
 
                     status === 'Not Assigned'||
                 
-   status === 'Deleted'||
-    status === 'deleted'
+                    status === 'Default'||
+                    status === 'default'||
+                    status === 'Deleted'||
+                   status === 'deleted'
   ) {
-    statusClass = 'bg-[#FBF4E4]  text-[#DBAA00] px-4 ';
-  } else if (status === 'in progress' || status === 'In Progress' ) {
+    statusClass = 'bg-red-100  text-[#DB0000] px-4 ';
+  } else if (status === 'in progress' || status === 'In Progress' || status === 'In Installments' ) {
     statusClass = 'bg-blue-200 text-blue-800'; // light blue for in progress
   }else if (
   status === 'assigned' ||

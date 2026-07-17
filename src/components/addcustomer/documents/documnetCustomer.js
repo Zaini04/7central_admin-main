@@ -149,7 +149,7 @@ const totalDocs = data?.data?.data?.docsCount || 0;
             return (
               <Form className="flex flex-col gap-6 mt-4">
 
-                <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-8 px-3 border-b pb-4">
+                <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-10 px-3 border-b pb-4">
                   <FormControl
                     control="input"
                     type="text"
@@ -167,7 +167,7 @@ const totalDocs = data?.data?.data?.docsCount || 0;
                     formik={formik}
                     options={RECORD_TYPES}
                   />
-                          <div className="sm:col-span-2">
+                          <div className="sm:col-span-2 ">
                               {formik.values.type === "Other" && (
                       <FormControl
                         control="textarea"

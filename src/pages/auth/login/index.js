@@ -80,7 +80,7 @@ const Login = () => {
                                             <div >
                                                 <button
                                                     type='submit'
-                                                    className="btn-primary py-3 sm:px-12 px-6 w-full"
+                                                    className={` w-full h-[36px] mb-8 flex items-center justify-center  bg-[#1F2020] text-white rounded-md hover:bg-[#1F2020]/90 transition-all duration-200 ${loading ? "opacity-70": "" }`}
                                                     // disabled={loading}
                                                 >
                                                     {

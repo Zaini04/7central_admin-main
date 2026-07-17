@@ -1,7 +1,7 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
-import { Formik, Form, useFormik } from "formik";
-import { useDispatch,useParams } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Formik, Form } from "formik";
+import { useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import FormControl from "components/global/form/FormControl";
 
 import StateInput   from 'components/global/form/StateInput';
@@ -16,6 +16,7 @@ import {customer_create}     from 'redux/actions/customerActions.js'
 import EducationInput from "components/global/form/EducationInput";
 import GenderInput from "components/global/form/GenderInput";
 import DateOfBirthInput from "components/global/form/AgeInput";
+import originalBuyerBValidation from "validations/originalBuyerValidations";
 
 
 
@@ -38,11 +39,10 @@ const initValues = {
   stateCode:'',
   province: "",
   city: "",
-  customerType:""
 };
 
 
-const GeneralForm = forwardRef((props, ref) => {
+const OrginalBuyerForm = forwardRef((props, ref) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -55,14 +55,12 @@ const GeneralForm = forwardRef((props, ref) => {
     },
   }));
 
+  const {id}= useParams()
+
 
 const handleSubmit = async (values, { resetForm }) => {
+  console.log("hi")
   setLoading(true);
-  // console.log("customerType",values.)
-  const original_buyer= values.customerType==="Original Buyer"
-
- 
-  console.log("originabuyer",original_buyer)
 
 const payload = {
    ...(values.image && { image: values.image}),
@@ -72,7 +70,6 @@ const payload = {
   cnic: values.cnic,
   phoneNumber: values.phoneNumber,
   whatsappNumber: values.whatsappNumber,
-  customerType:values.customerType,
 
   ...(values.passportName && { passportName: values.passportName }),
   ...(values.phoneNumber2 && { phoneNumber2: values.phoneNumber2 }),
@@ -94,8 +91,8 @@ console.log('payload',payload);
 
   try {
 
-  await dispatch(customer_create(payload,original_buyer, navigate)); 
-
+//   await dispatch(customer_create(payload, navigate)); 
+navigate(`/app/customer/${id}/next-of-kin`)
     resetForm();
   } catch (error) {
     console.error("Error submitting form:", error);
@@ -103,9 +100,6 @@ console.log('payload',payload);
     setLoading(false);
   }
 };
-
-
-
 
 
 
@@ -118,7 +112,7 @@ console.log('payload',payload);
 
       <Formik 
       initialValues={initValues} 
-      validationSchema={customerValidations}
+      validationSchema={originalBuyerBValidation}
       onSubmit={handleSubmit}>
         {(formik) => {
           submitFormFn = formik.submitForm;
@@ -213,15 +207,6 @@ console.log('payload',payload);
       formik={formik}
       />
 
-      <FormControl
-      control="multiple-option"
-      name="customerType"
-      label="Select Customer Type "
-      options={["Original Buyer","Referal"]}
-      placeholder="Select Customer Type"
-      formik={formik}
-      />
-
     </div>
 <ImageUpload
     name="image"
@@ -232,45 +217,8 @@ console.log('payload',payload);
   <hr className="w-[98%] h-[1.5px]  mx-auto bg-[#9A9A9A]"/>
 
   </div>
-   {/* Filer Section */}
-  <div className="flex flex-col gap-6 px-3">
-    <p className="font-semibold text-base text-gunmetal py-6">Filer Details</p>
 
-    <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10  pb-4">
-      <FormControl
-      control="multiple-option"
-      name="filer"
-      label="Select Filer "
-      options={["Filer","Non Filer"]}
-      placeholder="Select Filer"
-      formik={formik}
-      />
-     
-      {formik.values.filer === "Filer" && (
-      <div className="col-span-3">
-        <FormControl
-          control="input"
-          type="text"
-          placeholder="Enter NTT Number"
-          label="NTT Number"
-          name="nttnumber"
-          formik={formik}
-          autoComplete="off"
-          autoCapitalize="off"
-          spellCheck={false}
-        />
-      </div>
-    )}
-
-       
-
-
-      </div>
-        <hr className="w-[100%] h-[1.5px]  mx-auto bg-[#9A9A9A]"/>
-
-    </div>
-
-  {/* Contact Section */}
+  {/* contact Section */}
   <div className="flex flex-col gap-6 px-3">
     <p className="font-semibold text-base text-gunmetal py-6">Contact Details</p>
 
@@ -346,7 +294,6 @@ console.log('payload',payload);
         <hr className="w-[100%] h-[1.5px]  mx-auto bg-[#9A9A9A]"/>
 
     </div>
- 
   {/* Address Section */}
   <div className="flex flex-col gap-6 px-3">
     <p className="font-semibold text-base text-gunmetal py-6">Address</p>
@@ -417,4 +364,4 @@ console.log('payload',payload);
   );
 });
 
-export default GeneralForm;
+export default OrginalBuyerForm;

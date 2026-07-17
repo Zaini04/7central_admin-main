@@ -1,13 +1,21 @@
-import { useState, useEffect, useRef } from "react";
-import { Country } from "country-state-city";
+import { useState, useRef } from "react";
 import { ErrorMessage } from "formik";
 import ArrowSVG from "assets/svgs/ArrowSVG";
 import useClickOutside from "utils/clickOutside";
 import TextError from "./TextError";
 
-const CountryInput = ({ name, formik, label = "Country" }) => {
-  const [countries, setCountries] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+// static list, edit/add levels as needed
+const EDUCATION_LEVELS = [
+  { name: "Matric", code: "matric" },
+  { name: "Intermediate", code: "intermediate" },
+  { name: "Undergraduate", code: "undergraduate" },
+  { name: "Graduate", code: "graduate" },
+  { name: "Masters", code: "masters" },
+  { name: "MPhil", code: "mphil" },
+  { name: "PhD", code: "phd" },
+];
+
+const EducationInput = ({ name, formik, label = "Education" }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [focused, setFocused] = useState(false);
   const dropdownRef = useRef(null);
@@ -18,28 +26,12 @@ const CountryInput = ({ name, formik, label = "Country" }) => {
 
   useClickOutside(dropdownRef, () => setShowMenu(false));
 
-  useEffect(() => {
-    const allCountries = Country.getAllCountries().map((c) => ({
-      name: c.name,
-      code: c.isoCode,
-    }));
-    setCountries(allCountries);
-  }, []);
-
   const handleSelect = (option) => {
-    // when country changes, reset dependent fields
     formik.setFieldValue(name, option.name);
-    formik.setFieldValue("countryCode", option.code);
-    formik.setFieldValue("province", "");
-    formik.setFieldValue("stateCode", "");
-    formik.setFieldValue("city", "");
-    setSearchTerm("");
+    // if you track a code field too, e.g. educationCode
+    formik.setFieldValue("educationCode", option.code);
     setShowMenu(false);
   };
-
-  const filteredCountries = countries.filter((c) =>
-    c.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
 
   return (
     <div className="relative form-row" ref={dropdownRef}>
@@ -66,13 +58,13 @@ const CountryInput = ({ name, formik, label = "Country" }) => {
             setFocused(false);
             formik.setFieldTouched(name, true);
           }}
-          placeholder="Select Country"
-          className="w-full bg-transparent py-2 px-4  rounded-lg outline-none cursor-pointer"
+          placeholder="Select Education"
+          className="w-full bg-transparent py-2 px-4 rounded-lg outline-none cursor-pointer"
         />
 
         <label
           htmlFor={name}
-          className={`absolute -top-8 left-0 px-1 transition-all duration-300  pointer-events-none ${
+          className={`absolute -top-8 left-0 px-1 transition-all duration-300 pointer-events-none ${
             isActive
               ? `top-[-10px] text-[13px] ${
                   isError
@@ -99,35 +91,19 @@ const CountryInput = ({ name, formik, label = "Country" }) => {
 
       {showMenu && (
         <div className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-md shadow-md z-10 max-h-[250px] overflow-y-auto">
-          <div className="p-2 border-b">
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search country..."
-              className="w-full px-2 py-1 border rounded-md text-sm focus:outline-none"
-            />
-          </div>
-
-          {filteredCountries.length > 0 ? (
-            filteredCountries.map((option) => (
-              <div
-                key={option.code}
-                onClick={() => handleSelect(option)}
-                className={`px-3 py-2 cursor-pointer transition-colors ${
-                  value === option.name
-                    ? "bg-primary text-white"
-                    : "hover:bg-gray-100 text-gray-700"
-                }`}
-              >
-                {option.name}
-              </div>
-            ))
-          ) : (
-            <div className="px-3 py-2 text-gray-400 italic">
-              No matching countries
+          {EDUCATION_LEVELS.map((option) => (
+            <div
+              key={option.code}
+              onClick={() => handleSelect(option)}
+              className={`px-3 py-2 cursor-pointer transition-colors ${
+                value === option.name
+                  ? "bg-primary text-white"
+                  : "hover:bg-gray-100 text-gray-700"
+              }`}
+            >
+              {option.name}
             </div>
-          )}
+          ))}
         </div>
       )}
 
@@ -136,4 +112,4 @@ const CountryInput = ({ name, formik, label = "Country" }) => {
   );
 };
 
-export default CountryInput;
+export default EducationInput;

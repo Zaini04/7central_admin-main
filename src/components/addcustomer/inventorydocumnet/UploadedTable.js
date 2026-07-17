@@ -26,6 +26,7 @@ const UploadedTable = ({docs,setVeiwDetail,
 
 
 
+
                 const start = (currentPage - 1) * limit + 1;
 const end = start + docs.length - 1;
  
@@ -37,6 +38,7 @@ const end = start + docs.length - 1;
     toast.error("You are not authorized to delete this document.");
     return;
   }
+  console.log("d",docs)
 
   const title = "Confirm Deletion";
   const message = "Are you sure you want to delete this Inventory Document?";

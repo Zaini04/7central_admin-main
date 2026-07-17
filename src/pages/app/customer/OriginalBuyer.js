@@ -1,13 +1,14 @@
 import { useNavigate, } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import GeneralForm from "components/addcustomer/general/generalfrom";
 import AddCustomerLayout from "components/global/customerlayout/AddCustomerLayout";
 import { useSelector } from "react-redux";
 import { PulseLoader } from "react-spinners";
 import NextButton from "components/global/form/NextButton";
 import CancelButton from "components/global/form/CancelButton";
+import OrginalBuyerForm from "components/addcustomer/originalbuyer/OriginialBuyerForm";
 
-const GeneralCustomer = () => {
+const OriginalBuyer = () => {
 
   const { createLoading } = useSelector(state => state.customer);
 
@@ -46,10 +47,10 @@ const GeneralCustomer = () => {
   );
 
   return (
-    <AddCustomerLayout  dynamicName={dynamicName} dynmicbutton={submitButton}>
-      <GeneralForm ref={formRef}   />
+    <AddCustomerLayout dynamicName={dynamicName} dynmicbutton={submitButton}>
+      <OrginalBuyerForm ref={formRef} />
     </AddCustomerLayout>
   );
 };
 
-export default GeneralCustomer;
+export default OriginalBuyer;

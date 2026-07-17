@@ -85,6 +85,12 @@ import Campaigns from "pages/app/compains";
 import AddNewCampaign from "pages/app/compains/AddNewCampaign";
 import Payments from "pages/app/payments";
 import LeadTimelinePage from "pages/app/Leads/LeadActivity";
+import Dealer from "pages/app/dealer";
+import AddDealerForm from "components/dealer/AddDealerForm";
+import EditDealerForm from "components/dealer/EditDealerForm";
+import LeadReport from "pages/app/Leads/LeadReport";
+import OriginalBuyer from "pages/app/customer/OriginalBuyer";
+import ReferalProgram from "pages/app/customer/ReferalProgram";
 
 
 
@@ -139,8 +145,10 @@ const Router = [
 
 { path: '/app/Customer/add', exact: true, element: <ProtectedRoute element={<AddCustomer />} /> },
 { path: '/app/Customer/general', exact: true, element: <ProtectedRoute element={<GeneralCustomer />} /> },
+{ path: '/app/Customer/:id/original-buyer', exact: true, element: <ProtectedRoute element={<OriginalBuyer />} /> },
 { path: '/app/Customer/:id/joint', exact: true, element: <ProtectedRoute element={<JointApplicant />} /> },
 { path: '/app/Customer/:id/next-of-kin', exact: true, element: <ProtectedRoute element={<NextOfKin />} /> },
+{ path: '/app/Customer/:id/referal-program', exact: true, element: <ProtectedRoute element={<ReferalProgram />} /> },
 { path: '/app/Customer/:id/notifications', exact: true, element: <ProtectedRoute element={<CusomerNotification />} /> },
 { path: '/app/Customer/:id/documents', exact: true, element: <ProtectedRoute element={<CustomerDocuments />} /> },
 { path: '/app/Customer/:id/assign-inventory', exact: true, element: <ProtectedRoute element={<AssignCusomerInventory />} /> },
@@ -203,6 +211,11 @@ const Router = [
   element:<ProtectedRoute element={<LeadTimelinePage/>}/>
 },
 {
+  path:"/app/lead-report",
+  exact:true,
+  element:<ProtectedRoute element={<LeadReport/>}/>
+},
+{
   path:"/app/campaigns/add",
   exact:true,
   element:<ProtectedRoute element={<AddNewCampaign/>}/>
@@ -216,6 +229,21 @@ const Router = [
   path:"/app/campaignpayments",
   exact:true,
   element:<ProtectedRoute element={<Payments/>}/>
+},
+{
+  path:"/app/dealer",
+  exact:true,
+  element:<ProtectedRoute element={<Dealer/>}/>
+},
+{
+  path:"/app/dealer/add",
+  exact:true,
+  element:<ProtectedRoute element={<AddDealerForm/>}/>
+},
+{
+  path:"/app/dealer/edit/:id",
+  exact:true,
+  element:<ProtectedRoute element={<EditDealerForm/>}/>
 },
 
   {

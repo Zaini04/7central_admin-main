@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import Status  from 'components/global/Status'
 import EyetSVG from 'assets/svgs/EyetSVG';
@@ -19,6 +19,8 @@ import confirmBox from "utils/confirmBox";
 import moment from 'moment';
 import toast from 'react-hot-toast';
 import DatePicker from 'components/addcustomer/customerpurchaseplan/inventoryinput/DateInput';
+import { BsThreeDotsVertical } from 'react-icons/bs';
+import useClickOutside from 'utils/clickOutside';
 const CustomerTable = ({ 
   currentPage, 
   setCurrentPage,
@@ -27,10 +29,16 @@ const CustomerTable = ({
 }) => {
     const { docs , pages ,docsCount, deleteLoading } = useSelector(state => state.customer);
     const {user } = useSelector((state) => state.auth);
+  const [selected, setSelected] = useState([]);
+
+
+    const [activeRowMenu, setActiveRowMenu] = useState(null);
+
+  const menuRef = useRef(null);
 
   const dispatch=useDispatch();
 const navigate=useNavigate();
-    // const [selectedRows,setSelectedRows]=useState('');
+    const [selectedRows,setSelectedRows]=useState('');
   const queryClient = useQueryClient();
 
 
@@ -45,13 +53,13 @@ const end = start + docs.length - 1;
   //   );
   // };
 
-  // const handleSelectAll = (e) => {
-  //   if (e.target.checked) {
-  //     setSelectedRows(docs.map((item) => item.id));
-  //   } else {
-  //     setSelectedRows([]);
-  //   }
-  // };
+  const handleSelectAll = (e) => {
+    if (e.target.checked) {
+      setSelectedRows(docs.map((item) => item.id));
+    } else {
+      setSelectedRows([]);
+    }
+  };
 
 
 
@@ -81,11 +89,34 @@ const end = start + docs.length - 1;
  
 
 
+const toggleRow = (id) => {
+    setSelected((prev) =>
+      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id],
+    );
+  };
 
+useClickOutside(menuRef, () => {
+    setActiveRowMenu(false);
+  });
 
+  console.log("doc",docs)
 
+ const pageData = docs
+  const allSelected =
+    pageData.length > 0 && pageData.every((r) => selected.includes(r._id));
 
-
+  const toggleAll = () => {
+    if (allSelected) {
+      setSelected((prev) =>
+        prev.filter((id) => !pageData.map((r) => r._id).includes(id)),
+      );
+    } else {
+      setSelected((prev) => [
+        ...prev,
+        ...pageData.map((r) => r._id).filter((id) => !prev.includes(id)),
+      ]);
+    }
+  };
 
 
   return (
@@ -93,7 +124,7 @@ const end = start + docs.length - 1;
 
 <div className=' flex flex-col  sm:flex-row sm:justify-between  w-[95%] mx-auto '>
   <div className=' w-full sm:w-[267px]'>
-  <p className="text-dark1 font-semibold">All Customers</p> 
+  <p className="text-dark1 font-semibold text-base">All Customers</p> 
 
   </div>
 
@@ -112,8 +143,8 @@ const end = start + docs.length - 1;
         <th className="   whitespace-nowrap text-white">
                     <input
                       type="checkbox"
-                      // checked={allSelected}
-                      // onChange={toggleAll}
+                      checked={allSelected}
+                      onChange={toggleAll}
                       className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer"
                     />
                   </th>
@@ -141,18 +172,22 @@ const end = start + docs.length - 1;
         Location
           
         </th>
-        <th className="   whitespace-nowrap text-white">Action</th>
+        <th className="   whitespace-nowrap text-white sticky -right-4 z-40 bg-gray3">Action</th>
       </tr>
     </thead>
 
     <tbody >
-        {docs.map((row, index) => (
+        {docs.map((row, index) =>{
+         const isRowSelected = selected.includes(row._id);
+                    const isMenuOpen = activeRowMenu === row._id;
+       return (
+
               <tr key={row._id}>
 
                  <td className="  whitespace-nowrap"> <input
                           type="checkbox"
-                          // checked={isRowSelected}
-                          // onChange={() => toggleRow(row._id)}
+                          checked={isRowSelected}
+                          onChange={() => toggleRow(row._id)}
                           className="w-3 h-3 rounded border-gray-300 accent-white bg-transparent cursor-pointer"
                         /></td>
                 <td className="   whitespace-nowrap font-medium text-[#1A1C1E] text-xs">{row.autoIncrementId}</td>
@@ -183,8 +218,68 @@ const end = start + docs.length - 1;
                 </div>)}
               
                 </td>
+
+
+<td
+                          className={`py-3.5 px-4 text-[12px] font-normal bg-white sticky -right-4 transition-colors duration-150 ${
+                            isRowSelected ? "" : ""
+                          } ${isMenuOpen ? "z-50  " : "z-10"}`}
+                        >
+                          <div className="flex justify-center z-50 items-center w-full h-full">
+                            <BsThreeDotsVertical
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setActiveRowMenu(isMenuOpen ? null : row._id);
+                              }}
+                              className="cursor-pointer text-gray-500 hover:text-black text-xl p-1 rounded hover:bg-gray-100"
+                            />
+                          </div>
+                          {isMenuOpen && (
+                            <div
+                              ref={menuRef}
+                              className="absolute right-12 top-1/2 -translate-y-1/2 bg-white border border-gray-200 rounded-lg shadow-2xl  w-40 z-[10000] flex flex-col  animation-fade-in"
+                            >
+                              {row?.status === "deleted" ? (
+    <
+    
+      
+    ></> // empty if deleted
+  ) : (
+    <>
+      {/* <div
+        onClick={() => navigate(`/app/Customer-detail/${row._id}`)}
+                      className="w-[22px] h-[22px] flex items-center justify-center rounded-md bg-primary cursor-pointer"
+      >
+        <EyetSVG />
+      </div> */}
+      <button 
+        onClick={() => navigate(`/app/Customer-detail/${row._id}`)}
+      type="button"
+      className="inline-block text-left cursor-pointer px-2 py-2 text-xs font-medium text-gray-500 hover:bg-gray-200/50 border-b border-gray-300 w-full"
+    >
+      View
+    </button>
+
+        {user?.isSuperAdmin && (
+                      <button
+                        onClick={() => handleDelete(row?._id)}
+      className="inline-block text-left cursor-pointer px-2 py-2 text-xs font-medium text-gray-500 hover:bg-gray-200/50 border-b border-gray-300 w-full"
+                      >
+                        Delete
+                        {/* <TrashSvg /> */}
+                      </button>
+                    )}
+    </>
+  )}
+
+
+
+                            </div>)}
+
+                          </td>
+
                
-    <div className="flex flex-row gap-1.5  justify-center  py-4  items-center ">
+    {/* <div className="flex flex-row gap-1.5  justify-center  py-4  items-center ">
 
 
   {row?.status === "deleted" ? (
@@ -214,11 +309,11 @@ const end = start + docs.length - 1;
 
 
    
-    </div>
+    </div> */}
 
 
               </tr>
-            ))}
+            )})}
 
      
     </tbody>

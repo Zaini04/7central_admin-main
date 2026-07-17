@@ -74,7 +74,7 @@ const StateInput = ({ countryCode, name, formik, label = "State" }) => {
             formik.setFieldTouched(name, true);
           }}
           placeholder="Select State"
-          className={`w-full bg-transparent py-3 px-4 text-base text-pure rounded-lg outline-none ${
+          className={`w-full bg-transparent py-2 px-4 rounded-lg outline-none ${
             !countryCode ? "cursor-not-allowed opacity-60" : "cursor-pointer"
           }`}
         />

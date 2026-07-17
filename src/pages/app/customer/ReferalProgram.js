@@ -1,4 +1,4 @@
-import { useNavigate, } from "react-router-dom";
+import { useNavigate, useParams, } from "react-router-dom";
 import { useRef, useState } from "react";
 import GeneralForm from "components/addcustomer/general/generalfrom";
 import AddCustomerLayout from "components/global/customerlayout/AddCustomerLayout";
@@ -6,10 +6,13 @@ import { useSelector } from "react-redux";
 import { PulseLoader } from "react-spinners";
 import NextButton from "components/global/form/NextButton";
 import CancelButton from "components/global/form/CancelButton";
+import ReferalProgramForm from "components/addcustomer/referalProgram/ReferealProgramForm";
+import SkipButton from "components/global/form/SkipButton";
 
-const GeneralCustomer = () => {
+const ReferalProgram = () => {
 
   const { createLoading } = useSelector(state => state.customer);
+    const { id } = useParams();
 
 
   const navigate = useNavigate();
@@ -24,11 +27,11 @@ const GeneralCustomer = () => {
   const submitButton = (
     <div className="flex items-center gap-2">
       <button 
-        onClick={() => navigate("/app/Customer")}
+        onClick={() => navigate(`/app/Customer/${id}/notifications`)}
         type="button"
         className=""
       >
-        <CancelButton/>
+        <SkipButton/>
       </button>
 
         <button
@@ -47,9 +50,9 @@ const GeneralCustomer = () => {
 
   return (
     <AddCustomerLayout  dynamicName={dynamicName} dynmicbutton={submitButton}>
-      <GeneralForm ref={formRef}   />
+      <ReferalProgramForm ref={formRef}   />
     </AddCustomerLayout>
   );
 };
 
-export default GeneralCustomer;
+export default ReferalProgram;

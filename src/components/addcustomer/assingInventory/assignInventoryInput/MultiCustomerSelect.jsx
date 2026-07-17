@@ -72,6 +72,7 @@ const MultiCustomerSelect = ({ label, name, selectedCustomers = [], error, onCha
     <div className="relative form-row" ref={dropdownRef}>
       <div className="relative w-full transition-all duration-300 py-1 rounded-lg   h-[48px] border border-lighter">
         {/* Selected items */}
+        
         <div
           className="flex flex-wrap gap-2 py-2 px-3 cursor-pointer   h-full   overflow-y-auto"
           onClick={() => setShowMenu(true)}
@@ -97,7 +98,7 @@ const MultiCustomerSelect = ({ label, name, selectedCustomers = [], error, onCha
 
           {/* Floating label */}
           <label
-            className={`absolute left-3 bg-light2 px-1 transition-all duration-300 pointer-events-none ${
+            className={`absolute left-0 bg-light2 px-1 transition-all duration-300 pointer-events-none ${
               isActive ? "top-[-10px] text-[12px] text-gray3" : "top-3 text-gray3"
             }`}
           >

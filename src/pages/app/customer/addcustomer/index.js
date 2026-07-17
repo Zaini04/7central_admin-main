@@ -16,6 +16,8 @@ import DocumnetCustomerForm   from 'components/addcustomer/documents/documnetCus
 import  InventoryCustomer  from 'components/addcustomer/inventory/InventoryCustomer';
 import InstallmentCustomer   from 'components/addcustomer/installmentplan/installmentCustomer';
 import { useNavigate } from "react-router-dom";
+import OriginalBuyer from "../OriginalBuyer";
+import ReferalProgram from "../ReferalProgram";
 
 
 const Addcustomer = () => {
@@ -30,12 +32,13 @@ const Addcustomer = () => {
  
   const menuItems = [
     { id: 1, name: "General", icon: GernalSvg },
-    { id: 2, name: "Joint Application", icon: JointSvg },
-    { id: 3, name: "Next of Kin", icon: NextKinSvg },
-        { id: 4, name: "Notifications", icon: NotificationSvg },
-            { id: 5, name: "Documents", icon: DocumnetSvg },
-    { id: 6, name: "Assign Inventory", icon: AssignSvg },
-    { id: 7, name: "Installment Plan", icon: InstallmentSvg },
+    { id: 2, name: "Original-Buyer", icon: GernalSvg },
+    { id: 3, name: "Joint Application", icon: JointSvg },
+    { id: 4, name: "Next of Kin", icon: NextKinSvg },
+        { id: 5, name: "Notifications", icon: NotificationSvg },
+            { id: 6, name: "Documents", icon: DocumnetSvg },
+    { id: 7, name: "Assign Inventory", icon: AssignSvg },
+    { id: 8, name: "Installment Plan", icon: InstallmentSvg },
   ];
 
   
@@ -49,10 +52,15 @@ const Addcustomer = () => {
         
           />
         );
+       
+        case "Original Buyer":
+        return <OriginalBuyer/>;
       case "Joint Application":
         return <Jointfrom />;
       case "Next of Kin":
         return <Nextkinfrom />;
+        case "Referal Program":
+          return <ReferalProgram/>;
       case "Notifications":
         return <Notificationfrom />;
       case "Documents":

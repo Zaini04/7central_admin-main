@@ -12,6 +12,7 @@ import ItemNotFound from "components/global/ItemNotFound";
 import UploadedTable  from 'components/inventoryDocumnets/UploadedTable';
 
 import ViewDeatilPop  from 'components/inventoryDocumnets/viewDeatilPop';
+import SkipButton from 'components/global/form/SkipButton';
 
 
 const InventoryDocument = () => {
@@ -55,9 +56,8 @@ const totalDocs = data?.data?.data?.docsCount || 0;
                   <button 
         onClick={() => navigate(`/app/inventory/${id}/purchase-plan`)}
         type="button"
-        className="btn-secondary w-fit"
       >
-        Skip
+        <SkipButton/>
       </button>
             </div>
 

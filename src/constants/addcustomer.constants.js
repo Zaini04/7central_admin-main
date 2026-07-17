@@ -23,12 +23,29 @@ const menuItems = [
     stepKey: "general",
   },
   {
+    id: 2,
+    name: "Original Buyer",
+    path: "/app/Customer/:id/original-buyer",
+    icon: GeneralSvg,
+    exact: true,
+    stepKey: "original_buyer",
+  },
+
+  {
     id: 3,
     name: "Next of Kin",
     path: "/app/Customer/:id/next-of-kin",
     icon: NextKinSvg,
     exact: false,
     stepKey: "nextOfKin",
+  },
+  {
+    id: 4,
+    name: "Referal Program",
+    path: "/app/Customer/:id/referal-program",
+    icon: NextKinSvg,
+    exact: false,
+    stepKey: "referal_program",
   },
   {
     id: 4,

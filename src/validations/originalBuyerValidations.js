@@ -5,7 +5,7 @@ const phoneRegex = /^\+?[0-9\s\-()]{7,20}$/;
 // CNIC: Only 13 digits, no hyphens
 const cnicRegex = /^\d{13}$/;
 
-const customerValidations = Yup.object({
+const originalBuyerBValidation = Yup.object({
   image: Yup.mixed().nullable(), // optional file
 
   name: Yup.string()
@@ -59,7 +59,7 @@ address: Yup.string()
   countryCode: Yup.string().optional(),
 
   countryName: Yup.string().optional(),
-  customerType:Yup.string().required("Customer tye is required")
+//   customerType:Yup.string().required("Customer tye is required")
   //  filer: Yup.string().required("Please select filer status"),
   // nttnumber: Yup.string().when("filer", {
   //   is: "Filer",
@@ -68,4 +68,4 @@ address: Yup.string()
   // }),
 });
 
-export default customerValidations;
+export default originalBuyerBValidation;

@@ -6,7 +6,7 @@ import { useDispatch,useSelector } from "react-redux";
 import { useNavigate, useParams,useLocation } from "react-router-dom";
 import FormControl from "components/global/form/FormControl";
 import inventoryDocumentValidation from "validations/inventoryDocumentValidation";
-import { RECORD_TYPES,DOCUMENT_TYPE_MAP } from "constants/app.constants"; 
+import { RECORD_TYPES,DOCUMENT_TYPE_MAP, Invenotry_RECORD_TYPES } from "constants/app.constants"; 
 import Axios from "config/api";
 import toast from "react-hot-toast";
 import {create_InstallmentPlan} from 'redux/actions/customerActions'
@@ -20,6 +20,8 @@ import ViewDeatilPop  from './viewDeatilPop';
 import { PulseLoader } from "react-spinners";
 import CancelButton from "components/global/form/CancelButton";
 import NextButton from "components/global/form/NextButton";
+import CheckListSelect from "components/global/form/CheckListSelect";
+import { FaCheck } from "react-icons/fa";
 
 
 
@@ -121,7 +123,7 @@ const handleSubmit = async (values, { resetForm }) => {
     };
 
 
-     console.log(' this is a payload',payload)
+     console.log(' this is a invenotry documents payload',payload)
     await dispatch(create_InstallmentPlan(payload));
     queryClient.invalidateQueries(["InventoryDocumnet"]);
             queryClient.invalidateQueries(["fetch-content-details"]);
@@ -159,7 +161,7 @@ const handleSubmit = async (values, { resetForm }) => {
     submitFormFn = formik.submitForm;
               return (
             <Form className="flex flex-col gap-6 mt-4">
-              <div className=" mt-4 w-full grid grid-cols-1 sm:grid-cols-2 gap-5 px-3  pb-4">
+              <div className=" mt-4 w-full grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-10 px-3  pb-4">
                 <FormControl
                   control="input"
                   type="text"
@@ -172,14 +174,33 @@ const handleSubmit = async (values, { resetForm }) => {
                   spellCheck={false}
                 />
 
-                <FormControl
+                {/* <FormControl
                   control="multiple-option"
                   placeholder="Select Document Type"
                   label="Document Type"
                   name="type"
                   formik={formik}
-                  options={RECORD_TYPES}
-                />
+                  options={Invenotry_RECORD_TYPES}
+                /> */}
+
+{/* <CheckListSelect
+  label="Document Type"
+  placeholder="Select Record"
+  name="type"
+  formik={formik}
+  options={Invenotry_RECORD_TYPES}
+  checkedValues={docInventoryDocument?.map((doc) => doc.type) || []}
+  valueMap={DOCUMENT_TYPE_MAP}
+/> */}
+
+<FormControl
+                    control="multiple-option"
+                    label="Document Type"
+                    placeholder="Select Document Type"
+                    name="type"
+                    formik={formik}
+                    options={Invenotry_RECORD_TYPES}
+                  />
 
               
                <div className="sm:col-span-2">
@@ -247,6 +268,36 @@ const handleSubmit = async (values, { resetForm }) => {
           }
         </Formik>
       </div>
+
+     <div className="flex gap-x-10 gap-y-3 flex-wrap w-[98%] mx-auto">
+  {Invenotry_RECORD_TYPES.map((typeLabel, i) => {
+    const mappedValue = DOCUMENT_TYPE_MAP[typeLabel] || typeLabel;
+    const isUploaded = docInventoryDocument?.some(
+      (doc) => doc.type === mappedValue
+    );
+
+    return (
+      <div key={i} className="flex items-center gap-2">
+        <span
+          className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 ${
+            isUploaded
+              ? "bg-green-500 border-green-500"
+              : "border-gray-300 bg-white"
+          }`}
+        >
+          {isUploaded && <FaCheck className="text-white text-[9px]" />}
+        </span>
+        <span
+          className={`text-sm ${
+            isUploaded ? "text-gray-700" : "text-gray-400"
+          }`}
+        >
+          {typeLabel}
+        </span>
+      </div>
+    );
+  })}
+</div>
 
 
 
