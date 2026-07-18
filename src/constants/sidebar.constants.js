@@ -38,7 +38,7 @@ const menuItems = [
             {
                 id: 3,
                 name: 'Inventory Stats',
-                path: '/app/inventory-stats',
+                path: '/app/dashboard_inventory',
                 icon: InventorySvg,
                 exact: false,
             },

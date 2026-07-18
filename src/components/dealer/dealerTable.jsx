@@ -45,8 +45,10 @@ const DealerTable = ({ data, currentPage, setCurrentPage, limit, setLimit, total
               </th>
               <th className=" whitespace-nowrap">No</th>
               <th className=" whitespace-nowrap">CodeId</th>
-              <th className=" whitespace-nowrap">Customer Name</th>
+              <th className=" whitespace-nowrap">Dealer Name</th>
               <th className=" whitespace-nowrap">Phone Number</th>
+              <th className=" whitespace-nowrap">DHA Register</th>
+              <th className=" whitespace-nowrap">7Central Register</th>
               <th className=" whitespace-nowrap">Create Date</th>
               <th className=" whitespace-nowrap">Location</th>
               <th className=" whitespace-nowrap">Status</th>
@@ -77,6 +79,8 @@ const DealerTable = ({ data, currentPage, setCurrentPage, limit, setLimit, total
                   </div>
                 </td>
                 <td className="">{row.phone}</td>
+                <td className="">{row.dhaRegistrationNumber}</td>
+                <td className="">{row.centralRegistrationNumber}</td>
           
                 <td className="">
                   {row.date}

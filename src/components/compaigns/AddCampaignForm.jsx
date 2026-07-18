@@ -93,7 +93,7 @@ const AddNewCampaignForm = () => {
   };
 
   return (
-    <div className="w-full flex flex-col gap-6 px-3 pb-4">
+    <div className=" w-full flex flex-col gap-6 px-3 pb-4">
       <Formik initialValues={initValues} validationSchema={addNewCampaignValidations} onSubmit={handleSubmit}>
         {(formik) => (
           <Form className="flex flex-col gap-6">
@@ -219,7 +219,7 @@ const AddNewCampaignForm = () => {
                   className="w-fit"
                   disabled={createLoading}
                 >
-                  <NextButton label="Add" createLoading={createLoading} isIcon={false} />
+                  <NextButton label="Add Campaign" createLoading={createLoading} isIcon={false} />
                 </button>
               </div>
             </div>

@@ -5,8 +5,9 @@ import { Formik, Form } from "formik";
 import FormControl from "components/global/form/FormControl";
 import CancelButton from "components/global/form/CancelButton";
 import NextButton from "components/global/form/NextButton";
+import toast from "react-hot-toast";
 
-const CallStatusModal = ({ setCallStatusModal, callData }) => {
+const CallStatusModal = ({ setCallStatusModal, callData,onSave  }) => {
   const mainRef = useRef(null);
 
   // Click outside backdrop layer configuration to close modal safely
@@ -20,18 +21,23 @@ const CallStatusModal = ({ setCallStatusModal, callData }) => {
   const initValues = {
     name: callData?.name || "Ali Khan",
     phone: callData?.phone || "+92-301-1234567",
-    callStatus: callData?.status || "Connected",
-    callDuration: callData?.duration || "-------",
-    callNotes: callData?.notes || "-------",
+    responseType: callData?.status || "Connected",
+    profession:callData?.profession || "",
+    // callDuration: callData?.duration || "-------",
+    callNotes: callData?.notes || "",
     nextActionDate: callData?.nextActionDate || "",
   };
 
   // Status dropdown options selection dataset list 
   const statusOptions = [
-    { key: "Connected", value: "Connected" },
-    { key: "No Answer", value: "No Answer" },
-    { key: "Wrong Number", value: "Wrong Number" },
-    { key: "Call Back Later", value: "Call Back Later" },
+    { key: "Interested", value: "Interested" },
+    { key: "Future Plan", value: "Future Plan" },
+    { key: "Schedule Visit", value: "Schedule Visit" },
+    { key: "Follow Up", value: "Follow Up" },
+    { key: "Contact Later", value: "Contact Later" },
+    { key: "Not Interested", value: "Not Interested" },
+    { key: "Irrelevant", value: "Irrelevant" },
+    { key: "Not Contacted", value: "Not Contacted" },
   ];
 
   return (
@@ -56,7 +62,30 @@ const CallStatusModal = ({ setCallStatusModal, callData }) => {
 
         {/* 2. Form Section Field Wrapper Container */}
         <div className="w-full flex flex-col gap-3 px-6 mt-2">
-          <Formik initialValues={initValues} onSubmit={(values) => console.log(values)}>
+          <Formik initialValues={initValues} onSubmit={(values) => {
+
+            console.log(values)
+
+            const payload = {
+              name:values.name,
+              phoneNumber:values.phone,
+              profession:values.profession,
+              responseType:values.responseType,
+              notes:values.callNotes,
+              nextActionDate: [
+  "Follow Up",
+  "Contact Later",
+  "Schedule Visit",
+  "Interested",
+  "Future Plan",
+].includes(values.responseType) ? values.nextActionDate :""
+            }
+              onSave(callData._id, payload);  
+              toast.success("Response Marked SuccessFully")
+            console.log("response",payload)
+                        setCallStatusModal(false)
+
+          }}>
             {(formik) => (
               <Form className="flex flex-col gap-6 w-full">
                 
@@ -83,8 +112,9 @@ const CallStatusModal = ({ setCallStatusModal, callData }) => {
 
                   <FormControl
                     control="multiple-option"
-                    label="Call Status"
-                    name="callStatus"
+                    label="Response Type"
+                    name="responseType"
+                    placeholder="Select response type"
                     options={statusOptions}
                     formik={formik}
                     className="w-full text-xs"
@@ -93,9 +123,10 @@ const CallStatusModal = ({ setCallStatusModal, callData }) => {
                   <FormControl
                     control="input"
                     type="text"
-                    label="Call Duration"
-                    name="callDuration"
+                    label="Profession"
+                    name="profession"
                     formik={formik}
+                    placeholder="Enter profession"
                     className="w-full text-xs"
                   />
                 </div>
@@ -106,6 +137,7 @@ const CallStatusModal = ({ setCallStatusModal, callData }) => {
                     rows={4}
                     type="text"
                     label="Notes"
+                    placeholder="Enter notes"
                     name="callNotes"
                     formik={formik}
                     className="w-full text-xs"
@@ -123,14 +155,23 @@ const CallStatusModal = ({ setCallStatusModal, callData }) => {
                   />
                 </div> */}
 
+
+{[
+  "Follow Up",
+  "Contact Later",
+  "Interested",
+  "Future Plan",
+  "Schedule Visit",
+].includes(formik.values.responseType) && (
   <FormControl
-                    control="date-time"
-                    type="text"
-                    label="Next Follow Up Date/Time"
-                    name="nextActionDate"
-                    formik={formik}
-                    className="w-full text-xs"
-                  />
+    control="date-time"
+    type="text"
+    label="Next Date/Time"
+    name="nextActionDate"
+    formik={formik}
+    className="w-full text-xs"
+  />
+)}
                 {/* Next Follow Up Date Input Container Layer */}
                 <div className="mt-4 w-full relative flex flex-col gap-1.5">
                   {/* <label className="text-[12px] text-gray3">Next Follow Up Date/Time</label> */}

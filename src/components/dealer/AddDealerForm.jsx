@@ -15,13 +15,22 @@ import toastError from "utils/toastError";
 import { customer_create } from "redux/actions/customerActions.js";
 import NextButton from "components/global/form/NextButton";
 import ClearButton from "components/global/form/ClearButton";
+import DateOfBirthInput from "components/global/form/AgeInput";
+import GenderInput from "components/global/form/GenderInput";
+import EducationInput from "components/global/form/EducationInput";
+import BackButton from "components/global/form/BackButton";
 
 const initValues = {
   image: "",
   name: "",
   fatherName: "",
+  dateOfBirth:"",
+  gender:"",
+  education:"",
   email: "",
   cnic: "",
+  CentralRegistered:"",
+  DHARegistered:"",
   passportName: "",
   phoneNumber: "",
   phoneNumber2: "",
@@ -104,6 +113,12 @@ const AddDealerForm = () => {
                   <div className="px-3 flex justify-end mt-4">
                     <div className="flex items-center gap-2">
                       <button
+      onClick={()=>navigate('/app/dealer')}
+      >
+
+<BackButton/>
+      </button>
+                      <button
                         type="button"
                         className="w-fit"
                         onClick={() => formik.resetForm()}
@@ -117,7 +132,7 @@ const AddDealerForm = () => {
                         disabled={loading}
                       >
                         <NextButton
-                          label="Add"
+                          label="Add Dealer"
                           createLoading={loading}
                           isIcon={false}
                         />
@@ -130,7 +145,7 @@ const AddDealerForm = () => {
                     <p className="font-semibold text-base px-3 text-gunmetal   ">
                       Basic Information
                     </p>
-                    <div className=" lg:-mt-4 flex flex-col-reverse gap-y-8 items-start md:flex-row md:items-end   pb-4 px-3">
+                    <div className=" mt-4 flex flex-col-reverse gap-y-8 items-start md:flex-row md:items-end   pb-4 px-3">
                       <div className="w-full md:w-[80%] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-x-5  gap-y-10    ">
                         <FormControl
                           control="input"
@@ -170,6 +185,28 @@ const AddDealerForm = () => {
                         <FormControl
                           control="input"
                           type="text"
+                          placeholder="Enter DHA Registration Number"
+                          label="DHA Registration Number"
+                          name="DHARegistered"
+                          formik={formik}
+                          autoComplete="off"
+                          autoCapitalize="off"
+                          spellCheck={false}
+                        />
+                        <FormControl
+                          control="input"
+                          type="text"
+                          placeholder="Enter 7Central Registration Number"
+                          label="7Central Registration Number"
+                          name="CentralRegistered"
+                          formik={formik}
+                          autoComplete="off"
+                          autoCapitalize="off"
+                          spellCheck={false}
+                        />
+                        <FormControl
+                          control="input"
+                          type="text"
                           placeholder="Enter Passport Name"
                           label="Passport Name (Optional)"
                           name="passportName"
@@ -178,6 +215,38 @@ const AddDealerForm = () => {
                           autoCapitalize="off"
                           spellCheck={false}
                         />
+                         <FormControl
+        control="input"
+        type="text"
+        placeholder='Enter Profession'
+        label="Profession"
+        name="profession"
+        formik={formik}
+        autoComplete="off"
+        autoCapitalize="off"
+        spellCheck={false}
+      />
+      <DateOfBirthInput
+      name="age"
+      label="Date of Birth"
+      placeholder="Select Date of Birth"
+      formik={formik}
+
+      />
+      <GenderInput
+      name="gender"
+      label="Gender"
+      placeholder="Select Gender"
+      formik={formik}
+      />
+
+      <EducationInput
+      name="education"
+      label="Education"
+      placeholder="Select Education"
+      formik={formik}
+      />
+
                       </div>
                       <ImageUpload name="image" formik={formik} />
                     </div>
@@ -326,7 +395,7 @@ const AddDealerForm = () => {
 
                     <button type="submit" className="w-fit" disabled={loading}>
                       <NextButton
-                        label="Add"
+                        label="Add Dealer"
                         createLoading={loading}
                         isIcon={false}
                       />

@@ -91,6 +91,7 @@ import EditDealerForm from "components/dealer/EditDealerForm";
 import LeadReport from "pages/app/Leads/LeadReport";
 import OriginalBuyer from "pages/app/customer/OriginalBuyer";
 import ReferalProgram from "pages/app/customer/ReferalProgram";
+import OverAllDashboard from "pages/app/Dashboards/OverAllDashboard";
 
 
 
@@ -126,7 +127,8 @@ const Router = [
     path: '/app',
     element: <MainLayout />,
     children: [
-      { path: '/app', exact: true, element: <ProtectedRoute    element={<Home />} /> },
+      { path: '/app', exact: true, element: <ProtectedRoute    element={<OverAllDashboard />} /> },
+      { path: '/app/dashboard_inventory', exact: true, element: <ProtectedRoute    element={<Home />} /> },
 
 { path: '/app/Customer', exact: true, element: <ProtectedRoute element={<Customer />} /> },
 { path: '/app/Customer/:id', exact: true, element: <ProtectedRoute element={<CustomerDetail />} /> },

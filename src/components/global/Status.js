@@ -63,6 +63,7 @@ const Status = ({ status }) => {
                 
                     status === 'Default'||
                     status === 'default'||
+                    status === 'Ended' ||
                     status === 'Deleted'||
                    status === 'deleted'
   ) {

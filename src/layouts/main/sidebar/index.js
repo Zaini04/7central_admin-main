@@ -41,7 +41,8 @@ const Sidebar = () => {
     const { loading } = useSelector(state => state.auth)
     useClickOutside(sidebarRef , () => showSidebar  ? dispatch(setShowSidebar(false)) : '')
 
-    const [openGroups, setOpenGroups] = useState({});
+    // Object state se change kar k single ID string state me convert kiya
+    const [openGroupId, setOpenGroupId] = useState(null);
 
     const checkIsActive = (path, exact) => {
         const currentPath = location.pathname;
@@ -56,25 +57,23 @@ const Sidebar = () => {
         return item.children.some((child) => checkIsActive(child.path, child.exact));
     };
 
-    // Auto-expand whichever group contains the currently active route
+    // Auto-expand dynamically only the active group and close others on route change
     useEffect(() => {
-        setOpenGroups((prev) => {
-            const next = { ...prev };
-            menuItems.forEach((item) => {
-                if (item.children && groupHasActiveChild(item)) {
-                    next[item.id] = true;
-                }
-            });
-            return next;
+        let activeGroupId = null;
+        menuItems.forEach((item) => {
+            if (item.children && groupHasActiveChild(item)) {
+                activeGroupId = item.id;
+            }
         });
+        if (activeGroupId) {
+            setOpenGroupId(activeGroupId);
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location.pathname]);
 
+    // Agar pehle se khula hai toh band kar do, warna new group set karo (baqi auto-close ho jayenge)
     const toggleGroup = (id) => {
-        setOpenGroups((prev) => ({
-            ...prev,
-            [id]: !prev[id],
-        }));
+        setOpenGroupId((prevId) => (prevId === id ? null : id));
     };
 
     const closeSideBar = () => {
@@ -90,18 +89,11 @@ const Sidebar = () => {
     const renderLink = (item, isActive) => (
         <Link
             to={item.path}
-            className={`w-11/12 mx-auto flex flex-row hover:bg-[##BA8A38] items-center py-1.5 rounded-xl  px-2 gap-1 text-xs hover:text-[#BA8A38] hover:fill-[#BA8A38] group
+            className={`w-11/12 mx-auto flex flex-row hover:bg-[#BA8A3833] items-center py-1.5 rounded-lg  px-2 gap-1 text-xs hover:text-[#BA8A38] hover:fill-[#BA8A38] group
                 ${isActive ? 'text-[#BA8A38]  ' : 'text-dark1'}
             `}
             onClick={closeSideBar}
         >
-            {/* <div className={`w-[22px] h-[22px] group-hover:bg-[#FD0000] rounded-md ${isActive ? 'bg-[#FD0000]' : 'bg-[#F3F4F5]'} flex justify-center items-center`}>
-                <item.icon
-                    className={`w-[14px]
-                        ${isActive ? 'text-white group-hover:text-white' : 'group-hover:text-white'}
-                    `}
-                />
-            </div> */}
             <p className='ml-3 font-medium'>  {item.name}</p>
         </Link>
     );
@@ -125,8 +117,8 @@ const Sidebar = () => {
                         return <li key={item.id}>{renderLink(item, isActive)}</li>;
                     }
 
-                    // Group with children
-                    const isOpen = !!openGroups[item.id];
+                    // Strict verification if this group is the current open instance
+                    const isOpen = openGroupId === item.id;
                     const hasActiveChild = groupHasActiveChild(item);
                     const visibleChildren = item.children.filter(
                         (child) => !(child.superAdminOnly && !user?.isSuperAdmin)
@@ -139,7 +131,7 @@ const Sidebar = () => {
                             <button
                                 type='button'
                                 onClick={() => toggleGroup(item.id)}
-                                className={`w-11/12 mx-auto flex flex-row items-center justify-between hover:bg-[#BA8A3833] py-1.5 rounded-xl px-2 gap-1 text-xs hover:text-[#BA8A38] group
+                                className={`w-11/12 mx-auto flex flex-row items-center justify-between hover:bg-[#BA8A3833] py-1.5 rounded-lg px-2 gap-1 text-xs hover:text-[#BA8A38] group
                                     ${hasActiveChild ? 'bg-[#BA8A3833] ' : 'text-dark1'}
                                 `}
                             >

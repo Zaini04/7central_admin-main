@@ -18,6 +18,7 @@ import Axios from "config/api";
 import ViewDeatilPop  from './viewDeatilPop';
 import NextButton from "components/global/form/NextButton";
 import CancelButton from "components/global/form/CancelButton";
+import { FaCheck } from "react-icons/fa";
 
 
 
@@ -223,6 +224,36 @@ const totalDocs = data?.data?.data?.docsCount || 0;
             );
           }}
         </Formik>
+      </div>
+
+      <div className="flex gap-x-10 gap-y-3 flex-wrap w-[98%] mx-auto mt-4">
+        {RECORD_TYPES.map((typeLabel, i) => {
+          const mappedValue = DOCUMENT_TYPE_MAP[typeLabel] || typeLabel;
+          const isUploaded = docCustomerDocumnet?.some(
+            (doc) => doc.type === mappedValue
+          );
+      
+          return (
+            <div key={i} className="flex items-center gap-2">
+              <span
+                className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 ${
+                  isUploaded
+                    ? "bg-green-500 border-green-500"
+                    : "border-gray-300 bg-white"
+                }`}
+              >
+                {isUploaded && <FaCheck className="text-white text-[9px]" />}
+              </span>
+              <span
+                className={`text-sm ${
+                  isUploaded ? "text-gray-700" : "text-gray-400"
+                }`}
+              >
+                {typeLabel}
+              </span>
+            </div>
+          );
+        })}
       </div>
 
       <div className="mt-2">

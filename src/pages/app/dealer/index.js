@@ -11,16 +11,16 @@ import DealerFilter from 'components/dealer/DealerFilter';
 
 // Exact dummy data mapped directly from your image
 const DUMMY_LEADS = [
-  { _id: "1", no: "01",codeId: "WAJ25102401", name: "Isagi Yoichi", avatar: "", phone: "0301-2345678", date: "6-24-2026 2:00:03PM"   , location:"Multan", status:"Fully Paid"},
-  { _id: "2", no: "02",codeId: "WAJ25102402", name: "Laeonardo ds", avatar: "", phone: "0301-2345678",  date: "6-24-2026 2:00:03PM"  , location:"Lahore", status:"Over Due" },
-  { _id: "3", no: "03",codeId: "WAJ25102403", name: "Kaiser Brown", avatar: "", phone: "0301-2345678",  date: "6-24-2026 2:00:03PM"  , location:"Islamabad", status:"In Installments" },
-  { _id: "4", no: "04",codeId: "WAJ25102404", name: "Kaiser Brown", avatar: "", phone: "0301-2345678", date: "6-24-2026 2:00:03PM"   , location:"Multan", status:"Default"},
-  { _id: "5", no: "05",codeId: "WAJ25102405", name: "Kaiser Brown", avatar: "", phone: "0301-2345678",  date: "6-24-2026 2:00:03PM"  , location:"Lahore", status:"Fully Paid" },
-  { _id: "6", no: "06",codeId: "WAJ25102406", name: "Kaiser Brown", avatar: "", phone: "0301-2345678",  date: "6-24-2026 2:00:03PM"  , location:"Karachi", status:"Fully Paid" },
-  { _id: "7", no: "07",codeId: "WAJ25102407", name: "Kaiser Brown", avatar: "", phone: "0301-2345678",  date: "6-24-2026 2:00:03PM"  , location:"Multan", status:"In Installments" },
-  { _id: "8", no: "08",codeId: "WAJ25102408", name: "Isagi Yoichi", avatar: "", phone: "0301-2345678", date: "6-24-2026 2:00:03PM"   , location:"Pehsawar", status:"Over Due"},
-  { _id: "9", no: "09",codeId: "WAJ25102409", name: "Isagi Yoichi", avatar: "", phone: "0301-2345678", date: "6-24-2026 2:00:03PM"   , location:"Multan", status:"Default"},
-  { _id:"10", no: "10",codeId: "WAJ25102400", name: "Isagi Yoichi", avatar: "", phone: "0301-2345678",  date: "6-24-2026 2:00:03PM"  , location:"Sargodha", status:"Fully Paid" },
+  { _id: "1", no: "01",codeId: "WAJ25102401", name: "Isagi Yoichi", avatar: "", phone: "0301-2345678", dhaRegistrationNumber:"dha-1", centralRegistrationNumber:"7Central-1", date: "6-24-2026 2:00:03PM"   , location:"Multan", status:"Fully Paid"},
+  { _id: "2", no: "02",codeId: "WAJ25102402", name: "Laeonardo ds", avatar: "", phone: "0301-2345678", dhaRegistrationNumber:"dha-2", centralRegistrationNumber:"7Central-2",  date: "6-24-2026 2:00:03PM"  , location:"Lahore", status:"Over Due" },
+  { _id: "3", no: "03",codeId: "WAJ25102403", name: "Kaiser Brown", avatar: "", phone: "0301-2345678", dhaRegistrationNumber:"dha-3", centralRegistrationNumber:"7Central-3",  date: "6-24-2026 2:00:03PM"  , location:"Islamabad", status:"In Installments" },
+  { _id: "4", no: "04",codeId: "WAJ25102404", name: "Kaiser Brown", avatar: "", phone: "0301-2345678", dhaRegistrationNumber:"dha-4", centralRegistrationNumber:"7Central-4", date: "6-24-2026 2:00:03PM"   , location:"Multan", status:"Default"},
+  { _id: "5", no: "05",codeId: "WAJ25102405", name: "Kaiser Brown", avatar: "", phone: "0301-2345678", dhaRegistrationNumber:"dha-5", centralRegistrationNumber:"7Central-5",  date: "6-24-2026 2:00:03PM"  , location:"Lahore", status:"Fully Paid" },
+  { _id: "6", no: "06",codeId: "WAJ25102406", name: "Kaiser Brown", avatar: "", phone: "0301-2345678", dhaRegistrationNumber:"dha-6", centralRegistrationNumber:"7Central-6",  date: "6-24-2026 2:00:03PM"  , location:"Karachi", status:"Fully Paid" },
+  { _id: "7", no: "07",codeId: "WAJ25102407", name: "Kaiser Brown", avatar: "", phone: "0301-2345678", dhaRegistrationNumber:"dha-7", centralRegistrationNumber:"7Central-7",  date: "6-24-2026 2:00:03PM"  , location:"Multan", status:"In Installments" },
+  { _id: "8", no: "08",codeId: "WAJ25102408", name: "Isagi Yoichi", avatar: "", phone: "0301-2345678", dhaRegistrationNumber:"dha-8", centralRegistrationNumber:"7Central-8", date: "6-24-2026 2:00:03PM"   , location:"Pehsawar", status:"Over Due"},
+  { _id: "9", no: "09",codeId: "WAJ25102409", name: "Isagi Yoichi", avatar: "", phone: "0301-2345678", dhaRegistrationNumber:"dha-9", centralRegistrationNumber:"7Central-9", date: "6-24-2026 2:00:03PM"   , location:"Multan", status:"Default"},
+  { _id:"10", no: "10",codeId: "WAJ25102400", name: "Isagi Yoichi", avatar: "", phone: "0301-2345678", dhaRegistrationNumber:"dha-10", centralRegistrationNumber:"7Central-10",  date: "6-24-2026 2:00:03PM"  , location:"Sargodha", status:"Fully Paid" },
 ];
 
 const Dealer = () => {

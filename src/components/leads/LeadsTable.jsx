@@ -29,7 +29,7 @@ const LeadsTable = ({ data, currentPage, setCurrentPage, limit, setLimit, totalC
   return (
     <div className="w-full flex flex-col gap-4">
       {/* Table Window Scrollable */}
-      <div className="overflow-x-auto w-full border border-gray-100 rounded-lg">
+      <div className="overflow-x-auto w-full  rounded-lg">
         <table className="">
           <thead className="">
             <tr>
@@ -46,6 +46,8 @@ const LeadsTable = ({ data, currentPage, setCurrentPage, limit, setLimit, totalC
               <th className=" whitespace-nowrap">Phone Number</th>
               <th className=" whitespace-nowrap">Lead Source</th>
               <th className=" whitespace-nowrap">Campaign</th>
+              <th className=" whitespace-nowrap">Dealer Type</th>
+              <th className=" whitespace-nowrap">Dealer Name</th>
               <th className=" whitespace-nowrap">Assigned</th>
               <th className=" whitespace-nowrap">Create Date</th>
               <th className=" text-center whitespace-nowrap">Action</th>
@@ -53,7 +55,19 @@ const LeadsTable = ({ data, currentPage, setCurrentPage, limit, setLimit, totalC
           </thead>
 
           <tbody className="divide-y divide-gray-100 bg-white">
-            {data.map((row) => (
+
+{
+  data.length <= 0 ? (
+    <tr>
+                <td colSpan="11" className="py-8 text-center">
+                  <span className="text-gray-500 text-xs font-medium block">
+                    No Records Found
+                  </span>
+                </td>
+              </tr>
+  )
+  :
+data.map((row) => (
               <tr key={row._id} 
                 // onClick={() => navigate(`/app/leads/timeline/${row._id}`)}
                                className="hover:bg-gray-50 transition-colors">
@@ -76,6 +90,8 @@ const LeadsTable = ({ data, currentPage, setCurrentPage, limit, setLimit, totalC
                 <td className="">{row.phone}</td>
                 <td className="">{row.source}</td>
                 <td className="">{row.campaign}</td>
+                <td className="">{row.dealerType}</td>
+                <td className="">{row.dealerName}</td>
                 <td className="">
                   <div className="flex items-center gap-2">
                     <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center text-[10px] text-blue-700 font-bold">
@@ -97,12 +113,12 @@ const LeadsTable = ({ data, currentPage, setCurrentPage, limit, setLimit, totalC
                     </button>
                     <button  onClick={()=>handleCall(row)}
     className="w-fit px-2 py-1 rounded-md text-xs whitespace-nowrap bg-green-700 text-white cursor-pointer"
->                     Call
+>                     Mark Response
                     </button>
-                    <button  onClick={()=>handleSchedule(row)}
+                    {/* <button  onClick={()=>handleSchedule(row)}
     className="w-fit px-2 py-1 rounded-md text-xs whitespace-nowrap bg-orange-700 text-white cursor-pointer"
 >                     Schedule
-                    </button>
+                    </button> */}
                     <button  onClick={()=>navigate(`/app/leads/timeline/${row._id}`)}
     className="w-fit px-2 py-1 rounded-md text-xs whitespace-nowrap bg-blue-700 text-white cursor-pointer"
 >                     View
@@ -114,7 +130,10 @@ const LeadsTable = ({ data, currentPage, setCurrentPage, limit, setLimit, totalC
                   </div>
                 </td>
               </tr>
-            ))}
+            ))
+}
+
+            
           </tbody>
         </table>
       </div>

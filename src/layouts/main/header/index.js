@@ -19,7 +19,7 @@ const Header = () => {
     const {user } = useSelector((state) => state.auth);
 
 const { data: profileData } = useSelector((state) => state.profile);
-    console.log(' this is a the  user',profileData)
+    // console.log(' this is a the  user',profileData)
 
 
 const { data, isLoading, error } = useQuery(

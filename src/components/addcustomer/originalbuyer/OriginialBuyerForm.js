@@ -218,6 +218,43 @@ navigate(`/app/customer/${id}/next-of-kin`)
 
   </div>
 
+  <div className="flex flex-col gap-6 px-3">
+    <p className="font-semibold text-base text-gunmetal py-6">Filer Details</p>
+
+    <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10  pb-4">
+      <FormControl
+      control="multiple-option"
+      name="filer"
+      label="Select Filer "
+      options={["Filer","Non Filer"]}
+      placeholder="Select Filer"
+      formik={formik}
+      />
+     
+      {formik.values.filer === "Filer" && (
+      <div className="col-span-3">
+        <FormControl
+          control="input"
+          type="text"
+          placeholder="Enter NTT Number"
+          label="NTT Number"
+          name="nttnumber"
+          formik={formik}
+          autoComplete="off"
+          autoCapitalize="off"
+          spellCheck={false}
+        />
+      </div>
+    )}
+
+       
+
+
+      </div>
+        <hr className="w-[100%] h-[1.5px]  mx-auto bg-[#9A9A9A]"/>
+
+    </div>
+
   {/* contact Section */}
   <div className="flex flex-col gap-6 px-3">
     <p className="font-semibold text-base text-gunmetal py-6">Contact Details</p>

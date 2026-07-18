@@ -233,7 +233,9 @@ console.log('payload',payload);
 
   </div>
    {/* Filer Section */}
-  <div className="flex flex-col gap-6 px-3">
+
+   {formik.values.customerType === 'Original Buyer' && (
+<div className="flex flex-col gap-6 px-3">
     <p className="font-semibold text-base text-gunmetal py-6">Filer Details</p>
 
     <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10  pb-4">
@@ -269,6 +271,8 @@ console.log('payload',payload);
         <hr className="w-[100%] h-[1.5px]  mx-auto bg-[#9A9A9A]"/>
 
     </div>
+   )}
+  
 
   {/* Contact Section */}
   <div className="flex flex-col gap-6 px-3">

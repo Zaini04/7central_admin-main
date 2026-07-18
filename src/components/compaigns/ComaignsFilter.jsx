@@ -9,7 +9,7 @@ const CampaignsFilter = ({ keyword, setKeyword, setDateFilter, setLocationFilter
           keyword={keyword}
           setKeyword={setKeyword}
           style={{ height: 40 }}
-          placeholder="Search Phone/Name"
+          placeholder="Search Name"
         />
         <SelectInput
           name="date"
