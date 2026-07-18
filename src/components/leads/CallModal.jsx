@@ -29,17 +29,23 @@ const CallStatusModal = ({ setCallStatusModal, callData,onSave  }) => {
   };
 
   // Status dropdown options selection dataset list 
-  const statusOptions = [
+  const AllStatusOptions = [
     { key: "Interested", value: "Interested" },
     { key: "Future Plan", value: "Future Plan" },
     { key: "Schedule Visit", value: "Schedule Visit" },
     { key: "Follow Up", value: "Follow Up" },
     { key: "Contact Later", value: "Contact Later" },
+    { key: "Successful", value: "Successful" },
     { key: "Not Interested", value: "Not Interested" },
     { key: "Irrelevant", value: "Irrelevant" },
     { key: "Not Contacted", value: "Not Contacted" },
   ];
-
+const statusOptions = AllStatusOptions.filter((opt) => {
+  if (opt.value === "Not Contacted") {
+    return !callData?.status || callData.status === "Not Contacted";
+  }
+  return true;
+});
   return (
     <div className="fixed top-0 left-0 w-full bg-black/25 flex items-center justify-center px-3 h-screen z-[9999]">
       <div

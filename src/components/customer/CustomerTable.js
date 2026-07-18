@@ -220,63 +220,31 @@ useClickOutside(menuRef, () => {
                 </td>
 
 
-<td
-                          className={`py-3.5 px-4 text-[12px] font-normal bg-white sticky -right-4 transition-colors duration-150 ${
-                            isRowSelected ? "" : ""
-                          } ${isMenuOpen ? "z-50  " : "z-10"}`}
-                        >
-                          <div className="flex justify-center z-50 items-center w-full h-full">
-                            <BsThreeDotsVertical
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                setActiveRowMenu(isMenuOpen ? null : row._id);
-                              }}
-                              className="cursor-pointer text-gray-500 hover:text-black text-xl p-1 rounded hover:bg-gray-100"
-                            />
-                          </div>
-                          {isMenuOpen && (
-                            <div
-                              ref={menuRef}
-                              className="absolute right-12 top-1/2 -translate-y-1/2 bg-white border border-gray-200 rounded-lg shadow-2xl  w-40 z-[10000] flex flex-col  animation-fade-in"
-                            >
-                              {row?.status === "deleted" ? (
-    <
-    
-      
-    ></> // empty if deleted
-  ) : (
-    <>
-      {/* <div
-        onClick={() => navigate(`/app/Customer-detail/${row._id}`)}
+<td className="  whitespace-nowrap text-xs">
+                {row?.status === "deleted" ? (
+                  <></>
+                ) : (
+                  <div className="flex flex-row gap-1.5 items-center">
+
+                    {/* View */}
+                    <div
+                      onClick={() => navigate(`/app/Customer-detail/${row._id}`)}
                       className="w-[22px] h-[22px] flex items-center justify-center rounded-md bg-primary cursor-pointer"
-      >
-        <EyetSVG />
-      </div> */}
-      <button 
-        onClick={() => navigate(`/app/Customer-detail/${row._id}`)}
-      type="button"
-      className="inline-block text-left cursor-pointer px-2 py-2 text-xs font-medium text-gray-500 hover:bg-gray-200/50 border-b border-gray-300 w-full"
-    >
-      View
-    </button>
+                    >
+                      <EyetSVG />
+                    </div>
 
-        {user?.isSuperAdmin && (
-                      <button
+                    {user?.isSuperAdmin && (
+                      <div
                         onClick={() => handleDelete(row?._id)}
-      className="inline-block text-left cursor-pointer px-2 py-2 text-xs font-medium text-gray-500 hover:bg-gray-200/50 border-b border-gray-300 w-full"
+                      className="w-[22px] h-[22px] flex items-center justify-center rounded-md bg-darkred cursor-pointer"
                       >
-                        Delete
-                        {/* <TrashSvg /> */}
-                      </button>
+                        <TrashSvg />
+                      </div>
                     )}
-    </>
-  )}
-
-
-
-                            </div>)}
-
-                          </td>
+                  </div>
+                )}
+              </td>
 
                
     {/* <div className="flex flex-row gap-1.5  justify-center  py-4  items-center ">

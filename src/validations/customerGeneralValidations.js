@@ -59,7 +59,7 @@ address: Yup.string()
   countryCode: Yup.string().optional(),
 
   countryName: Yup.string().optional(),
-  customerType:Yup.string().required("Customer tye is required")
+  // customerType:Yup.string().required("Customer tye is required")
   //  filer: Yup.string().required("Please select filer status"),
   // nttnumber: Yup.string().when("filer", {
   //   is: "Filer",

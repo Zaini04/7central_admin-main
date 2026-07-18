@@ -30,6 +30,7 @@ const DUMMY_LEADS = [
   "Schedule Visit": "Visit Plan",
   "Not Interested": "Dead Leads",
   "Irrelevant": "Dead Leads",
+    "Successful": "Successful Leads",   
 };
 const Leads = () => {
    const [leads, setLeads] = useState(
@@ -79,6 +80,8 @@ const Leads = () => {
     { name: "Visit Plan", count: null },
     { name: "Future Plan", count: null },
     { name: "Dead Leads", count: null },
+      { name: "Successful Leads", count: leads.filter((l) => l.status === "Successful").length },  
+    
   ];
 
  
