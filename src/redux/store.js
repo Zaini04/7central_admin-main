@@ -26,7 +26,7 @@ import reviewSlice from "./slices/reviewsSlice";
 import adminSlice from "./slices/adminSlice";
 import transferSlice   from './slices/transferSlice'
 import reportSlice   from './slices/reportSlice'
-
+import leadsReducer from "./slices/leadsSlice";
 
 const store = configureStore({
     reducer: {
@@ -45,6 +45,8 @@ const store = configureStore({
         transfer:transferSlice,
           admin: adminSlice,
         report: reportSlice,
+
+            leads: leadsReducer,
 
 
    user : userSlice ,

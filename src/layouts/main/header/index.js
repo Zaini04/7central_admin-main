@@ -18,6 +18,7 @@ const Header = () => {
   const { showSidebar } = useSelector(state => state.app)
     const {user } = useSelector((state) => state.auth);
 
+    // console.log("this is user",user)
 const { data: profileData } = useSelector((state) => state.profile);
     // console.log(' this is a the  user',profileData)
 

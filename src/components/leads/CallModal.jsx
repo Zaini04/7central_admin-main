@@ -6,8 +6,12 @@ import FormControl from "components/global/form/FormControl";
 import CancelButton from "components/global/form/CancelButton";
 import NextButton from "components/global/form/NextButton";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 const CallStatusModal = ({ setCallStatusModal, callData,onSave  }) => {
+
+      const {user } = useSelector((state) => state.auth);
+  
   const mainRef = useRef(null);
 
   // Click outside backdrop layer configuration to close modal safely
@@ -84,7 +88,8 @@ const statusOptions = AllStatusOptions.filter((opt) => {
   "Schedule Visit",
   "Interested",
   "Future Plan",
-].includes(values.responseType) ? values.nextActionDate :""
+].includes(values.responseType) ? values.nextActionDate :"",
+      markedBy: user?.username || user?.fullName || "", 
             }
               onSave(callData._id, payload);  
               toast.success("Response Marked SuccessFully")

@@ -35,13 +35,16 @@ function DateTimePicker(props) {
 
           // Combined internal change emitter helper
           const handlePartChange = (newDateStr, newTimeStr) => {
-            const dStr = newDateStr || dateStr || new Date().toISOString().split('T')[0];
-            const tStr = newTimeStr || timeStr || "12:00";
-            
-            // Constructs clean ISO date object to pass back into Formik slice pipeline
-            const combinedDate = new Date(`${dStr}T${tStr}`);
-            setFieldValue(name, isNaN(combinedDate.getTime()) ? null : combinedDate);
-          };
+  const dStr = newDateStr || dateStr || new Date().toISOString().split('T')[0];
+  const tStr = newTimeStr || timeStr || "12:00";
+  
+  // Clean string format: "YYYY-MM-DD HH:mm"
+  const combinedStr = `${dStr} ${tStr}`; 
+  
+  // Validate before setting
+  const testDate = new Date(`${dStr}T${tStr}`);
+  setFieldValue(name, isNaN(testDate.getTime()) ? null : combinedStr);
+};
 
           // Container configurations
           const containerBase =

@@ -111,10 +111,22 @@ data.map((row) => (
                     >
                         <EditTSvg/>
                     </button>
-                    <button  onClick={()=>handleCall(row)}
+                    {row.status === "Successful" ? (
+  <button
+    onClick={() => navigate(`/app/Customer/general`)}
+    className="w-fit px-2 py-1 rounded-md text-xs whitespace-nowrap bg-purple-700 text-white cursor-pointer"
+  >
+    Add Customer
+  </button>
+) : (
+  <button
+    onClick={() => handleCall(row)}
     className="w-fit px-2 py-1 rounded-md text-xs whitespace-nowrap bg-green-700 text-white cursor-pointer"
->                     Mark Response
-                    </button>
+  >
+    Mark Response
+  </button>
+)}
+                   
                     {/* <button  onClick={()=>handleSchedule(row)}
     className="w-fit px-2 py-1 rounded-md text-xs whitespace-nowrap bg-orange-700 text-white cursor-pointer"
 >                     Schedule

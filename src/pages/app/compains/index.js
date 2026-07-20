@@ -6,16 +6,16 @@ import CampaignsFilter from 'components/compaigns/ComaignsFilter';
 import CampaignsTable from 'components/compaigns/CompaignsTable';
 
 const DUMMY_CAMPAIGNS = [
-  { _id: "1", no: "01", name: "SummitPeak", type: "Public Relations", metrics: { totalProspects: "150", newLeads: "45", notContacted: "30", followUp: "40", visitPlan: "20", deadLeads: "10", futurePlan: "5" }, status: "Active" },
-  { _id: "2", no: "02", name: "SilverHawk", type: "Content Marketing", metrics: { totalProspects: "200", newLeads: "60", notContacted: "40", followUp: "50", visitPlan: "30", deadLeads: "15", futurePlan: "5" }, status: "Ended" },
-  { _id: "3", no: "03", name: "RiverStone Ventur", type: "Social Marketing", metrics: { totalProspects: "120", newLeads: "35", notContacted: "25", followUp: "30", visitPlan: "15", deadLeads: "10", futurePlan: "5" }, status: "Active" },
-  { _id: "4", no: "04", name: "Redwood Inc", type: "Brand", metrics: { totalProspects: "180", newLeads: "50", notContacted: "35", followUp: "45", visitPlan: "25", deadLeads: "15", futurePlan: "10" }, status: "Active" },
-  { _id: "5", no: "05", name: "NovaWave LLC", type: "Sales", metrics: { totalProspects: "250", newLeads: "80", notContacted: "50", followUp: "60", visitPlan: "40", deadLeads: "12", futurePlan: "8" }, status: "Active" },
-  { _id: "6", no: "06", name: "HarborView", type: "Media", metrics: { totalProspects: "90", newLeads: "25", notContacted: "20", followUp: "20", visitPlan: "15", deadLeads: "7", futurePlan: "3" }, status: "Ended" },
-  { _id: "7", no: "07", name: "Golden Gate Ltd", type: "Rebranding", metrics: { totalProspects: "300", newLeads: "95", notContacted: "55", followUp: "80", visitPlan: "50", deadLeads: "12", futurePlan: "8" }, status: "Ended" },
-  { _id: "8", no: "08", name: "CoastalStar Co.", type: "Product launch", metrics: { totalProspects: "140", newLeads: "40", notContacted: "30", followUp: "35", visitPlan: "20", deadLeads: "10", futurePlan: "5" }, status: "Active" },
-  { _id: "9", no: "09", name: "Bright Bridge Grp", type: "Public Relations", metrics: { totalProspects: "160", newLeads: "45", notContacted: "35", followUp: "40", visitPlan: "25", deadLeads: "10", futurePlan: "5" }, status: "Ended" },
-  { _id: "10", no: "10", name: "BlueSky Industries", type: "Social Marketing", metrics: { totalProspects: "220", newLeads: "70", notContacted: "45", followUp: "55", visitPlan: "30", deadLeads: "15", futurePlan: "5" }, status: "Ended" },
+  { _id: "1", no: "01", name: "SummitPeak", type: "Public Relations", metrics: { totalProspects: "150", newLeads: "45", notContacted: "30", followUp: "40", visitPlan: "20", deadLeads: "7", futurePlan: "5",successfull:"2" }, status: "Active" },
+  { _id: "2", no: "02", name: "SilverHawk", type: "Content Marketing", metrics: { totalProspects: "200", newLeads: "60", notContacted: "40", followUp: "50", visitPlan: "30", deadLeads: "10", futurePlan: "5",successfull:"5" }, status: "Ended" },
+  { _id: "3", no: "03", name: "RiverStone Ventur", type: "Social Marketing", metrics: { totalProspects: "120", newLeads: "35", notContacted: "25", followUp: "30", visitPlan: "9", deadLeads: "10", futurePlan: "5",successfull:"6" }, status: "Active" },
+  { _id: "4", no: "04", name: "Redwood Inc", type: "Brand", metrics: { totalProspects: "180", newLeads: "50", notContacted: "35", followUp: "45", visitPlan: "15", deadLeads: "15", futurePlan: "10",successfull:"10" }, status: "Active" },
+  { _id: "5", no: "05", name: "NovaWave LLC", type: "Sales", metrics: { totalProspects: "250", newLeads: "80", notContacted: "50", followUp: "60", visitPlan: "40", deadLeads: "12", futurePlan: "8" ,successfull:"0"}, status: "Active" },
+  { _id: "6", no: "06", name: "HarborView", type: "Media", metrics: { totalProspects: "90", newLeads: "25", notContacted: "20", followUp: "20", visitPlan: "15", deadLeads: "5", futurePlan: "3",successfull:"2" }, status: "Ended" },
+  { _id: "7", no: "07", name: "Golden Gate Ltd", type: "Rebranding", metrics: { totalProspects: "300", newLeads: "95", notContacted: "55", followUp: "80", visitPlan: "50", deadLeads: "12", futurePlan: "5",successfull:"0" }, status: "Ended" },
+  { _id: "8", no: "08", name: "CoastalStar Co.", type: "Product launch", metrics: { totalProspects: "140", newLeads: "40", notContacted: "30", followUp: "29", visitPlan: "20", deadLeads: "10", futurePlan: "6" ,successfull:"5"}, status: "Active" },
+  { _id: "9", no: "09", name: "Bright Bridge Grp", type: "Public Relations", metrics: { totalProspects: "160", newLeads: "45", notContacted: "35", followUp: "40", visitPlan: "25", deadLeads: "10", futurePlan: "0",successfull:"3" }, status: "Ended" },
+  { _id: "10", no: "10", name: "BlueSky Industries", type: "Social Marketing", metrics: { totalProspects: "220", newLeads: "70", notContacted: "45", followUp: "55", visitPlan: "23", deadLeads: "15", futurePlan: "7",successfull:"8" }, status: "Ended" },
 ];
 
 const Campaigns = () => {

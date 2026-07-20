@@ -6,20 +6,10 @@ import LeadsTable from 'components/leads/LeadsTable';
 import CallStatusModal from 'components/leads/CallModal';
 import ScheduleModal from 'components/leads/ScheduleModal';
 import ScheduleVisitModal from 'components/leads/ScheduleModal';
+import { useDispatch, useSelector } from 'react-redux';
+import { markResponse } from 'redux/slices/leadsSlice';
 
-// Exact dummy data mapped directly from your image
-const DUMMY_LEADS = [
-  { _id: "1", no: "01", name: "Isagi Yoichi", avatar: "", phone: "0301-2345678", source: "Campaign", campaign: "15% Down Payment", dealerType:"------",dealerName:"------", assigned: "Martin Lewis", date: "6-24-2026 2:00:03PM" },
-  { _id: "2", no: "02", name: "Laeonardo", avatar: "", phone: "0301-2345678", source: "Dealer", campaign:"------",dealerType:"7Cenetral Registered",dealerName:"Ali", assigned: "Smith Cooper", date: "6-24-2026 2:00:03PM" },
-  { _id: "3", no: "03", name: "Kaiser Brown", avatar: "", phone: "0301-2345678", source: "Google Ads", campaign: "------",dealerType:"------",dealerName:"------",assigned: "Newell Egen", date: "6-24-2026 2:00:03PM" },
-  { _id: "4", no: "04", name: "Kaiser Brown", avatar: "", phone: "0301-2345678", source: "Walking Customer", campaign: "------",dealerType:"------",dealerName:"------", assigned: "Theresa Nelson", date: "6-24-2026 2:00:03PM" },
-  { _id: "5", no: "05", name: "Kaiser Brown", avatar: "", phone: "0301-2345678", source: "Campaign", campaign: "15% Down Payment",dealerType:"------",dealerName:"------", assigned: "Jami Carlile", date: "6-24-2026 2:00:03PM" },
-  { _id: "6", no: "06", name: "Kaiser Brown", avatar: "", phone: "0301-2345678", source: "Dealer", campaign: "------",dealerType:"DHA Registered",dealerName:"Zain", assigned: "Daniel Byrne", date: "6-24-2026 2:00:03PM" },
-  { _id: "7", no: "07", name: "Kaiser Brown", avatar: "", phone: "0301-2345678", source: "Google Ads", campaign: "------",dealerType:"------",dealerName:"------", assigned: "Jami Carlile", date: "6-24-2026 2:00:03PM" },
-  { _id: "8", no: "08", name: "Isagi Yoichi", avatar: "", phone: "0301-2345678", source: "Dealer", campaign: "------",dealerType:" Frelance Registered",dealerName:"Salman", assigned: "Craig Brown", date: "6-24-2026 2:00:03PM" },
-  { _id: "9", no: "09", name: "Isagi Yoichi", avatar: "", phone: "0301-2345678", source: "Walking Customer", campaign: "------",dealerType:"------",dealerName:"------", assigned: "Janet Carlson", date: "6-24-2026 2:00:03PM" },
-  { _id: "10", no: "10", name: "Isagi Yoichi", avatar: "", phone: "0301-2345678", source: "Dealer", campaign: "------",dealerType:"7Central",dealerName:"Awais", assigned: "Theresa Nelson", date: "6-24-2026 2:00:03PM" },
-];
+
 
  const STATUS_TAB_MAP = {
   "Not Contacted": "Not Contacted",
@@ -33,9 +23,12 @@ const DUMMY_LEADS = [
     "Successful": "Successful Leads",   
 };
 const Leads = () => {
-   const [leads, setLeads] = useState(
-    DUMMY_LEADS.map((l) => ({ ...l, status: null, nextActionDate: "" }))
-  );
+
+  const dispatch = useDispatch();
+  const leads = useSelector((state) => state.leads.list);
+  //  const [leads, setLeads] = useState(
+  //   DUMMY_LEADS.map((l) => ({ ...l, status: null, nextActionDate: "" }))
+  // );
   const [keyword, setKeyword] = useState("");
   const [dateFilter, setDateFilter] = useState("");
   const [locationFilter, setLocationFilter] = useState("");
@@ -51,19 +44,20 @@ const Leads = () => {
 
 
     const handleSaveCall = (leadId, payload) => {
-    setLeads((prev) =>
-      prev.map((lead) =>
-        lead._id === leadId
-          ? {
-              ...lead,
-              status: payload.responseType,
-              nextActionDate: payload.nextActionDate,
-              profession: payload.profession,
-              notes: payload.notes,
-            }
-          : lead
-      )
-    );
+      dispatch(markResponse({leadId,...payload}))
+    // setLeads((prev) =>
+    //   prev.map((lead) =>
+    //     lead._id === leadId
+    //       ? {
+    //           ...lead,
+    //           status: payload.responseType,
+    //           nextActionDate: payload.nextActionDate,
+    //           profession: payload.profession,
+    //           notes: payload.notes,
+    //         }
+    //       : lead
+    //   )
+    // );
   };
 
 
@@ -100,7 +94,7 @@ const Leads = () => {
         <div className="flex items-center gap-3">
           <ExportButton
             title="Export Data"
-            tableData={DUMMY_LEADS}
+            tableData={filteredLeads}
             columns={["No", "Lead Name", "Phone Number", "Lead Source", "Campaign", "Assigned", "Create Date"]}
             fileName="Leads_Report"
             bgcolor="bg-white"
@@ -133,12 +127,12 @@ const Leads = () => {
               <button
                 key={tab.name}
                 onClick={() => setActiveTab(tab.name)}
-                className={`pb-3 relative text-xs transition-all whitespace-nowrap ${
+                className={`pb-3  relative text-xs transition-all whitespace-nowrap ${
                   activeTab === tab.name ? "text-red-500 font-semibold" : "text-gray-400 hover:text-gray-600"
                 }`}
               >
                 {tab.name}
-                {tab.count && <span className="ml-1 text-[10px] text-red-500 font-semibold">{tab.count}</span>}
+                 <span className="ml-1 text-[10px] text-red-500 font-semibold">{tab.count}</span>
                 {activeTab === tab.name && (
                   <span className="absolute bottom-0 left-0 w-full h-[2px] bg-red-500 rounded" />
                 )}

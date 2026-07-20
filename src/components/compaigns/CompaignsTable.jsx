@@ -85,6 +85,10 @@ const CampaignsTable = ({ docs, currentPage, setCurrentPage, limit, setLimit, do
                         <span className="block font-semibold text-indigo-600">{row.metrics.futurePlan}</span>
                         <span className="text-[10px] text-gray-400 whitespace-nowrap">Future Plan</span>
                       </div>
+                      <div>
+                        <span className="block font-semibold text-indigo-600">{row.metrics.successfull}</span>
+                        <span className="text-[10px] text-gray-400 whitespace-nowrap">Successfull</span>
+                      </div>
                     </div>
                   </td>
 

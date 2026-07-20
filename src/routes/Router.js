@@ -92,6 +92,7 @@ import LeadReport from "pages/app/Leads/LeadReport";
 import OriginalBuyer from "pages/app/customer/OriginalBuyer";
 import ReferalProgram from "pages/app/customer/ReferalProgram";
 import OverAllDashboard from "pages/app/Dashboards/OverAllDashboard";
+import InventoryStats from "pages/app/Dashboards/InventoryStats";
 
 
 
@@ -128,6 +129,7 @@ const Router = [
     element: <MainLayout />,
     children: [
       { path: '/app', exact: true, element: <ProtectedRoute    element={<OverAllDashboard />} /> },
+      { path: '/app/dashboardinventorystats', exact: true, element: <ProtectedRoute    element={<InventoryStats />} /> },
       { path: '/app/dashboard_inventory', exact: true, element: <ProtectedRoute    element={<Home />} /> },
 
 { path: '/app/Customer', exact: true, element: <ProtectedRoute element={<Customer />} /> },

@@ -51,6 +51,7 @@ const Status = ({ status }) => {
     status === 'rejected' ||
     status === 'expired' ||
         status === 'inactive' ||
+        status ==="Inactive" ||
                 status === 'InActive' ||
                  status === 'Failed' ||
                    status === 'Unpaid'||

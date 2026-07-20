@@ -14,12 +14,7 @@ import TotalProspectChart from './TotalProspectChart';
 import OpexChart from './OpexChart';
 import CapexChart from './CapExChart';
 
-
-
-
-const OverAllDashboardCard = () => {
-
- const dashboardCards = [
+export const dashboardCards = [
   {
     id: 1,
     title: "Total Leads",
@@ -94,6 +89,11 @@ const OverAllDashboardCard = () => {
   },
 ];
     
+
+
+const OverAllDashboardCard = () => {
+
+
 
 
 // const { statsDashboard } = useSelector(state => state.dashboard);
